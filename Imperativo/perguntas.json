@@ -1,0 +1,140 @@
+{
+   "0":{
+       "pergunta" : "Qual dessas linguagens de programação é Interpretada?",
+       "alternativas":{
+           "a":"Haskell",
+           "b":"C",
+           "c":"C++",
+           "d":"Java"
+       },
+       "resposta":"d"
+   },
+
+   "1":{
+    "pergunta" : "Qual dessas linguagens de programação é Compilada?",
+    "alternativas":{
+        "a":"JavaScript",
+        "b":"Java",
+        "c":"C++",
+        "d":"Python"
+    },
+    "resposta":"c"
+    },
+
+    "2":{
+        "pergunta" : "Qual dessas linguagens de programação tem paradígma Funcional?",
+        "alternativas":{
+            "a":"Haskell",
+            "b":"Java",
+            "c":"C++",
+            "d":"Python"
+        },
+        "resposta":"a"
+    },
+    
+    "3":{
+        "pergunta" : "Qual dessas linguagens de programação tem paradígma lógico?",
+        "alternativas":{
+            "a":"JavaScript",
+            "b":"Prolog",
+            "c":"C++",
+            "d":"Python"
+        },
+        "resposta":"b"
+    },
+
+    "4":{
+        "pergunta" : "Qual dessas linguagens de programação não da suporte para orientação a Objetos?",
+        "alternativas":{
+            "a":"JavaScript",
+            "b":"Java",
+            "c":"C++",
+            "d":"Haskell"
+        },
+        "resposta":"d"
+    },
+
+    "5":{
+        "pergunta" : "É uma linguagem de programação contruída para eficiência em calculos matemáticos:",
+        "alternativas":{
+            "a":"JavaScript",
+            "b":"Fortran",
+            "c":"C++",
+            "d":"Python"
+        },
+        "resposta":"b"
+    },
+
+    "6":{
+        "pergunta" : "Quais das características apresentadas são indispensaveis em uma linguagem de programação?",
+        "alternativas":{
+            "a":"Universalidade e Impletabilidade",
+            "b":"Expressividade e Universaliddade",
+            "c":"Eficiência e Simplicidade",
+            "d":"Suporte a Abstração e Implementabilidade"
+        },
+        "resposta":"a"
+    },
+
+    "7":{
+        "pergunta" : "Qual das linguagens não é de programação?",
+        "alternativas":{
+            "a":"JavaScript",
+            "b":"Fortran",
+            "c":"C++",
+            "d":"SQL"
+        },
+        "resposta":"b"
+    },
+
+    "8" : {
+        "pergunta" : "Qual das linguagens abaixo é fortemente tipada ?",
+        "resposta" : "b",
+        "alternativas" : {
+            "a" : "C",
+            "b" : "Python",
+            "c" : "JavaScript",
+            "d" : "C++"
+        }
+    },
+    "9" : {
+        "pergunta" : "Ano da independência do Brasil ?",
+        "resposta" : "c",
+        "alternativas" : {
+            "a" : "1850",
+            "b" : "1930",
+            "c" : "1822",
+            "d" : "1832"
+        }
+    },
+    "10" : {
+        "pergunta" : "Quantos estados o Brasil possui ?",
+        "resposta" : "b",
+        "alternativas" : {
+            "a" : "27",
+            "b" : "26",
+            "c" : "28",
+            "d" : "25"
+        }
+    },
+    "11" : {
+        "pergunta" : "Qual das opções abaixo não é uma linguagem de programação ?",
+        "resposta" : "d",
+        "alternativas" : {
+            "a" : "Python",
+            "b" : "JavaScript",
+            "c" : "Prolog",
+            "d" : "HTML"
+        }
+    },
+    "12" : {
+        "pergunta" : "Qual das linguagens não pode ser utilizada POO ?",
+        "resposta" : "d",
+        "alternativas" : {
+            "a" : "Python",
+            "b" : "Java",
+            "c" : "C++",
+            "d" : "Prolog"
+        }
+    }
+}
