@@ -6,7 +6,3 @@ int gerarRandon(int inicio,int fim){
 float gerarValorPremio(int multiplicador, bool acerto){
     
 }
-
-int main(){
-    return 0;
-}
