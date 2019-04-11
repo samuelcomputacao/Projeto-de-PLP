@@ -1,0 +1,12 @@
+{
+    "1" : {
+        "pergunta" : "Qual das linguagens abaixo é fortemente tipada ?",
+        "resposta" : "b",
+        "alternativas" : {
+            "a" : "C",
+            "b" : "Python",
+            "c" : "JavaScript",
+            "d" : "C++"
+        }
+    }
+}
