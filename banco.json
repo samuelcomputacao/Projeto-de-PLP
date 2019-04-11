@@ -8,5 +8,65 @@
             "c" : "JavaScript",
             "d" : "C++"
         }
+    },
+    "2" : {
+        "pergunta" : "Ano da independência do Brasil ?",
+        "resposta" : "c",
+        "alternativas" : {
+            "a" : "1850",
+            "b" : "1930",
+            "c" : "1822",
+            "d" : "1832"
+        }
+    },
+    "3" : {
+        "pergunta" : "Quantos estados o Brasil possui ?",
+        "resposta" : "b",
+        "alternativas" : {
+            "a" : "27",
+            "b" : "26",
+            "c" : "28",
+            "d" : "25"
+        }
+    },
+    "4" : {
+        "pergunta" : "Qual das opções abaixo não é uma linguagem de programação ?",
+        "resposta" : "d",
+        "alternativas" : {
+            "a" : "Python",
+            "b" : "JavaScript",
+            "c" : "Prolog",
+            "d" : "HTML"
+        }
+    },
+    "5" : {
+        "pergunta" : "Qual das linguagens não pode ser utilizada POO ?",
+        "resposta" : "d",
+        "alternativas" : {
+            "a" : "Python",
+            "b" : "Java",
+            "c" : "C++",
+            "d" : "Prolog"
+        }
+    },
+    "6" : {
+        "pergunta" : "",
+        "resposta" : "",
+        "alternativas" : {
+            "a" : "",
+            "b" : "",
+            "c" : "",
+            "d" : ""
+        }
+    },
+    "7" : {
+        "pergunta" : "",
+        "resposta" : "",
+        "alternativas" : {
+            "a" : "",
+            "b" : "",
+            "c" : "",
+            "d" : ""
+        }
     }
 }
