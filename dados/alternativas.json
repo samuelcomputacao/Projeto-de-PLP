@@ -64,7 +64,7 @@
 
     "9":{
         "a" : "1850",
-        "b" : "1930",
+        "b" : "1920",
         "c" : "1822",
         "d" : "1832"
     },
@@ -88,5 +88,83 @@
         "b" : "Java",
         "c" : "C++",
         "d" : "Prolog"
+    },
+    "13":{
+        "a":"Tubarão",
+        "b":"Golfinho",
+        "c":"Povo",
+        "d":"Baleia"
+    },
+    "14":{
+        "a":"Mark Zuckerberg",
+        "b":"Akio Morita",
+        "c":"Bill Gates",
+        "d":"Steve Jobs"
+    },
+    "15":{
+        "a":"16",
+        "b":"15",
+        "c":"18",
+        "d":"17"
+    },
+    "16":{
+        "a":"31",
+        "b":"30",
+        "c":"33",
+        "d":"32"
+    },
+    "17":{
+        "a":"Flor",
+        "b":"Pedra",
+        "c":"Fruta",
+        "d":"Verdura"
+    },
+    "18":{
+        "a":"Mufasa",
+        "b":"Scar",
+        "c":"Pumba",
+        "d":"Rafiki"
+    },
+    "19":{
+        "a":"Thomas Edison",
+        "b":"Marconi",
+        "c":"Graham Bell",
+        "d":"George Washington"
+    },
+    "20":{
+        "a":"Trajano",
+        "b":"Nero",
+        "c":"Brutus",
+        "d":"Calígula"
+    },
+    "21":{
+        "a":"Kratos",
+        "b":"Apolo",
+        "c":"Ares",
+        "d":"Dionísio"
+    },
+    "22":{
+        "a":"57 anos",
+        "b":"67 anos",
+        "c":"78 anos",
+        "d":"79 anos"
+    },
+    "23":{
+        "a":"",
+        "b":"",
+        "c":"",
+        "d":""
+    },
+    "24":{
+        "a":"",
+        "b":"",
+        "c":"",
+        "d":""
+    },
+    "25":{
+        "a":"",
+        "b":"",
+        "c":"",
+        "d":""
     }
 }
