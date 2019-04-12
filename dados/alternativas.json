@@ -150,21 +150,171 @@
         "d":"79 anos"
     },
     "23":{
-        "a":"",
-        "b":"",
-        "c":"",
-        "d":""
+        "a":"Índia",
+        "b":"Islândia",
+        "c":"Paquistão",
+        "d":"México"
     },
     "24":{
-        "a":"",
-        "b":"",
-        "c":"",
-        "d":""
+        "a":"Júlio César",
+        "b":"Galígua",
+        "c":"Nero",
+        "d":"Marco Antônio"
     },
     "25":{
-        "a":"",
-        "b":"",
-        "c":"",
-        "d":""
+        "a":"Slade Wilson",
+        "b":"Bruce Wayne",
+        "c":"Wade Wilson",
+        "d":"Matthew Murdock"
+    },
+    "26":{
+        "a":"Baseball",
+        "b":"Basquete",
+        "c":"Futebol Americano",
+        "d":"Golf"
+    },
+    "27":{
+        "a":"Ato Interncional",
+        "b":"Ato Institucional",
+        "c":"Ato Inspirador",
+        "d":"Ato Idealizador"
+    },
+    "28":{
+        "a":"Tóquio",
+        "b":"Nagasaki",
+        "c":"Osaka",
+        "d":"Hiroxima"
+    },
+    "29":{
+        "a":"D. Pedro II",
+        "b":"D. Pedro I",
+        "c":"D. João VI",
+        "d":"Deodoro da Fonseca"
+    },
+    "30":{
+        "a":"Andorinha",
+        "b":"Pato Selvagem",
+        "c":"Pinguim",
+        "d":"Marreco"
+    },
+    "31":{
+        "a":"Arnold Schwarzenegger",
+        "b":"Sylvester Stallone",
+        "c":"Steven Seagal",
+        "d":"Jean Claude Van Damme"
+    },
+    "32":{
+        "a":"10 onças",
+        "b":"10 gramas",
+        "c":"10 quilos",
+        "d":"10 libras"
+    },
+    "33":{
+        "a":"Guerra Fria",
+        "b":"Guerra do Vietnã",
+        "c":"Guerra nas Estrelas",
+        "d":"Guerra da Coréia"
+    },
+    "34":{
+        "a":"No Pescoço",
+        "b":"No ombro",
+        "c":"Na cabeça",
+        "d":"No braço"
+    },
+    "35":{
+        "a":"Rr",
+        "b":"Rd",
+        "c":"Rn",
+        "d":"Ro"
+    },
+    "36":{
+        "a":"1987",
+        "b":"1990",
+        "c":"1985",
+        "d":"1988"
+    },
+    "37":{
+        "a":"Pitágoras",
+        "b":"Diderot",
+        "c":"Aristóteles",
+        "d":"Galileu Galilei"
+    },
+    "38":{
+        "a":"Rafael",
+        "b":"Leonardo",
+        "c":"Donatelo",
+        "d":"Michelangelo"
+    },
+    "39":{
+        "a":"Ouro",
+        "b":"Mercúrio",
+        "c":"Prata",
+        "d":"Hidrogênio"
+    },
+    "40":{
+        "a":"3.05m",
+        "b":"2.97m",
+        "c":"3.10m",
+        "d":"3.00m"
+    },
+    "41":{
+        "a":"Sport Clube do Recife",
+        "b":"Esporte Clube Bahia",
+        "c":"Esporte Clube Vitória",
+        "d":"Fortaleza Esporte Clube"
+    },
+    "42":{
+        "a":"Luke Skywalker",
+        "b":"Anakin Skywalker",
+        "c":"Obi-Wan Kenobi",
+        "d":"Qui-Gon Jinn"
+    },
+    "43":{
+        "a":"Espinoza",
+        "b":"Miguel De Cervantes",
+        "c":"Carlos Conte",
+        "d":"Angel Morita"
+    },
+    "44":{
+        "a":"Lionel Messi",
+        "b":"Raúl González",
+        "c":"Cristiano Ronaldo",
+        "d":"Ruud Van Nistelrooy"
+    },
+    "45":{
+        "a":"Janis Joplin",
+        "b":"Carloe King",
+        "c":"Aretha Franklin",
+        "d":"Diana Ross"
+    },
+    "46":{
+        "a":"Ferroviário",
+        "b":"Aéreo",
+        "c":"Hidroviário",
+        "d":"Rodoviário"
+    },
+    "47":{
+        "a":"Urubu",
+        "b":"Morsa",
+        "c":"Leão Marinho",
+        "d":"Pelicano"
+    },
+    "48":{
+        "a":"Manchester",
+        "b":"Londres",
+        "c":"Liverpool",
+        "d":"Nottingham"
+    },
+    "49":{
+        "a":"Os Jardins de Giverny",
+        "b":"Os Bitrôs de Paris",
+        "c":"Cenas do Moulin Rouge",
+        "d":"Paisagens da Provença"
+    },
+    "50":{
+        "a":"Argentina",
+        "b":"Chile",
+        "c":"Colômbia",
+        "d":"Uruguai"
     }
 }
