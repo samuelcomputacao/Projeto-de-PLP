@@ -1,0 +1,92 @@
+{
+    "0":{
+        "a":"Haskell",
+        "b":"C",
+        "c":"C++",
+        "d":"Java"
+    },
+
+    "1":{
+        "a":"JavaScript",
+        "b":"Java",
+        "c":"C++",
+        "d":"Python"
+    },
+
+    "2":{
+        "a":"Haskell",
+        "b":"Java",
+        "c":"C++",
+        "d":"Python"
+    },
+
+    "3":{
+        "a":"JavaScript",
+        "b":"Prolog",
+        "c":"C++",
+        "d":"Python"
+    },
+
+    "4":{
+        "a":"JavaScript",
+        "b":"Java",
+        "c":"C++",
+        "d":"Haskell"
+    },
+
+    "5":{
+        "a":"JavaScript",
+        "b":"Fortran",
+        "c":"C++",
+        "d":"Python"
+    },
+
+    "6":{
+        "a":"Universalidade e Impletabilidade",
+        "b":"Expressividade e Universaliddade",
+        "c":"Eficiência e Simplicidade",
+        "d":"Suporte a Abstração e Implementabilidade"
+    },
+
+    "7":{
+        "a":"JavaScript",
+        "b":"Fortran",
+        "c":"C++",
+        "d":"SQL"
+    },
+
+    "8":{
+        "a" : "C",
+        "b" : "Python",
+        "c" : "JavaScript",
+        "d" : "C++"
+    },
+
+    "9":{
+        "a" : "1850",
+        "b" : "1930",
+        "c" : "1822",
+        "d" : "1832"
+    },
+
+    "10":{
+        "a" : "27",
+        "b" : "26",
+        "c" : "28",
+        "d" : "25"
+    },
+
+    "11":{
+        "a" : "Python",
+        "b" : "JavaScript",
+        "c" : "Prolog",
+        "d" : "HTML"
+    },
+    
+    "12":{
+        "a" : "Python",
+        "b" : "Java",
+        "c" : "C++",
+        "d" : "Prolog"
+    }
+}
