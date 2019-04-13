@@ -1,27 +1,48 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <stdlib.h>
+#include <time.h>
+
 #include "include/numberService.h"
 #include "include/stringService.h"
 #include "include/fileService.h"
 
-#include "jsoncpp/json/json.h"
+#include "nlohmann/json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 int main(){
-    Json::Value root;
+    json file1, file2, file3;
+    ifstream i("../dados/perguntas.json");
+    ifstream j("../dados/alternativas.json");
+    ifstream k("../dados/respostas.json");
 
-    root["id"]=0;
-            Json::Value text;
-            text["first"]="c++";
-            text["second"]="java";
-            text["third"]="js";
-    root["text"]=text;
-    root["type"]="test";
-    root["begin"]=1;
-    root["end"]=1;
-    Json::StyledWriter writer;
-    string strJson=writer.write(root);
+    i >> file1;
+    j >> file2;
+    k >> file3;
 
-    cout<<"JSON WriteTest" << endl << strJson <<endl;
+    while (true) {        
+        srand((unsigned) time(NULL));
+        int x = rand() % 50;
+        cout << "Question:" << endl;
+        cout << file1[to_string(x)].dump(4) << endl;
+    
+        cout << "Alternatives:" << endl;
+        for(json::iterator it = file2[to_string(x)].begin(); it != file2[to_string(x)].end(); ++it) {
+            cout << "(" << it.key() << ") - " << it.value() << endl;  
+        }
+        
+        char response[1];
+        cout << "choice your response: 'a' or 'b' or 'c' or 'd'? ";
+        cin >> response;
+
+        if(response == file3[to_string(x)])
+            cout << "\nCORRECT!\n" << endl;
+        else 
+            cout << "\nINCORRECT!\n" << endl;
+    }
+
+    return 0;
 }

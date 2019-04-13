@@ -42,7 +42,7 @@
     },
 
     "6":{
-        "a":"Universalidade e Impletabilidade",
+        "a":"Universalidade e Implementabilidade",
         "b":"Expressividade e Universaliddade",
         "c":"Eficiência e Simplicidade",
         "d":"Suporte a Abstração e Implementabilidade"
@@ -174,7 +174,7 @@
         "d":"Golf"
     },
     "27":{
-        "a":"Ato Interncional",
+        "a":"Ato Internacional",
         "b":"Ato Institucional",
         "c":"Ato Inspirador",
         "d":"Ato Idealizador"
@@ -183,7 +183,7 @@
         "a":"Tóquio",
         "b":"Nagasaki",
         "c":"Osaka",
-        "d":"Hiroxima"
+        "d":"Hiroshima"
     },
     "29":{
         "a":"D. Pedro II",
@@ -216,7 +216,7 @@
         "d":"Guerra da Coréia"
     },
     "34":{
-        "a":"No Pescoço",
+        "a":"No pescoço",
         "b":"No ombro",
         "c":"Na cabeça",
         "d":"No braço"
