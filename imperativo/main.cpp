@@ -13,36 +13,64 @@
 using namespace std;
 using json = nlohmann::json;
 
+void escolheOpcao(int op);
+void comecaJogo();
+void comoJogar();
+int gerador();
+int escolherMultiplicador();
+
 int main(){
-    json file1, file2, file3;
-    ifstream i("../dados/perguntas.json");
-    ifstream j("../dados/alternativas.json");
-    ifstream k("../dados/respostas.json");
-
-    i >> file1;
-    j >> file2;
-    k >> file3;
-
-    while (true) {        
-        srand((unsigned) time(NULL));
-        int x = rand() % 50;
-        cout << "Question:" << endl;
-        cout << file1[to_string(x)].dump(4) << endl;
-    
-        cout << "Alternatives:" << endl;
-        for(json::iterator it = file2[to_string(x)].begin(); it != file2[to_string(x)].end(); ++it) {
-            cout << "(" << it.key() << ") - " << it.value() << endl;  
-        }
-        
-        char response[1];
-        cout << "choice your response: 'a' or 'b' or 'c' or 'd'? ";
-        cin >> response;
-
-        if(response == file3[to_string(x)])
-            cout << "\nCORRECT!\n" << endl;
-        else 
-            cout << "\nINCORRECT!\n" << endl;
+    int op = 0;
+    op = gerarMenuInicial();
+    while(op != 1 && op != 2) {
+        cout << "Opção incorreta!" << endl;
+        cin >> op;
     }
+    escolheOpcao(op);
 
+    return 0;
+}
+
+void escolheOpcao(int op){
+    if (op == 1) {
+        comecaJogo();
+    } else if (op == 2) {
+        comoJogar();
+    }
+}
+
+void comoJogar() {
+    // TODO: Imprimir como o jogo funciona para o jogador.
+    cout << "" << endl;
+}
+
+void comecaJogo() {
+    cout << "O jogo vai iniciar";
+    while(true) {
+        int id = gerador();
+        carregarResposta(id);
+
+        int multiplicador = escolherMultiplicador();
+        long valorDaPergunta = buscaValorPremio();
+
+        string resposta = carregarResposta(id);
+        if (verificarResposta(id, resposta)) {
+            // TODO: Caso 1: Jogador acertou a pergunta. Fazer a soma do valor arrecadado
+            // mais o valor gerado vezes o multiplicador que ele escolheu.
+        } else {
+            // TODO: Caso 2: Jogador errou a pergunta. Fazer a subtração do valor arrecadado
+            // menos o valor gerado vezes o multiplicador que ele escolheu.
+        }
+    }
+}
+
+int gerador() {
+    srand((unsigned) time(NULL));
+    int x = rand() % 50;
+    return x;
+}
+
+int escolherMultiplicador() {
+    // TODO: Fazer o jogador escolher entre 1x, 2x ou 3x.
     return 0;
 }
