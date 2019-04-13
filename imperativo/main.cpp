@@ -20,6 +20,7 @@ int gerador();
 int escolherMultiplicador();
 
 int main(){
+<<<<<<< HEAD
     int op = 0;
     op = gerarMenuInicial();
     while(op != 1 && op != 2) {
