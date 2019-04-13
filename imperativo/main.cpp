@@ -27,15 +27,15 @@ int main(){
         srand((unsigned) time(NULL));
         int x = rand() % 50;
         cout << "Question:" << endl;
-        cout << file1[to_string(x)].dump(4) << endl;
+        cout << "- " << file1[to_string(x)].get<string>() << endl;
     
         cout << "Alternatives:" << endl;
         for(json::iterator it = file2[to_string(x)].begin(); it != file2[to_string(x)].end(); ++it) {
-            cout << "(" << it.key() << ") - " << it.value() << endl;  
+            cout << "(" << it.key() << ") - " << it.value().get<string>() << endl;  
         }
         
         char response[1];
-        cout << "choice your response: 'a' or 'b' or 'c' or 'd'? ";
+        cout << endl << "choice your response: 'a' or 'b' or 'c' or 'd'? ";
         cin >> response;
 
         if(response == file3[to_string(x)])
