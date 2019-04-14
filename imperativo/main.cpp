@@ -8,28 +8,40 @@
 #include "include/stringService.h"
 #include "include/fileService.h"
 
-#include "nlohmann/json.hpp"
-
 using namespace std;
-using json = nlohmann::json;
 
 void escolheOpcao(int op);
 void comecaJogo();
 void comoJogar();
 int gerador();
 int escolherMultiplicador();
+void imprime(string s);
+int getOpcao();
 
 int main(){
-<<<<<<< HEAD
     int op = 0;
-    op = gerarMenuInicial();
-    while(op != 1 && op != 2) {
-        cout << "Opção incorreta!" << endl;
-        cin >> op;
-    }
+    
+    imprime(gerarMenuInicial());
+
+    op = getOpcao();
+
     escolheOpcao(op);
 
     return 0;
+}
+
+int getOpcao(){
+    int retorno;
+    cin >> retorno;
+    while(retorno != 1 && retorno != 2 && retorno!=3) {
+        cout << "Opção incorreta, digite 1,2 ou 3" << endl;
+        cin >> retorno;
+    }
+    return retorno;
+}
+
+void imprime(string msg){
+    cout << msg;
 }
 
 void escolheOpcao(int op){
@@ -46,9 +58,9 @@ void comoJogar() {
 }
 
 void comecaJogo() {
-    cout << "O jogo vai iniciar";
+    cout << "O jogo vai iniciar\n";
     while(true) {
-        int id = gerador();
+        int id = gerarRandon(50);
         carregarResposta(id);
 
         int multiplicador = escolherMultiplicador();
@@ -63,12 +75,6 @@ void comecaJogo() {
             // menos o valor gerado vezes o multiplicador que ele escolheu.
         }
     }
-}
-
-int gerador() {
-    srand((unsigned) time(NULL));
-    int x = rand() % 50;
-    return x;
 }
 
 int escolherMultiplicador() {

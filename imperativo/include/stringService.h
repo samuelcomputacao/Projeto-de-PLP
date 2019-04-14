@@ -1,13 +1,14 @@
 #include<string>
 using namespace std;
 
-int gerarMenuInicial(){
-    int op = 0;
-    cout << "The System" << endl;
-    cout << "Opções: " << endl;
-    cout << "1) Inicio do jogo" << endl << "2) Como jogar?" << endl;
-    cin >> op;
-    return op;
+string gerarMenuInicial(){
+    string retorno = "";
+    retorno = "The System\n";
+    retorno += "Opções: \n";
+    retorno += "1) Inicio do jogo\n";
+    retorno += "2) Como jogar?\n";
+    retorno += "3) Sair\n";
+    return retorno;
 }
 
 string imprimirPergunta(string pergunta[3][4]){
