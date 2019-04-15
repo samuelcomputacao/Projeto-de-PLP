@@ -64,8 +64,6 @@ void comecaJogo() {
         imprime(carregarResposta(id));
         int multiplicador = escolherMultiplicador();
         long valorDaPergunta = buscaValorPremio();
-        cout << "EDU is gado" <<  endl;
-
         
         string resposta;
         imprime(carregarPergunta(id));
