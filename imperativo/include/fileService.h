@@ -1,28 +1,34 @@
 #include <string>
 
 #include "../nlohmann/json.hpp"
+#include <cstdlib>
 
 using json = nlohmann::json;
 using namespace std;
 
-void carregarPergunta(int id){
+string carregarPergunta(int id){
     json perguntas;
+    string saida = "";
     ifstream i("../dados/perguntas.json");
     i >> perguntas;
-    cout << perguntas[to_string(id)].dump(4) << endl;
-
+    saida = perguntas[to_string(id)].dump(4);
+    //cout << perguntas[to_string(id)].dump(4) << endl;
+    return saida;
 }
 
 string carregarResposta(int id) {
-    string resposta;
+    string resposta = "";
     json alternativas;
     ifstream i("../dados/alternativas.json");
     i >> alternativas;
     for(json::iterator it = alternativas[to_string(id)].begin(); it != alternativas[to_string(id)].end(); ++it) {
-        cout << "(" << it.key() << ") - " << it.value() << endl;  
+        resposta += "(";
+        resposta += it.key();
+        resposta += ") - ";
+        resposta += it.value();
+        resposta += "\n";   
     }
-    cout << "Digite sua resposta: " << endl;
-    cin >> resposta;
+
     return resposta;
 }
 
@@ -38,11 +44,11 @@ bool verificarResposta(int id, string respostaJogador) {
     return acertou;
 }
 
-long buscaValorPremio(){
+int buscaValorPremio(){
     json valor;
     ifstream i("../dados/valores.json");
-    srand((unsigned) time(NULL));
-    int id = rand() % 50;
+    
+    int id = rand() % 18; 
     i >> valor;
 
     return valor[to_string(id)];

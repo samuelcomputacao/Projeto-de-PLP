@@ -61,12 +61,18 @@ void comecaJogo() {
     cout << "O jogo vai iniciar\n";
     while(true) {
         int id = gerarRandon(50);
-        carregarResposta(id);
-
+        imprime(carregarResposta(id));
         int multiplicador = escolherMultiplicador();
         long valorDaPergunta = buscaValorPremio();
+        cout << "EDU is gado" <<  endl;
 
-        string resposta = carregarResposta(id);
+        
+        string resposta;
+        imprime(carregarPergunta(id));
+        cout << "Digite sua resposta: ";
+        cin >> resposta;
+        
+        
         if (verificarResposta(id, resposta)) {
             // TODO: Caso 1: Jogador acertou a pergunta. Fazer a soma do valor arrecadado
             // mais o valor gerado vezes o multiplicador que ele escolheu.
