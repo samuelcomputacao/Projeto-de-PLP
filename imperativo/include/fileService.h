@@ -36,20 +36,28 @@ bool verificarResposta(int id, string respostaJogador) {
     bool acertou = false;
     json resposta;
     ifstream i("../dados/respostas.json");
-    i >> resposta[to_string(id)];
-    if (respostaJogador == resposta) {
+    i >> resposta;
+    if (respostaJogador == resposta[to_string(id)]) {
         acertou = true;
     }
 
     return acertou;
 }
 
-int buscaValorPremio(){
+int buscaValorPremio(int rodada){
+    srand (time(NULL));
     json valor;
     ifstream i("../dados/valores.json");
-    
-    int id = rand() % 18; 
     i >> valor;
-
+    int id;
+    
+    if(rodada <= 2){
+        id = rand() % 4;
+    } else if(rodada <= 4){
+        id = rand() % 9 + 5; 
+    } else{
+        id = rand() % 14 + 10; 
+    }
+    
     return valor[to_string(id)];
 }

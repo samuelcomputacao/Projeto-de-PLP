@@ -5,6 +5,6 @@ int gerarRandon(int max){
     return x;
 }
 
-float gerarValorPremio(int multiplicador, bool acerto){
-    
+int gerarValorPremio(int multiplicador, int premiacao){
+    return multiplicador * premiacao;
 }

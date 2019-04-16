@@ -58,30 +58,59 @@ void comoJogar() {
 }
 
 void comecaJogo() {
-    cout << "O jogo vai iniciar\n";
-    while(true) {
+    cout << "O jogo vai iniciar, serão um total de 6 rodadas, boa sorte!" << endl;;
+    int saldoJogador = 0;
+
+    for(int i = 1; i <= 6; i++){
         int id = gerarRandon(50);
         imprime(carregarResposta(id));
+        cout << "Escolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x APENAS): ";
         int multiplicador = escolherMultiplicador();
-        long valorDaPergunta = buscaValorPremio();
+        long valorDaPergunta = buscaValorPremio(i);
+        int premioRodada = gerarValorPremio(multiplicador, valorDaPergunta);
         
         string resposta;
         imprime(carregarPergunta(id));
-        cout << "Digite sua resposta: ";
+        cout << endl << "Digite sua resposta: ";
         cin >> resposta;
         
         
         if (verificarResposta(id, resposta)) {
-            // TODO: Caso 1: Jogador acertou a pergunta. Fazer a soma do valor arrecadado
-            // mais o valor gerado vezes o multiplicador que ele escolheu.
+            saldoJogador += premioRodada;
+            cout << "RESPOSTA CORRETA!" << endl;
+            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+            cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
+            cout << "Seu saldo atual é de: " << saldoJogador << endl;
         } else {
-            // TODO: Caso 2: Jogador errou a pergunta. Fazer a subtração do valor arrecadado
-            // menos o valor gerado vezes o multiplicador que ele escolheu.
+            saldoJogador -= premioRodada;
+            if(saldoJogador < 0) saldoJogador = 0;
+            cout << "VOCÊ ERROU!" << endl;
+            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+            cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
+            cout << "Seu saldo atual é de: " << saldoJogador << endl;
         }
     }
+    
 }
 
 int escolherMultiplicador() {
-    // TODO: Fazer o jogador escolher entre 1x, 2x ou 3x.
-    return 0;
+    string multiplicador = "";
+    int result;
+
+    while(multiplicador != "1x" && multiplicador != "2x" && multiplicador != "3x") {
+        cin >> multiplicador;
+       
+        if(multiplicador == "1x"){
+            result = 1;
+        } else if(multiplicador == "2x"){
+            result = 2;
+        } else if(multiplicador == "3x") {
+            result = 3;
+        } else{
+            cout << "Digite um valor de acordo com as opções dadas." << endl;
+        }
+    }
+
+    return result;
 }
+

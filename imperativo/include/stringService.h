@@ -7,7 +7,7 @@ string gerarMenuInicial(){
     retorno += "Opções: \n";
     retorno += "1) Inicio do jogo\n";
     retorno += "2) Como jogar?\n";
-    retorno += "3) Sair\n";
+    retorno += "3) Sair\n\n";
     return retorno;
 }
 
