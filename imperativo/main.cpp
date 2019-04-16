@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <set>
 #include <fstream>
 #include <stdlib.h>
 #include <time.h>
@@ -22,6 +23,7 @@ void rodada2();
 void rodada3();
 
 int saldoJogador = 0;
+set<int> perguntas_da_rodada;
 
 int main(){
     int op = 0;
@@ -110,6 +112,14 @@ void rodada1(){
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(12);
+
+        if(perguntas_da_rodada.count(id) >= 1) {
+            while (perguntas_da_rodada.count(id) >= 1) {
+                id = gerarRandon(12);
+            }
+        }
+        perguntas_da_rodada.insert(id);
+
         imprime(carregarPergunta(1,id));
         imprime("\n" + carregarResposta(1,id));
     
@@ -133,6 +143,8 @@ void rodada1(){
             cout << "Seu saldo atual é de: " << saldoJogador << endl;
         }
     }
+
+    perguntas_da_rodada.clear();
 }
 
 void rodada2(){
@@ -140,6 +152,14 @@ void rodada2(){
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(16);
+
+        if(perguntas_da_rodada.count(id) >= 1) {
+            while (perguntas_da_rodada.count(id) >= 1) {
+                id = gerarRandon(16);
+            }
+        }
+        perguntas_da_rodada.insert(id);
+
         imprime(carregarResposta(2,id));
         int multiplicador = escolherMultiplicador(2);
         long valorDaPergunta = buscaValorPremio(2,gerarRandon(4));
@@ -166,6 +186,8 @@ void rodada2(){
             cout << "Seu saldo atual é de: " << saldoJogador << endl;
         }   
     }
+
+    perguntas_da_rodada.clear();
 }
 
 void rodada3(){
@@ -173,6 +195,14 @@ void rodada3(){
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(20);
+
+        if(perguntas_da_rodada.count(id) >= 1) {
+            while (perguntas_da_rodada.count(id) >= 1) {
+                id = gerarRandon(20);
+            }
+        }
+        perguntas_da_rodada.insert(id);
+
         imprime(carregarResposta(3,id));
         int multiplicador = escolherMultiplicador(3);
         long valorDaPergunta = buscaValorPremio(3,gerarRandon(4));
@@ -199,5 +229,7 @@ void rodada3(){
             cout << "Seu saldo atual é de: " << saldoJogador << endl;
         }
     }
+
+    perguntas_da_rodada.clear();
 }
 
