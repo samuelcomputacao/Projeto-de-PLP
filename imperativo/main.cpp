@@ -4,6 +4,7 @@
 #include <fstream>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "include/numberService.h"
 #include "include/stringService.h"
@@ -17,6 +18,7 @@ void comoJogar();
 int gerador();
 int escolherMultiplicador(int rodada);
 void imprime(string s);
+void telaInicialJogo(void);
 int getOpcao();
 void rodada1();
 void rodada2();
@@ -28,7 +30,8 @@ set<int> perguntas_da_rodada;
 int main(){
     int op = 0;
     
-    imprime(gerarMenuInicial());
+    // Loading, Logo e Menu do jogo.
+    telaInicialJogo();
 
     op = getOpcao();
 
@@ -108,7 +111,7 @@ int escolherMultiplicador(int rodada) {
 }
 
 void rodada1(){
-    imprime("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
+    imprime("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(12);
@@ -148,7 +151,7 @@ void rodada1(){
 }
 
 void rodada2(){
-    imprime("A segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
+    imprime("A segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(16);
@@ -191,7 +194,7 @@ void rodada2(){
 }
 
 void rodada3(){
-    imprime("A terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
+    imprime("A terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(20);
@@ -233,3 +236,12 @@ void rodada3(){
     perguntas_da_rodada.clear();
 }
 
+void telaInicialJogo(){
+    imprime("Aguardando carregamento do jogo...\n\n");
+    sleep(2);
+    imprime("Espere um momento por favor...\n\n");
+    sleep(4);
+    imprime("Tudo pronto! Hora de jogar!\n\n");
+    imprime(logoJogo());
+    imprime(gerarMenuInicial());
+}
