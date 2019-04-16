@@ -1,0 +1,104 @@
+{
+    "0":{
+        "a":"Tubarão",
+        "b":"Golfinho",
+        "c":"Povo",
+        "d":"Baleia"
+    },
+    "1":{
+        "a":"Mark Zuckerberg",
+        "b":"Akio Morita",
+        "c":"Bill Gates",
+        "d":"Steve Jobs"
+    },
+    "2":{
+        "a":"16",
+        "b":"15",
+        "c":"18",
+        "d":"17"
+    },
+    "3":{
+        "a":"31",
+        "b":"30",
+        "c":"33",
+        "d":"32"
+    },
+    "4":{
+        "a":"Flor",
+        "b":"Pedra",
+        "c":"Fruta",
+        "d":"Verdura"
+    },
+    "5":{
+        "a":"Mufasa",
+        "b":"Scar",
+        "c":"Pumba",
+        "d":"Rafiki"
+    },
+    "6":{
+        "a":"Thomas Edison",
+        "b":"Marconi",
+        "c":"Graham Bell",
+        "d":"George Washington"
+    },
+    "7":{
+        "a":"Trajano",
+        "b":"Nero",
+        "c":"Brutus",
+        "d":"Calígula"
+    },
+    "8":{
+        "a":"Kratos",
+        "b":"Apolo",
+        "c":"Ares",
+        "d":"Dionísio"
+    },
+    "9":{
+        "a":"57 anos",
+        "b":"67 anos",
+        "c":"78 anos",
+        "d":"79 anos"
+    },
+    "10":{
+        "a":"Índia",
+        "b":"Islândia",
+        "c":"Paquistão",
+        "d":"México"
+    },
+    "11":{
+        "a":"Júlio César",
+        "b":"Galígua",
+        "c":"Nero",
+        "d":"Marco Antônio"
+    },
+    "12":{
+        "a":"Slade Wilson",
+        "b":"Bruce Wayne",
+        "c":"Wade Wilson",
+        "d":"Matthew Murdock"
+    },
+    "13":{
+        "a":"Baseball",
+        "b":"Basquete",
+        "c":"Futebol Americano",
+        "d":"Golf"
+    },
+    "14":{
+        "a":"Ato Internacional",
+        "b":"Ato Institucional",
+        "c":"Ato Inspirador",
+        "d":"Ato Idealizador"
+    },
+    "15":{
+        "a":"Tóquio",
+        "b":"Nagasaki",
+        "c":"Osaka",
+        "d":"Hiroshima"
+    },
+    "16":{
+        "a":"D. Pedro II",
+        "b":"D. Pedro I",
+        "c":"D. João VI",
+        "d":"Deodoro da Fonseca"
+    }
+}

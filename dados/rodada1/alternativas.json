@@ -1,0 +1,66 @@
+{
+    "0":{
+        "a":"C++",
+        "b":"Java"
+    },
+
+    "1":{
+        "a":"C++",
+        "b":"Python"
+    },
+
+    "2":{
+        "a":"Haskell",
+        "b":"Java"
+    },
+
+    "3":{
+        "a":"JavaScript",
+        "b":"Prolog"
+    },
+
+    "4":{
+        "a":"C++",
+        "b":"Haskell"
+    },
+
+    "5":{
+        "a":"JavaScript",
+        "b":"Fortran"
+    },
+
+    "6":{
+        "a":"Universalidade e Implementabilidade",
+        "b":"Expressividade e Suporte a Abstração"
+    },
+
+    "7":{
+        "a":"Fortran",
+        "b":"SQL"
+    },
+
+    "8":{
+        "a" : "C",
+        "b" : "Python"
+    },
+
+    "9":{
+        "a" : "1850",
+        "b" : "1822"
+    },
+
+    "10":{
+        "a" : "28",
+        "b" : "26"
+    },
+
+    "11":{
+        "c" : "Prolog",
+        "b" : "HTML"
+    },
+
+    "12":{
+        "a" : "Python",
+        "b" : "Prolog"
+    }
+}

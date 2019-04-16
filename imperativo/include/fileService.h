@@ -6,20 +6,47 @@
 using json = nlohmann::json;
 using namespace std;
 
-string carregarPergunta(int id){
+string carregarPergunta(int rodada, int id){
     json perguntas;
     string saida = "";
-    ifstream i("../dados/perguntas.json");
+
+    string path = "";
+      switch (rodada){
+        case 1:
+            path = "../dados/rodada1/perguntas.json";
+            break;
+        case 2:
+            path = "../dados/rodada2/perguntas.json";
+            break;
+        case 3:
+            path = "../dados/rodada3/perguntas.json"; 
+            break;
+    }
+
+    ifstream i(path);
     i >> perguntas;
     saida = perguntas[to_string(id)].dump(4);
-    //cout << perguntas[to_string(id)].dump(4) << endl;
     return saida;
 }
 
-string carregarResposta(int id) {
+string carregarResposta(int rodada, int id) {
     string resposta = "";
     json alternativas;
-    ifstream i("../dados/alternativas.json");
+
+    string path = "";
+      switch (rodada){
+        case 1:
+            path = "../dados/rodada1/alternativas.json";
+            break;
+        case 2:
+            path = "../dados/rodada2/alternativas.json";
+            break;
+        case 3:
+            path = "../dados/rodada3/alternativas.json"; 
+            break;
+    }
+
+    ifstream i(path);
     i >> alternativas;
     for(json::iterator it = alternativas[to_string(id)].begin(); it != alternativas[to_string(id)].end(); ++it) {
         resposta += "(";
@@ -32,10 +59,24 @@ string carregarResposta(int id) {
     return resposta;
 }
 
-bool verificarResposta(int id, string respostaJogador) {
+bool verificarResposta(int rodada, int id, string respostaJogador) {
     bool acertou = false;
     json resposta;
-    ifstream i("../dados/respostas.json");
+
+    string path = "";
+      switch (rodada){
+        case 1:
+            path = "../dados/rodada1/respostas.json";
+            break;
+        case 2:
+            path = "../dados/rodada2/respostas.json";
+            break;
+        case 3:
+            path = "../dados/rodada3/respostas.json"; 
+            break;
+    }
+
+    ifstream i(path);
     i >> resposta;
     if (respostaJogador == resposta[to_string(id)]) {
         acertou = true;
@@ -44,20 +85,22 @@ bool verificarResposta(int id, string respostaJogador) {
     return acertou;
 }
 
-int buscaValorPremio(int rodada){
-    srand((unsigned)time(0));
+int buscaValorPremio(int rodada,int id){   
     json valor;
-    ifstream i("../dados/valores.json");
-    i >> valor;
-    int id;
-    
-    if(rodada <= 2){
-        id = rand() % 4;
-    } else if(rodada <= 4){
-        id = rand()%(9-5+1) + 5; 
-    } else{
-        id = rand()%(14-10+1) + 10; 
+    string path = "";
+   
+    switch (rodada){
+        case 1:
+            path = "../dados/rodada1/valores.json";
+            break;
+        case 2:
+            path = "../dados/rodada2/valores.json";
+            break;
+        case 3:
+            path = "../dados/rodada3/valores.json"; 
+            break;
     }
-    
+    ifstream i(path);
+    i >> valor;    
     return valor[to_string(id)];
 }

@@ -1,0 +1,128 @@
+{
+    "0":{
+        "a":"Andorinha",
+        "b":"Pato Selvagem",
+        "c":"Pinguim",
+        "d":"Marreco"
+    },
+    "1":{
+        "a":"Arnold Schwarzenegger",
+        "b":"Sylvester Stallone",
+        "c":"Steven Seagal",
+        "d":"Jean Claude Van Damme"
+    },
+    "2":{
+        "a":"10 onças",
+        "b":"10 gramas",
+        "c":"10 quilos",
+        "d":"10 libras"
+    },
+    "3":{
+        "a":"Guerra Fria",
+        "b":"Guerra do Vietnã",
+        "c":"Guerra nas Estrelas",
+        "d":"Guerra da Coréia"
+    },
+    "4":{
+        "a":"No pescoço",
+        "b":"No ombro",
+        "c":"Na cabeça",
+        "d":"No braço"
+    },
+    "5":{
+        "a":"Rr",
+        "b":"Rd",
+        "c":"Rn",
+        "d":"Ro"
+    },
+    "6":{
+        "a":"1987",
+        "b":"1990",
+        "c":"1985",
+        "d":"1988"
+    },
+    "7":{
+        "a":"Pitágoras",
+        "b":"Diderot",
+        "c":"Aristóteles",
+        "d":"Galileu Galilei"
+    },
+    "8":{
+        "a":"Rafael",
+        "b":"Leonardo",
+        "c":"Donatelo",
+        "d":"Michelangelo"
+    },
+    "9":{
+        "a":"Ouro",
+        "b":"Mercúrio",
+        "c":"Prata",
+        "d":"Hidrogênio"
+    },
+    "10":{
+        "a":"3.05m",
+        "b":"2.97m",
+        "c":"3.10m",
+        "d":"3.00m"
+    },
+    "11":{
+        "a":"Sport Clube do Recife",
+        "b":"Esporte Clube Bahia",
+        "c":"Esporte Clube Vitória",
+        "d":"Fortaleza Esporte Clube"
+    },
+    "12":{
+        "a":"Luke Skywalker",
+        "b":"Anakin Skywalker",
+        "c":"Obi-Wan Kenobi",
+        "d":"Qui-Gon Jinn"
+    },
+    "13":{
+        "a":"Espinoza",
+        "b":"Miguel De Cervantes",
+        "c":"Carlos Conte",
+        "d":"Angel Morita"
+    },
+    "14":{
+        "a":"Lionel Messi",
+        "b":"Raúl González",
+        "c":"Cristiano Ronaldo",
+        "d":"Ruud Van Nistelrooy"
+    },
+    "15":{
+        "a":"Janis Joplin",
+        "b":"Carloe King",
+        "c":"Aretha Franklin",
+        "d":"Diana Ross"
+    },
+    "16":{
+        "a":"Ferroviário",
+        "b":"Aéreo",
+        "c":"Hidroviário",
+        "d":"Rodoviário"
+    },
+    "17":{
+        "a":"Urubu",
+        "b":"Morsa",
+        "c":"Leão Marinho",
+        "d":"Pelicano"
+    },
+    "18":{
+        "a":"Manchester",
+        "b":"Londres",
+        "c":"Liverpool",
+        "d":"Nottingham"
+    },
+    "19":{
+        "a":"Os Jardins de Giverny",
+        "b":"Os Bitrôs de Paris",
+        "c":"Cenas do Moulin Rouge",
+        "d":"Paisagens da Provença"
+    },
+    "20":{
+        "a":"Argentina",
+        "b":"Chile",
+        "c":"Colômbia",
+        "d":"Uruguai"
+    }
+}
