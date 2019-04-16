@@ -45,7 +45,7 @@ bool verificarResposta(int id, string respostaJogador) {
 }
 
 int buscaValorPremio(int rodada){
-    srand (time(NULL));
+    srand((unsigned)time(0));
     json valor;
     ifstream i("../dados/valores.json");
     i >> valor;
@@ -54,9 +54,9 @@ int buscaValorPremio(int rodada){
     if(rodada <= 2){
         id = rand() % 4;
     } else if(rodada <= 4){
-        id = rand() % 9 + 5; 
+        id = rand()%(9-5+1) + 5; 
     } else{
-        id = rand() % 14 + 10; 
+        id = rand()%(14-10+1) + 10; 
     }
     
     return valor[to_string(id)];
