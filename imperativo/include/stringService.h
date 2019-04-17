@@ -23,10 +23,3 @@ string logoJogo(){
     return resultado;
 }
 
-string imprimirPergunta(string pergunta[3][4]){
-   
-}
-
-string capturarResposta(){
-
-}
