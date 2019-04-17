@@ -64,8 +64,19 @@ void escolheOpcao(int op){
 }
 
 void comoJogar() {
-    // TODO: Imprimir como o jogo funciona para o jogador.
-    cout << "" << endl;
+    string opcao;
+    imprime(tutorial());
+    cin >> opcao;
+    while((opcao != "v") && (opcao != "c")){
+        imprime("Incorreto!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: ");
+        cin >> opcao;
+    }
+
+    if(opcao == "c"){
+        comecaJogo();
+    }else{
+        imprime(gerarMenuInicial());    
+    }
 }
 
 void comecaJogo() {

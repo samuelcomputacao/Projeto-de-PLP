@@ -1,4 +1,4 @@
-#include<string>
+#include <string>
 using namespace std;
 
 string gerarMenuInicial(){
@@ -21,6 +21,19 @@ string logoJogo(){
     resultado = primeiraLinha + segundaLinha + terceiraLinha + quartaLinha + quintaLinha;
 
     return resultado;
+}
+
+string tutorial(){
+    string introducao, explicacao1, explicacao2, explicacao3, texto;
+
+    introducao  = "    The System é um jogo de perguntas e respostas baseado no famoso 'The Wall'.\n";
+    explicacao1 = "    O jogo consiste de três rodadas, cada uma contém três perguntas, sendo a primeira a mais simples, a segunda um pouco mais elaborada e por ultimo, a terceira rodada com questões mais interessantes :).\n\n";
+    explicacao2 = "    Na primeira rodada o usurário poderá escolher entre 1x ou 2x para o multiplicador do prêmio\n";
+    explicacao3 = "    A partir da segunda rodada o usuário receberá do The System as alternativas, e a partir do seu nível de confiança, decidirá\nentre um multiplicador alto ou baixo para a pergunta.\n    O jogo conta com um sistema aleatório para o valor do prêmio, ou seja, ninguem sabe qual o premio que você irá receber/perder após responder a pergunta.\n";
+    texto = introducao + explicacao1 + explicacao2 + explicacao3 + "\n\n\n presione (c) para começar o jogo ou (v) para voltar ao menu: ";
+
+    return texto;
+
 }
 
 void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
