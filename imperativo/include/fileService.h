@@ -9,19 +9,8 @@ using namespace std;
 string carregarPergunta(int rodada, int id){
     json perguntas;
     string saida = "";
-
     string path = "";
-      switch (rodada){
-        case 1:
-            path = "../dados/rodada1/perguntas.json";
-            break;
-        case 2:
-            path = "../dados/rodada2/perguntas.json";
-            break;
-        case 3:
-            path = "../dados/rodada3/perguntas.json"; 
-            break;
-    }
+    path = "../dados/rodada" + to_string(rodada) + "/perguntas.json";
 
     ifstream i(path);
     i >> perguntas;
@@ -32,19 +21,9 @@ string carregarPergunta(int rodada, int id){
 string carregarResposta(int rodada, int id) {
     string resposta = "";
     json alternativas;
-
     string path = "";
-      switch (rodada){
-        case 1:
-            path = "../dados/rodada1/alternativas.json";
-            break;
-        case 2:
-            path = "../dados/rodada2/alternativas.json";
-            break;
-        case 3:
-            path = "../dados/rodada3/alternativas.json"; 
-            break;
-    }
+
+    path = "../dados/rodada" + to_string(rodada) + "/alternativas.json";
 
     ifstream i(path);
     i >> alternativas;
@@ -62,19 +41,8 @@ string carregarResposta(int rodada, int id) {
 bool verificarResposta(int rodada, int id, string respostaJogador) {
     bool acertou = false;
     json resposta;
-
     string path = "";
-      switch (rodada){
-        case 1:
-            path = "../dados/rodada1/respostas.json";
-            break;
-        case 2:
-            path = "../dados/rodada2/respostas.json";
-            break;
-        case 3:
-            path = "../dados/rodada3/respostas.json"; 
-            break;
-    }
+    path = "../dados/rodada" + to_string(rodada) + "/respostas.json";
 
     ifstream i(path);
     i >> resposta;
@@ -88,18 +56,8 @@ bool verificarResposta(int rodada, int id, string respostaJogador) {
 int buscaValorPremio(int rodada,int id){   
     json valor;
     string path = "";
-   
-    switch (rodada){
-        case 1:
-            path = "../dados/rodada1/valores.json";
-            break;
-        case 2:
-            path = "../dados/rodada2/valores.json";
-            break;
-        case 3:
-            path = "../dados/rodada3/valores.json"; 
-            break;
-    }
+    path = "../dados/rodada" + to_string(rodada) + "/valores.json";
+    
     ifstream i(path);
     i >> valor;    
     return valor[to_string(id)];

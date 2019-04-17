@@ -25,7 +25,7 @@ string logoJogo(){
 
 void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
 
-    cout << "VOCÊ ERROU!" << endl;
+    cout << "\n                 VOCÊ ERROU!" << endl;
     cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
     if(rodada != 1){
         cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
@@ -36,7 +36,7 @@ void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int r
 
 void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
 
-    cout << "RESPOSTA CORRETA!" << endl;
+    cout << "\n                 RESPOSTA CORRETA!" << endl;
     cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
     if(rodada != 1){
         cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;

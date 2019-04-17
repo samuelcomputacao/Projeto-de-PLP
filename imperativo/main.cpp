@@ -112,19 +112,18 @@ int escolherMultiplicador(int rodada) {
 }
 
 void rodada1(){
-    imprime("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(12);
 
-        if(perguntas_da_rodada.count(id) >= 1) {
-            while (perguntas_da_rodada.count(id) >= 1) {
-                id = gerarRandon(12);
-            }
+        while (perguntas_da_rodada.count(id) >= 1) {
+            id = gerarRandon(12);
         }
+
         perguntas_da_rodada.insert(id);
 
-        imprime(carregarPergunta(1,id));
+        imprime("\n" + carregarPergunta(1,id));
         imprime("\n" + carregarResposta(1,id));
     
         long valorDaPergunta = buscaValorPremio(1,gerarRandon(4));
@@ -148,19 +147,18 @@ void rodada1(){
 }
 
 void rodada2(){
-    imprime("A segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(16);
 
-        if(perguntas_da_rodada.count(id) >= 1) {
-            while (perguntas_da_rodada.count(id) >= 1) {
-                id = gerarRandon(16);
-            }
+        while (perguntas_da_rodada.count(id) >= 1) {
+            id = gerarRandon(16);
         }
+
         perguntas_da_rodada.insert(id);
 
-        imprime(carregarResposta(2,id));
+        imprime("\n" + carregarResposta(2,id));
         int multiplicador = escolherMultiplicador(2);
         long valorDaPergunta = buscaValorPremio(2,gerarRandon(4));
         int premioRodada = gerarValorPremio(multiplicador, valorDaPergunta);
@@ -185,19 +183,18 @@ void rodada2(){
 }
 
 void rodada3(){
-    imprime("A terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(20);
 
-        if(perguntas_da_rodada.count(id) >= 1) {
-            while (perguntas_da_rodada.count(id) >= 1) {
-                id = gerarRandon(20);
-            }
+        while (perguntas_da_rodada.count(id) >= 1) {
+            id = gerarRandon(20);
         }
+
         perguntas_da_rodada.insert(id);
 
-        imprime(carregarResposta(3,id));
+        imprime("\n" + carregarResposta(3,id));
         int multiplicador = escolherMultiplicador(3);
         long valorDaPergunta = buscaValorPremio(3,gerarRandon(4));
         int premioRodada = gerarValorPremio(multiplicador, valorDaPergunta);
