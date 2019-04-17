@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
-
 #include "include/numberService.h"
 #include "include/stringService.h"
 #include "include/fileService.h"
@@ -23,6 +22,8 @@ int getOpcao();
 void rodada1();
 void rodada2();
 void rodada3();
+void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
+void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
 
 int saldoJogador = 0;
 set<int> perguntas_da_rodada;
@@ -44,7 +45,7 @@ int getOpcao(){
     int retorno;
     cin >> retorno;
     while(retorno != 1 && retorno != 2 && retorno!=3) {
-        cout << "Opção incorreta, digite 1,2 ou 3" << endl;
+        cout << "Opção incorreta, digite 1, 2 ou 3" << endl;
         cin >> retorno;
     }
     return retorno;
@@ -92,7 +93,7 @@ int escolherMultiplicador(int rodada) {
             }
         }
     } else if(rodada == 3){
-        imprime("Escolha um multiplicador para a sua premiação (entre 1x,2x ou 3x): ");
+        imprime("Escolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): ");
         while(multiplicador != "1x" && multiplicador != "2x" && multiplicador != "3x") {
             cin >> multiplicador;
         
@@ -103,7 +104,7 @@ int escolherMultiplicador(int rodada) {
             } else if(multiplicador == "3x") {
                 result = 3;
             } else{
-                imprime("Digite um valor de acordo com as opções dadas.(1x,2x ou 3x)\n");
+                imprime("Digite um valor de acordo com as opções dadas.(1x, 2x ou 3x)\n");
             }
         }
     }
@@ -135,15 +136,11 @@ void rodada1(){
         
         if (verificarResposta(1,id, resposta)) {
             saldoJogador += premioRodada;
-            cout << "RESPOSTA CORRETA!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            acertouToString(valorDaPergunta,premioRodada,saldoJogador,1);
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            cout << "VOCÊ ERROU!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            errouToString(valorDaPergunta,premioRodada,saldoJogador,1);
         }
     }
 
@@ -176,17 +173,11 @@ void rodada2(){
         
         if (verificarResposta(2,id, resposta)) {
             saldoJogador += premioRodada;
-            cout << "RESPOSTA CORRETA!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            acertouToString(valorDaPergunta,premioRodada,saldoJogador,2);
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            cout << "VOCÊ ERROU!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            errouToString(valorDaPergunta,premioRodada,saldoJogador,2);
         }   
     }
 
@@ -219,17 +210,11 @@ void rodada3(){
         
         if (verificarResposta(3,id, resposta)) {
             saldoJogador += premioRodada;
-            cout << "RESPOSTA CORRETA!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            acertouToString(valorDaPergunta,premioRodada,saldoJogador,3);
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            cout << "VOCÊ ERROU!" << endl;
-            cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
-            cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
-            cout << "Seu saldo atual é de: " << saldoJogador << endl;
+            errouToString(valorDaPergunta,premioRodada,saldoJogador,3);
         }
     }
 
@@ -244,4 +229,27 @@ void telaInicialJogo(){
     imprime("Tudo pronto! Hora de jogar!\n\n");
     imprime(logoJogo());
     imprime(gerarMenuInicial());
+}
+
+
+void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+
+    cout << "VOCÊ ERROU!" << endl;
+    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+    if(rodada != 1){
+        cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
+    }
+    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+
+}
+
+void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+
+    cout << "RESPOSTA CORRETA!" << endl;
+    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+    if(rodada != 1){
+        cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
+    }
+    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+
 }
