@@ -23,3 +23,24 @@ string logoJogo(){
     return resultado;
 }
 
+void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+
+    cout << "VOCÊ ERROU!" << endl;
+    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+    if(rodada != 1){
+        cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
+    }
+    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+
+}
+
+void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+
+    cout << "RESPOSTA CORRETA!" << endl;
+    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+    if(rodada != 1){
+        cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
+    }
+    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+
+}
