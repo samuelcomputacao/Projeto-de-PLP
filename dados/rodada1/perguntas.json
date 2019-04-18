@@ -1,15 +1,15 @@
 {
     "0":"Qual dessas linguagens de programação é Interpretada?",
     "1":"Qual dessas linguagens de programação é Compilada?",
-    "2":"Qual dessas linguagens de programação tem paradígma Funcional?",
-    "3":"Qual dessas linguagens de programação tem paradígma lógico?",
+    "2":"Qual dessas linguagens de programação tem paradigma Funcional?",
+    "3":"Qual dessas linguagens de programação tem paradigma lógico?",
     "4":"Qual dessas linguagens de programação não da suporte para orientação a Objetos?",
     "5":"É uma linguagem de programação contruída para eficiência em calculos matemáticos:",
     "6":"Quais das características apresentadas são indispensaveis em uma linguagem de programação?",
     "7":"Qual das linguagens não é de programação?",
-    "8" :"Qual das linguagens abaixo é fortemente tipada ?",
-    "9" :"Ano da independência do Brasil ?",
-    "10" :"Quantos estados o Brasil possui ?",
-    "11":"Qual das opções abaixo não é uma linguagem de programação ?",
-    "12" :"Qual das linguagens não pode ser utilizada POO ?"
+    "8":"Qual das linguagens abaixo é fortemente tipada?",
+    "9":"Ano da independência do Brasil?",
+    "10":"Quantos estados o Brasil possui?",
+    "11":"Qual das opções abaixo não é uma linguagem de programação?",
+    "12":"Qual das linguagens não pode ser utilizada POO?"
 }

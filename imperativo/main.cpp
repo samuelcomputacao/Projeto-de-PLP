@@ -24,6 +24,7 @@ void rodada2();
 void rodada3();
 void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
 void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
+void saiOuJogaNovamente();
 
 int saldoJogador = 0;
 set<int> perguntas_da_rodada;
@@ -75,13 +76,17 @@ void comoJogar() {
     if(opcao == "c"){
         comecaJogo();
     }else{
-        imprime(gerarMenuInicial());    
+        imprime(gerarMenuInicial());
+        int op = getOpcao();
+        escolheOpcao(op);
+
     }
 }
 
 void comecaJogo() {
+
     imprime("O jogo vai iniciar, serão um total de 3 rodadas, boa sorte!\n");
-    
+
     rodada1();
     rodada2();
     rodada3();
@@ -225,8 +230,24 @@ void rodada3(){
             errouToString(valorDaPergunta,premioRodada,saldoJogador,3);
         }
     }
-
     perguntas_da_rodada.clear();
+    saiOuJogaNovamente();
+    
+}
+void saiOuJogaNovamente(){
+    cout << endl;
+    cout << "Fim de Jogo!" << endl;
+    cout << "Seu saldo final é de: " << saldoJogador << endl;
+    cout << "Tecle (c) jogar novamente ou (s) para sair:" << endl;
+    string opcao;
+    cin >> opcao;
+    while((opcao != "c") && (opcao != "s")){
+        imprime("Incorreto!\nPor favor tecle (c) jogar novamente ou (s) para sair: ");
+        cin >> opcao;
+    }
+    if(opcao == "c"){
+        comecaJogo();
+    }
 }
 
 void telaInicialJogo(){
