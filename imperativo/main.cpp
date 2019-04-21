@@ -245,7 +245,9 @@ void saiOuJogaNovamente(){
         imprime("Incorreto!\nPor favor tecle (c) jogar novamente ou (s) para sair: ");
         cin >> opcao;
     }
+    
     if(opcao == "c"){
+        imprime(logoJogo());
         comecaJogo();
     }
 }
