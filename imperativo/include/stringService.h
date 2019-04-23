@@ -24,19 +24,22 @@ string logoJogo(){
 }
 
 string tutorial(){
-    string introducao, explicacao1, explicacao2, explicacao3, texto;
-
-    introducao  = "    The System é um jogo de perguntas e respostas baseado no famoso 'The Wall'.\n";
-    explicacao1 = "    O jogo consiste de três rodadas, cada uma contém três perguntas, sendo a primeira a mais simples, a segunda um pouco mais elaborada e por ultimo, a terceira rodada com questões mais interessantes :).\n\n";
-    explicacao2 = "    Na primeira rodada o usuário poderá escolher entre 1x ou 2x para o multiplicador do prêmio\n";
-    explicacao3 = "    A partir da segunda rodada o usuário receberá do The System as alternativas, e a partir do seu nível de confiança, decidirá\nentre um multiplicador alto ou baixo para a pergunta.\n    O jogo conta com um sistema aleatório para o valor do prêmio, ou seja, ninguem sabe qual o premio que você irá receber/perder após responder a pergunta.\n";
-    texto = introducao + explicacao1 + explicacao2 + explicacao3 + "\n\n\nPressione (c) para começar o jogo ou (v) para voltar ao menu: ";
-
-    return texto;
-
+    string tutorial;
+    
+    tutorial += "Uma versão adaptada do conhecido 'The wall'. O jogo é dividido em 3 rodadas, cada uma com 3 perguntas, mas cada rodada possuem suas pecularidades.\n";
+    tutorial += "Funcionamento das rodadas: \n";
+    tutorial += "\n- Rodada 1: \n\n";
+    tutorial += "Será mostrado uma pergunta com duas alternativas, e caso o usuário acerte será sorteado um valor aleatório entre os valores: 1, 10, 1000, 3000, 5000, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado só que irá subtrair do valor obtido.\n";
+    tutorial += "\n- Rodada 2: \n\n";
+    tutorial += "Será mostrado as 4 alternativas, para o jogador verificar se conhece o assunto ou não e então, o sistema irá perguntar qual multiplicador ele deseja(dependendo de sua confiança em acertar): 1x ou 2x. E logo após, mostrará a pergunta. E Caso o usuário acerte será sorteado um valor aleatório entre os valores: 10, 100, 5000, 10000, 15000 e esse valor será multiplicado pelo multiplicador escolhido, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado e multiplicar pelo multiplicador, só que irá subtrair do valor obtido.\n";
+    tutorial += "\n- Rodada 3: \n\n";
+    tutorial += "Será mostrado as 4 alternativas, para o jogador verificar se conhece o assunto ou não e então, o sistema irá perguntar qual multiplicador ele deseja(dependendo de sua confiança em acertar): 1x, 2x ou 3x. E logo após, mostrará a pergunta. E Caso o usuário acerte será sorteado um valor aleatório entre os valores: 100, 1000, 75000, 15000, 25000 e esse valor será multiplicado pelo multiplicador escolhido, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado e multiplicar pelo multiplicador, só que irá subtrair do valor obtido.\n";
+    tutorial += "\n\nPressione (c) para começar o jogo ou (v) para voltar ao menu: ";
+    
+    return tutorial;
 }
 
-void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+void errouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
 
     cout << "\n                 VOCÊ ERROU!" << endl;
     cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
@@ -47,7 +50,7 @@ void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int r
 
 }
 
-void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada){
+void acertouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
 
     cout << "\n                 RESPOSTA CORRETA!" << endl;
     cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;

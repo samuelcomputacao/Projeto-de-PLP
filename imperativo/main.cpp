@@ -128,7 +128,7 @@ int escolherMultiplicador(int rodada) {
 }
 
 void rodada1(){
-    imprime("\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(12);
@@ -138,6 +138,12 @@ void rodada1(){
         }
 
         perguntas_da_rodada.insert(id);
+
+        string num_pergunta;
+        num_pergunta = "\nPergunta ";
+        num_pergunta += to_string(i);
+        num_pergunta += "\n";
+        imprime(num_pergunta);
 
         imprime("\n" + carregarPergunta(1,id));
         imprime("\n" + carregarResposta(1,id));
@@ -163,7 +169,7 @@ void rodada1(){
 }
 
 void rodada2(){
-    imprime("\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(16);
@@ -173,6 +179,12 @@ void rodada2(){
         }
 
         perguntas_da_rodada.insert(id);
+
+        string num_pergunta;
+        num_pergunta = "\nPergunta ";
+        num_pergunta += to_string(i);
+        num_pergunta += "\n";
+        imprime(num_pergunta);
 
         imprime("\n" + carregarResposta(2,id));
         int multiplicador = escolherMultiplicador(2);
@@ -199,7 +211,7 @@ void rodada2(){
 }
 
 void rodada3(){
-    imprime("\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n\n");
+    imprime("\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
         int id = gerarRandon(20);
@@ -209,6 +221,12 @@ void rodada3(){
         }
 
         perguntas_da_rodada.insert(id);
+
+        string num_pergunta;
+        num_pergunta = "\nPergunta ";
+        num_pergunta += to_string(i);
+        num_pergunta += "\n";
+        imprime(num_pergunta);
 
         imprime("\n" + carregarResposta(3,id));
         int multiplicador = escolherMultiplicador(3);
@@ -249,6 +267,9 @@ void saiOuJogaNovamente(){
     if(opcao == "c"){
         imprime(logoJogo());
         comecaJogo();
+    } else if (opcao == "s") {
+        imprime("\nAté a próxima!\n");
+        imprime("O Sistema te espera.\n");
     }
 }
 
