@@ -39,24 +39,45 @@ string tutorial(){
     return tutorial;
 }
 
-void errouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
-
-    cout << "\n                 VOCÊ ERROU!" << endl;
-    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+string errouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
+    string saida;
+    saida += "\n                 VOCÊ ERROU!\n";
+    saida += "O sistema sorteou para essa pergunta, a premiação de: ";
+    saida += to_string(valorDaPergunta);
     if(rodada != 1){
-        cout << "Por causa do seu multiplicador, você perdeu: " << premioRodada << endl;
+        saida += "\nPor causa do seu multiplicador, você perdeu: ";
+        saida += to_string(premioRodada);
+        saida += "\n";
     }
-    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+    saida += "\nSeu saldo atual é de: ";
+    saida += to_string(saldoJogador);
+    saida += "\n";
 
+    return saida;
 }
 
-void acertouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
-
-    cout << "\n                 RESPOSTA CORRETA!" << endl;
-    cout << "O sistema sorteou para essa pergunta, a premiação de: " << valorDaPergunta << endl;
+string acertouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
+    string saida;
+    saida += "\n                 RESPOSTA CORRETA!\n";
+    saida += "O sistema sorteou para essa pergunta, a premiação de: ";
+    saida += to_string(valorDaPergunta);
     if(rodada != 1){
-        cout << "Por causa do seu multiplicador, você ganhou: " << premioRodada << endl;
+        saida += "\nPor causa do seu multiplicador, você ganhou: ";
+        saida += to_string(premioRodada);
+        saida += "\n";
     }
-    cout << "Seu saldo atual é de: " << saldoJogador << endl;
+    saida += "\nSeu saldo atual é de: ";
+    saida += to_string(saldoJogador);
+    saida += "\n";
 
+    return saida;
+}
+
+string contaPerguntaToString(int rodada) {
+    string saida;
+    saida = "\nPergunta ";
+    saida += to_string(rodada);
+    saida += "\n";
+
+    return saida;
 }

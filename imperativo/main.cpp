@@ -22,8 +22,6 @@ int getOpcao();
 void rodada1();
 void rodada2();
 void rodada3();
-void errouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
-void acertouToString(long valorDaPergunta,int premioRodada, int saldoJogador,int rodada);
 void saiOuJogaNovamente();
 
 int saldoJogador = 0;
@@ -105,7 +103,7 @@ int escolherMultiplicador(int rodada) {
             } else if(multiplicador == "2x"){
                 result = 2;
             } else{
-                imprime("Digite um valor de acordo com as opções dadas.(1x e 2x)\n");
+                imprime("Digite um valor de acordo com as opções dadas.(1x e 2x): ");
             }
         }
     } else if(rodada == 3){
@@ -120,7 +118,7 @@ int escolherMultiplicador(int rodada) {
             } else if(multiplicador == "3x") {
                 result = 3;
             } else{
-                imprime("Digite um valor de acordo com as opções dadas.(1x, 2x ou 3x)\n");
+                imprime("Digite um valor de acordo com as opções dadas.(1x, 2x ou 3x): ");
             }
         }
     }
@@ -139,11 +137,7 @@ void rodada1(){
 
         perguntas_da_rodada.insert(id);
 
-        string num_pergunta;
-        num_pergunta = "\nPergunta ";
-        num_pergunta += to_string(i);
-        num_pergunta += "\n";
-        imprime(num_pergunta);
+        imprime(contaPerguntaToString(i));
 
         imprime("\n" + carregarPergunta(1,id));
         imprime("\n" + carregarResposta(1,id));
@@ -157,11 +151,11 @@ void rodada1(){
         
         if (verificarResposta(1,id, resposta)) {
             saldoJogador += premioRodada;
-            acertouToString(valorDaPergunta,premioRodada,saldoJogador,1);
+            imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,1));
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            errouToString(valorDaPergunta,premioRodada,saldoJogador,1);
+            imprime(errouToString(valorDaPergunta,premioRodada,saldoJogador,1));
         }
     }
 
@@ -180,11 +174,7 @@ void rodada2(){
 
         perguntas_da_rodada.insert(id);
 
-        string num_pergunta;
-        num_pergunta = "\nPergunta ";
-        num_pergunta += to_string(i);
-        num_pergunta += "\n";
-        imprime(num_pergunta);
+        imprime(contaPerguntaToString(i));
 
         imprime("\n" + carregarResposta(2,id));
         int multiplicador = escolherMultiplicador(2);
@@ -199,11 +189,11 @@ void rodada2(){
         
         if (verificarResposta(2,id, resposta)) {
             saldoJogador += premioRodada;
-            acertouToString(valorDaPergunta,premioRodada,saldoJogador,2);
+            imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,2));
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            errouToString(valorDaPergunta,premioRodada,saldoJogador,2);
+            imprime(errouToString(valorDaPergunta,premioRodada,saldoJogador,2));
         }   
     }
 
@@ -222,11 +212,7 @@ void rodada3(){
 
         perguntas_da_rodada.insert(id);
 
-        string num_pergunta;
-        num_pergunta = "\nPergunta ";
-        num_pergunta += to_string(i);
-        num_pergunta += "\n";
-        imprime(num_pergunta);
+        imprime(contaPerguntaToString(i));
 
         imprime("\n" + carregarResposta(3,id));
         int multiplicador = escolherMultiplicador(3);
@@ -241,11 +227,11 @@ void rodada3(){
         
         if (verificarResposta(3,id, resposta)) {
             saldoJogador += premioRodada;
-            acertouToString(valorDaPergunta,premioRodada,saldoJogador,3);
+            imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,3));
         } else {
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
-            errouToString(valorDaPergunta,premioRodada,saldoJogador,3);
+            imprime(errouToString(valorDaPergunta,premioRodada,saldoJogador,3));
         }
     }
     perguntas_da_rodada.clear();
@@ -256,7 +242,7 @@ void saiOuJogaNovamente(){
     cout << endl;
     cout << "Fim de Jogo!" << endl;
     cout << "Seu saldo final é de: " << saldoJogador << endl;
-    cout << "Tecle (c) jogar novamente ou (s) para sair:" << endl;
+    cout << "Tecle (c) jogar novamente ou (s) para sair: ";
     string opcao;
     cin >> opcao;
     while((opcao != "c") && (opcao != "s")){
