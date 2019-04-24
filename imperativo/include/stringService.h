@@ -25,16 +25,17 @@ string logoJogo(){
 
 string tutorial(){
     string tutorial;
-    
-    tutorial += "Uma versão adaptada do conhecido 'The wall'. O jogo é dividido em 3 rodadas, cada uma com 3 perguntas, mas cada rodada possuem suas pecularidades.\n";
+
+    tutorial += "O 'The System' é uma versão adaptada do conhecido 'The Wall'. O jogo é dividido em 3 rodadas, com 3 perguntas cada, mas cada rodada possui suas peculiaridades.\n";
     tutorial += "Funcionamento das rodadas: \n";
     tutorial += "\n- Rodada 1: \n\n";
-    tutorial += "Será mostrado uma pergunta com duas alternativas, e caso o usuário acerte será sorteado um valor aleatório entre os valores: 1, 10, 1000, 3000, 5000, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado só que irá subtrair do valor obtido.\n";
+    tutorial += "Será mostrado ao jogador uma pergunta com duas alternativas, em seguida será sorteado um valor aleatório entre os valores: 1, 10, 1000, 3000, 5000. Caso o jogador acerte a pergunta esse valor sorteado será adicionado a seu saldo obtido até o momento, caso contrário será subtraído.\n";
     tutorial += "\n- Rodada 2: \n\n";
-    tutorial += "Será mostrado as 4 alternativas, para o jogador verificar se conhece o assunto ou não e então, o sistema irá perguntar qual multiplicador ele deseja(dependendo de sua confiança em acertar): 1x ou 2x. E logo após, mostrará a pergunta. E Caso o usuário acerte será sorteado um valor aleatório entre os valores: 10, 100, 5000, 10000, 15000 e esse valor será multiplicado pelo multiplicador escolhido, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado e multiplicar pelo multiplicador, só que irá subtrair do valor obtido.\n";
+    tutorial += "Será mostrado as 4 alternativas para o jogador verificar se conhece ou não o assunto a qual se refere a pergunta, em seguida o sistema irá perguntar qual multiplicador ele deseja (dependendo de sua confiança em acertar): 1x ou 2x. Logo após, mostrará a pergunta. Será sorteado um valor aleatório entre os valores: 10, 100, 5000, 10000, 15000. Posteriormente o valor sorteado será multiplicado pelo multiplicador, se a resposta estiver correta esse valor é adicionado ao saldo do jogador, caso contrário subtraído.\n";
     tutorial += "\n- Rodada 3: \n\n";
-    tutorial += "Será mostrado as 4 alternativas, para o jogador verificar se conhece o assunto ou não e então, o sistema irá perguntar qual multiplicador ele deseja(dependendo de sua confiança em acertar): 1x, 2x ou 3x. E logo após, mostrará a pergunta. E Caso o usuário acerte será sorteado um valor aleatório entre os valores: 100, 1000, 75000, 15000, 25000 e esse valor será multiplicado pelo multiplicador escolhido, e então vai ser somado ao seu valor obtido até o momento, caso ele erre será também sorteado e multiplicar pelo multiplicador, só que irá subtrair do valor obtido.\n";
+    tutorial += "Será mostrado as 4 alternativas para o jogador verificar se conhece ou não o assunto a qual se refere a pergunta, em seguida o sistema irá perguntar qual multiplicador ele deseja (dependendo de sua confiança em acertar): 1x, 2x ou 3x. Logo após, mostrará a pergunta. Será sorteado um valor aleatório entre os valores: 100, 1000, 15000, 25000, 75000. Posteriormente o valor sorteado será multiplicado pelo multiplicador, se a resposta estiver correta esse valor é adicionado ao saldo do jogador, caso contrário subtraído.\n";
     tutorial += "\n\nPressione (c) para começar o jogo ou (v) para voltar ao menu: ";
+
     
     return tutorial;
 }
