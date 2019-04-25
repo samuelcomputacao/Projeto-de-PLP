@@ -60,7 +60,7 @@ string errouToString(long valorDaPergunta, int premioRodada, int saldoJogador, i
 string acertouToString(long valorDaPergunta, int premioRodada, int saldoJogador, int rodada){
     string saida;
     saida += "\n                 RESPOSTA CORRETA!\n";
-    saida += "O sistema sorteou para essa pergunta, a premiação de: ";
+    saida += "O sistema sorteou para essa pergunta a premiação de: ";
     saida += to_string(valorDaPergunta);
     if(rodada != 1){
         saida += "\nPor causa do seu multiplicador, você ganhou: ";

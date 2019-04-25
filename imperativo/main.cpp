@@ -23,6 +23,7 @@ void rodada1();
 void rodada2();
 void rodada3();
 void saiOuJogaNovamente();
+bool validaResposta(int rodada, string resposta);
 
 int saldoJogador = 0;
 set<int> perguntas_da_rodada;
@@ -74,6 +75,7 @@ void comoJogar() {
     if(opcao == "c"){
         comecaJogo();
     }else{
+        imprime(logoJogo());
         imprime(gerarMenuInicial());
         int op = getOpcao();
         escolheOpcao(op);
@@ -94,7 +96,7 @@ int escolherMultiplicador(int rodada) {
     string multiplicador = "";
     int result;
     if(rodada == 2){
-        imprime("Escolha um multiplicador para a sua premiação (entre 1x ou 2x): ");
+        imprime("\nEscolha um multiplicador para a sua premiação (entre 1x ou 2x): ");
         while(multiplicador != "1x" && multiplicador != "2x") {
             cin >> multiplicador;
         
@@ -107,7 +109,7 @@ int escolherMultiplicador(int rodada) {
             }
         }
     } else if(rodada == 3){
-        imprime("Escolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): ");
+        imprime("\nEscolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): ");
         while(multiplicador != "1x" && multiplicador != "2x" && multiplicador != "3x") {
             cin >> multiplicador;
         
@@ -149,6 +151,12 @@ void rodada1(){
         cout << endl << "Digite sua resposta: ";
         cin >> resposta;
         
+        while (!validaResposta(1,resposta))
+        {
+            cout << endl << "Resposta inválida, digite novamente: ";
+            cin >> resposta;  
+        }
+
         if (verificarResposta(1,id, resposta)) {
             saldoJogador += premioRodada;
             imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,1));
@@ -186,6 +194,10 @@ void rodada2(){
         cout << endl << "Digite sua resposta: ";
         cin >> resposta;
         
+        while (!validaResposta(2,resposta)){
+            cout << endl << "Resposta inválida, digite novamente: ";
+            cin >> resposta;  
+        }
         
         if (verificarResposta(2,id, resposta)) {
             saldoJogador += premioRodada;
@@ -224,7 +236,11 @@ void rodada3(){
         cout << endl << "Digite sua resposta: ";
         cin >> resposta;
         
-        
+        while (!validaResposta(3,resposta)){
+            cout << endl << "Resposta inválida, digite novamente: ";
+            cin >> resposta;  
+        }
+    
         if (verificarResposta(3,id, resposta)) {
             saldoJogador += premioRodada;
             imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,3));
@@ -267,4 +283,21 @@ void telaInicialJogo(){
     imprime("Tudo pronto! Hora de jogar!\n\n");
     imprime(logoJogo());
     imprime(gerarMenuInicial());
+}
+
+bool validaResposta(int rodada, string resposta){
+    bool saida;
+    if(rodada == 1){
+        if(resposta == "a" || resposta == "b"){
+            saida = true;
+        }else{
+            saida = false;
+        }
+    }else{
+        if(resposta == "a" || resposta == "b" || resposta == "c" || resposta == "d"){
+            saida = true;
+        }else{
+            saida = false;
+        }
+    }
 }
