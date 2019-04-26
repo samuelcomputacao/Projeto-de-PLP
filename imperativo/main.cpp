@@ -311,4 +311,6 @@ bool validaResposta(int rodada, string resposta){
             saida = false;
         }
     }
+    
+    return saida;
 }
