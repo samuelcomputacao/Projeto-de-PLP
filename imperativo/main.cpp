@@ -81,10 +81,10 @@ void comoJogar() {
         escolheOpcao(op);
 
     }
-}
+
 
 void comecaJogo() {
-
+    saldoJogador = 0;  
     imprime("O jogo vai iniciar, serão um total de 3 rodadas, boa sorte!\n");
 
     rodada1();
