@@ -128,6 +128,8 @@ int escolherMultiplicador(int rodada) {
 }
 
 void rodada1(){
+    system("clear||cls");
+    imprime("\n========================================================");
     imprime("\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
@@ -157,6 +159,8 @@ void rodada1(){
             cin >> resposta;  
         }
 
+        system("clear||cls");
+
         if (verificarResposta(1,id, resposta)) {
             saldoJogador += premioRodada;
             imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,1));
@@ -171,6 +175,7 @@ void rodada1(){
 }
 
 void rodada2(){
+    imprime("\n========================================================");
     imprime("\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
@@ -199,6 +204,8 @@ void rodada2(){
             cin >> resposta;  
         }
         
+        system("clear||cls");
+
         if (verificarResposta(2,id, resposta)) {
             saldoJogador += premioRodada;
             imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,2));
@@ -206,13 +213,14 @@ void rodada2(){
             saldoJogador -= premioRodada;
             if(saldoJogador < 0) saldoJogador = 0;
             imprime(errouToString(valorDaPergunta,premioRodada,saldoJogador,2));
-        }   
+        }
     }
 
     perguntas_da_rodada.clear();
 }
 
 void rodada3(){
+    imprime("\n========================================================");
     imprime("\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n");
 
     for(int i = 1; i <= 3; i++){
@@ -240,7 +248,9 @@ void rodada3(){
             cout << endl << "Resposta inválida, digite novamente: ";
             cin >> resposta;  
         }
-    
+
+        system("clear||cls");
+
         if (verificarResposta(3,id, resposta)) {
             saldoJogador += premioRodada;
             imprime(acertouToString(valorDaPergunta,premioRodada,saldoJogador,3));
@@ -250,6 +260,7 @@ void rodada3(){
             imprime(errouToString(valorDaPergunta,premioRodada,saldoJogador,3));
         }
     }
+
     perguntas_da_rodada.clear();
     saiOuJogaNovamente();
     
