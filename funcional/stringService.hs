@@ -1,7 +1,7 @@
 module StringService where
 
     gerarMenuInicial:: String
-    gerarMenuInicial = "1 2 3"
+    gerarMenuInicial = "1- Iniciar\n2- Como Jogar?\n3- Sair\n"
 
     logoJogo:: String
     logoJogo = "The Systen"
