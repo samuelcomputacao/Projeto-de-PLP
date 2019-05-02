@@ -1,4 +1,11 @@
-module StringService where
+module StringService(
+    gerarMenuInicial,
+    logoJogo,
+    tutorial,
+    errouToString,
+    acertouToString,
+    contaPerguntaToString
+) where
 
     gerarMenuInicial:: String
     gerarMenuInicial = "1- Iniciar\n2- Como Jogar?\n3- Sair\n"

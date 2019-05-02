@@ -1,4 +1,9 @@
-module FileService where
+module FileService(
+    carregarPergunta,
+    carregarResposta,
+    verificarResposta,
+    buscaValorPremio
+)where
 
     carregarPergunta:: Int -> Int -> String
     carregarPergunta rodada id = ""
