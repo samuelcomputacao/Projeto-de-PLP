@@ -38,7 +38,6 @@ module Main where
             if (op == "v") then main
             else do
                 putStrLn "Incorreto!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
-            
 
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
@@ -47,24 +46,57 @@ module Main where
 
     validaResposta:: Int -> Char -> Bool
     validaResposta rodada resposta = True
-    
+
+    geraPergunta:: Int -> IO()
+    geraPergunta id = do
+        print(id)
+        print("Qual seu nome ? ");
+        resposta <- getLine
+        print (verifica_resposta id resposta)
+
+
+    verifica_resposta:: Int -> String -> String
+    verifica_resposta id resposta = do
+        if (verificarResposta id resposta) then do
+            "Acertou"
+        else do 
+            "Errou"
+
     rodada1::Int -> Int -> IO()
     rodada1 salario quant = do
-        putStrLn "\n========================================================"
-        putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
-        rodada2 salario 3
+        if (quant == 3) then do
+            putStrLn "\n========================================================"
+            putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        else do putStr ""
+        
+        if (quant == 0) then rodada2 salario 3
+        else do
+            geraPergunta (gerarRandon 1)
+            rodada1 salario (quant-1)
 
     rodada2::Int -> Int -> IO()
     rodada2 salario quant = do
-        putStrLn "\n========================================================"
-        putStrLn "\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
-        rodada3 salario 3
+        if (quant == 3) then do
+            putStrLn "\n========================================================"
+            putStrLn "\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        else do putStr ""
+
+        if (quant == 0) then rodada3 salario 3
+        else do
+            geraPergunta (gerarRandon 2)
+            rodada2 salario (quant - 1)
 
     rodada3::Int -> Int -> IO()
     rodada3 salario quant = do
-        putStrLn "\n========================================================"
-        putStrLn "\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
-        fimJogo salario
+        if (quant == 3) then do
+            putStrLn "\n========================================================"
+            putStrLn "\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        else do putStr ""
+        
+        if (quant == 0) then fimJogo salario
+        else do
+            geraPergunta (gerarRandon 3)
+            rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
     fimJogo salario = do

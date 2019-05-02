@@ -11,8 +11,8 @@ module FileService(
     carregarResposta:: Int -> Int -> String
     carregarResposta rodada id = ""
 
-    verificarResposta:: Int -> Int -> Char -> Bool
-    verificarResposta rodada id respostaJogador = False
+    verificarResposta:: Int -> String -> Bool
+    verificarResposta id respostaJogador = True
 
     buscaValorPremio:: Int -> Int -> Int
     buscaValorPremio rodada id = 0
