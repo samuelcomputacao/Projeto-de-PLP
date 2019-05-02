@@ -81,6 +81,7 @@ void comoJogar() {
         escolheOpcao(op);
 
     }
+}
 
 
 void comecaJogo() {
