@@ -13,21 +13,31 @@ module Main where
         if num == 1 then do
             let retorno = iniciaJogo 0
             putStrLn $ ("Prêmio Final: " ++ show retorno)
-        else if num == 2 then
+        else if num == 2 then do
             putStrLn tutorial
+            comoJogar
         else
             putStrLn "Sair"
         
     
     getOpcao::IO String
     getOpcao = do
-        putStrLn "Digite uma opcao(1, 2 ou 3) APENAS!:"
         op <- getLine
         if op == "1" || op == "2" || op == "3" then
             return op
             else do
                 op <- getOpcao    
                 return op
+
+    comoJogar::IO()
+    comoJogar = do
+        op <- getLine
+        if (op == "c") then print (iniciaJogo 0)
+        else do
+            if (op == "v") then main
+            else do
+                putStrLn "Incorreto!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
+            
 
     iniciaJogo::Int -> Int
     iniciaJogo salario =
