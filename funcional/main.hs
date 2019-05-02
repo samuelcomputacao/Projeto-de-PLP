@@ -71,7 +71,8 @@ module Main where
         
         if (quant == 0) then rodada2 salario 3
         else do
-            geraPergunta (gerarRandon 1)
+            id <- gerarRandon 12
+            geraPergunta (id)
             rodada1 salario (quant-1)
 
     rodada2::Int -> Int -> IO()
@@ -83,7 +84,8 @@ module Main where
 
         if (quant == 0) then rodada3 salario 3
         else do
-            geraPergunta (gerarRandon 2)
+            id <- gerarRandon 12
+            geraPergunta (id)
             rodada2 salario (quant - 1)
 
     rodada3::Int -> Int -> IO()
@@ -95,7 +97,8 @@ module Main where
         
         if (quant == 0) then fimJogo salario
         else do
-            geraPergunta (gerarRandon 3)
+            id <- gerarRandon 12
+            geraPergunta (id)
             rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
