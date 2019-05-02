@@ -11,8 +11,9 @@ module Main where
         op <- getOpcao
         let num = read op :: Int
         if num == 1 then do
-            let retorno = iniciaJogo 0
-            putStrLn $ ("Prêmio Final: " ++ show retorno)
+            putStrLn "\nO jogo vai iniciar, serão um total de 3 rodadas, boa sorte!\n"
+            iniciaJogo 0
+            
         else if num == 2 then do
             putStrLn tutorial
             comoJogar
@@ -32,33 +33,40 @@ module Main where
     comoJogar::IO()
     comoJogar = do
         op <- getLine
-        if (op == "c") then print (iniciaJogo 0)
+        if (op == "c") then iniciaJogo 0
         else do
             if (op == "v") then main
             else do
                 putStrLn "Incorreto!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
             
 
-    iniciaJogo::Int -> Int
-    iniciaJogo salario =
-        let
-            salarioR1  = rodada1 salario
-            salarioR2 = rodada2 salarioR1
-            salarioR3 = rodada3 salarioR2
-        in salarioR3
-        
+    iniciaJogo::Int -> IO()
+    iniciaJogo salario = do
+        rodada1 salario 3        
     
 
     validaResposta:: Int -> Char -> Bool
     validaResposta rodada resposta = True
     
-    rodada1::Int -> Int
-    rodada1 salario = salario
+    rodada1::Int -> Int -> IO()
+    rodada1 salario quant = do
+        putStrLn "\n========================================================"
+        putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        rodada2 salario 3
 
-    rodada2::Int -> Int
-    rodada2 salario = salario
+    rodada2::Int -> Int -> IO()
+    rodada2 salario quant = do
+        putStrLn "\n========================================================"
+        putStrLn "\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        rodada3 salario 3
 
-    rodada3::Int -> Int
-    rodada3 salario = salario
+    rodada3::Int -> Int -> IO()
+    rodada3 salario quant = do
+        putStrLn "\n========================================================"
+        putStrLn "\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
+        fimJogo salario
+    
+    fimJogo:: Int -> IO()
+    fimJogo salario = do
 
-
+        print ("Premio: " ++ (show salario))
