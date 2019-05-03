@@ -7,8 +7,7 @@ module NumberService
     import System.Random (randomRIO)
 
     gerarRandon:: Int -> IO Int
-    gerarRandon maximo = do
-        randomRIO (0,maximo::Int)
+    gerarRandon maximo = randomRIO (0,maximo::Int)
 
     gerarValorPremio::Int -> Int -> Int
-    gerarValorPremio multiplicador premiacao = 0
+    gerarValorPremio multiplicador premiacao = multiplicador * premiacao

@@ -35,10 +35,34 @@ module StringService(
      ++"\n\nPressione (c) para começar o jogo ou (v) para voltar ao menu: "
 
     errouToString:: Int -> Int -> Int -> Int -> String
-    errouToString valorDaPergunta premioRodada saldoJogador rodada = ""
+    errouToString valorDaPergunta premioRodada saldoJogador rodada = do
+
+      "\n                 VOCÊ ERROU!\n"
+      ++ "O sistema sorteou para essa pergunta, a premiação de: " ++ (show valorDaPergunta)
+      ++ multiplicadorToString premioRodada rodada "ganhou"
+      ++ "\nSeu saldo atual é de: " 
+      ++ show saldoJogador
+      ++ "\n";    
 
     acertouToString:: Int -> Int -> Int -> Int -> String
-    acertouToString valorDaPergunta premioRodada saldoJogador rodada = ""
+    acertouToString valorDaPergunta premioRodada saldoJogador rodada = do
+      "\n                 VOCÊ ACERTOU!\n"
+      ++ "O sistema sorteou para essa pergunta, a premiação de: " 
+      ++ show valorDaPergunta
+      ++ multiplicadorToString premioRodada rodada "perdeu"
+      ++ "\nSeu saldo atual é de: " 
+      ++ show saldoJogador
+      ++ "\n"; 
+
+    multiplicadorToString :: Int -> Int -> String -> String
+    multiplicadorToString premioRodada rodada status
+      | rodada /= 1 = "\nPor causa do seu multiplicador, você "
+      ++ status 
+      ++ ": " 
+      ++ show premioRodada 
+      ++ "\n"
+      | otherwise = ""
+
 
     contaPerguntaToString:: Int -> String
     contaPerguntaToString numero = ""
