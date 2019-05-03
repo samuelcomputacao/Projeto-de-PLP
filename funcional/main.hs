@@ -16,7 +16,8 @@ module Main where
             
         else if num == 2 then do
             putStrLn tutorial
-            comoJogar
+            op <- comoJogar
+            if op == "c" then iniciaJogo 0 else main
         else
             putStrLn "Sair"
         
@@ -30,21 +31,22 @@ module Main where
                 op <- getOpcao    
                 return op
 
-    comoJogar::IO()
+    comoJogar::IO String
     comoJogar = do
         op <- getLine
-        if (op == "c") then iniciaJogo 0
+        if (op == "c" || op == "v") then
+            return op
         else do
-            if (op == "v") then main
-            else do
-                putStrLn "Incorreto!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
+            putStrLn "Opcao incorreta!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
+            op <- comoJogar
+            return op
 
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
         rodada1 salario 3        
     
 
-    validaResposta:: Int -> Char -> Bool
+    validaResposta:: Int -> String -> Bool
     validaResposta rodada resposta = True
 
     geraPergunta:: Int -> IO()
