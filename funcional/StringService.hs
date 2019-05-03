@@ -39,7 +39,7 @@ module StringService(
 
       "\n                 VOCÊ ERROU!\n"
       ++ "O sistema sorteou para essa pergunta, a premiação de: " ++ (show valorDaPergunta)
-      ++ multiplicadorToString premioRodada rodada "ganhou"
+      ++ multiplicadorToString premioRodada rodada "perdeu"
       ++ "\nSeu saldo atual é de: " 
       ++ show saldoJogador
       ++ "\n";    
@@ -49,7 +49,7 @@ module StringService(
       "\n                 VOCÊ ACERTOU!\n"
       ++ "O sistema sorteou para essa pergunta, a premiação de: " 
       ++ show valorDaPergunta
-      ++ multiplicadorToString premioRodada rodada "perdeu"
+      ++ multiplicadorToString premioRodada rodada "ganhou"
       ++ "\nSeu saldo atual é de: " 
       ++ show saldoJogador
       ++ "\n"; 
