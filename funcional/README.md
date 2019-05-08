@@ -17,3 +17,8 @@ $ cabal install random
 ~~~
 $ runhaskell main.hs
 ~~~
+#### OU
+~~~
+$ ghc main.hs
+$ ./main
+~~~
