@@ -2,12 +2,12 @@ module Main where
 
     import FileService
     import StringService
-    import NumberService    
+    import NumberService
+    import Control.Concurrent    -- Concorrencia, uso de threads
     
     main::IO()
     main = do
-        putStrLn logoJogo
-        putStrLn gerarMenuInicial
+        telaInicial     -- funcao para mostrar a tela inicial do jogo com o logo e o menu  inicial + loading
         op <- getOpcao
         let num = read op :: Int
         if num == 1 then do
@@ -17,11 +17,11 @@ module Main where
         else if num == 2 then do
             putStrLn tutorial
             op <- comoJogar
-            if op == "c" then iniciaJogo 0 else main
+            if op == "c" then iniciaJogo 0 else main  -- tem que ajeitar isso. criar uma funcao para que chame ela mesmo, em vez do main.
         else
             putStrLn "Sair"
         
-    
+
     getOpcao::IO String
     getOpcao = do
         op <- getLine
@@ -108,3 +108,13 @@ module Main where
     fimJogo salario = do
 
         print ("Premio: " ++ (show salario))
+
+    telaInicial::IO()
+    telaInicial = do
+        putStr("Aguardando carregamento do jogo...\n\n")
+        threadDelay 2000000                             -- delay de 2 milhoes de microsegundos, ou 2 segundos
+        putStr("Espere um momento por favor... \n\n")
+        threadDelay 4000000
+        putStr("Tudo pronto! Hora de jogar!\n\n")
+        putStrLn logoJogo
+        putStrLn gerarMenuInicial
