@@ -1,0 +1,7 @@
+[
+    { "id": 0, "multiplicador": 10 },
+    { "id": 1, "multiplicador": 100 },
+    { "id": 2, "multiplicador": 5000 },
+    { "id": 3, "multiplicador": 10000 },
+    { "id": 4, "multiplicador": 15000 }
+]

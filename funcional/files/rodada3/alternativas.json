@@ -1,0 +1,23 @@
+[
+    { "id": 0, "alternativas": ["Andorinha", "Pato Selvagem", "Pinguim", "Marreco"] },
+    { "id": 1, "alternativas": ["Arnold Schwarzenegger", "Sylvester Stallone", "Steven Seagal", "Jean Claude Van Damme"] },
+    { "id": 2, "alternativas": ["10 onças", "10 gramas", "10 quilos", "10 libras"] },
+    { "id": 3, "alternativas": ["Guerra Fria", "Guerra do Vietnã", "Guerra nas Estrelas", "Guerra da Coréia"] },
+    { "id": 4, "alternativas": ["No pescoço", "No ombro", "Na cabeça", "No braço"] },
+    { "id": 5, "alternativas": ["Rr", "Rd", "Rn", "Ro"] },
+    { "id": 6, "alternativas": ["1987", "1990", "1985", "1988"] },
+    { "id": 7, "alternativas": ["Pitágoras", "Diderot", "Aristóteles", "Galileu Galilei"] },
+    { "id": 8, "alternativas": ["Rafael", "Leonardo", "Donatello", "Michelangelo"] },
+    { "id": 9, "alternativas": ["Ouro", "Mercúrio", "Prata", "Hidrogênio"] },
+    { "id": 10, "alternativas": ["3.05m", "2.97m", "3.10m", "3.00m"] },
+    { "id": 11, "alternativas": ["Sport Clube do Recife", "Esporte Clube Bahia", "Esporte Clube Vitória", "Fortaleza Esporte Clube"] },
+    { "id": 12, "alternativas": ["Luke Skywalker", "Anakin Skywalker", "Obi-Wan Kenobi", "Qui-Gon Jinn"] },
+    { "id": 13, "alternativas": ["Espinoza", "Miguel de Cervantes", "Carlos Conte", "Angel Morita"] },
+    { "id": 14, "alternativas": ["Lionel Messi", "Raúl González", "Cristiano Ronaldo", "Ruud Van Nistelrooy"] },
+    { "id": 15, "alternativas": ["Janis Joplin", "Carloe King", "Aretha Franklin", "Diana Ross"] },
+    { "id": 16, "alternativas": ["Ferroviário", "Aéreo", "Hidroviário", "Rodoviário"] },
+    { "id": 17, "alternativas": ["Urubu", "Morsa", "Leão Marinho", "Pelicano"] },
+    { "id": 18, "alternativas": ["Manchester", "Londres", "Liverpool", "Nottingham"] },
+    { "id": 19, "alternativas": ["Os Jardins de Giverny", "Os Bistrôs de Paris", "Cenas do Moulin Rouge", "Paisagens da Provença"] },
+    { "id": 20, "alternativas": ["Argentina", "Chile", "Colômbia", "Uruguai"] }
+]

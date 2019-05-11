@@ -1,0 +1,15 @@
+[
+    { "id": 0, "alternativas": ["C++", "Java"] },
+    { "id": 1, "alternativas": ["C++", "Python"] },
+    { "id": 2, "alternativas": ["Haskell", "Java"] },
+    { "id": 3, "alternativas": ["Javascript", "Prolog"] },
+    { "id": 4, "alternativas": ["C++", "Haskell"] },
+    { "id": 5, "alternativas": ["Javascript", "Fortran"] },
+    { "id": 6, "alternativas": ["Universalidade e Implementabilidade", "Expressividade e Suporte a Abstração"] },
+    { "id": 7, "alternativas": ["Fortran", "SQL"] },
+    { "id": 8, "alternativas": ["C", "Python"] },
+    { "id": 9, "alternativas": ["1850", "1822"] },
+    { "id": 10, "alternativas": ["28", "26"] },
+    { "id": 11, "alternativas": ["Prolog", "HTML"] },
+    { "id": 12, "alternativas": ["Python", "Prolog"] }
+]

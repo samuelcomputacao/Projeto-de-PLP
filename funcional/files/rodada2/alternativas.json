@@ -1,0 +1,19 @@
+[
+    { "id": 0, "alternativas": ["Tubarão", "Golfinho", "Polvo", "Baleia"] },
+    { "id": 1, "alternativas": ["Mark Zuckerberg", "Akio Morita", "Bill Gates", "Steve Jobs"] },
+    { "id": 2, "alternativas": ["16", "15", "18", "17"] },
+    { "id": 3, "alternativas": ["31", "30", "33", "32"] },
+    { "id": 4, "alternativas": ["Flor", "Pedra", "Fruta", "Verdura"] },
+    { "id": 5, "alternativas": ["Mufasa", "Scar", "Pumba", "Rafiki"] },
+    { "id": 6, "alternativas": ["Thomas Edison", "Marconi", "Graham Bell", "George Washington"] },
+    { "id": 7, "alternativas": ["Trajano", "Nero", "Brutus", "Calígula"] },
+    { "id": 8, "alternativas": ["Kratos", "Apolo", "Ares", "Dionísio"] },
+    { "id": 9, "alternativas": ["57 anos", "67 anos", "78 anos", "79 anos"] },
+    { "id": 10, "alternativas": ["Índia", "Islândia", "Paquistão", "México"] },
+    { "id": 11, "alternativas": ["Júlio César", "Calígula", "Nero", "Marco Antônio"] },
+    { "id": 12, "alternativas": ["Slade Wilson", "Bruce Wayne", "Wade Wilson", "Matthew Murdock"] },
+    { "id": 13, "alternativas": ["Baseball", "Basquete", "Futebol Americano", "Golf"] },
+    { "id": 14, "alternativas": ["Ato Internacional", "Ato Institucional", "Ato Inspirador", "Ato Idealizador"] },
+    { "id": 15, "alternativas": ["Tóquio", "Nagasaki", "Osaka", "Hiroshima"] },
+    { "id": 16, "alternativas": ["D. Pedro II", "D. Pedro I", "D. João VI", "Deodoro da Fonseca"] }
+]
