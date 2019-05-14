@@ -116,53 +116,53 @@ module FileService(
 
       carregarPergunta:: Int -> Int -> String
       carregarPergunta rodada id
-      | rodada == 1 = do
-      -- Arquivo de alternativas
-      alternativasFile :: FilePath
-      alternativasFile = "files/rodada1/alternativas.json"
+            | rodada == 1 = do
+                  -- Arquivo de alternativas
+                  alternativasFile :: FilePath
+                  alternativasFile = "files/rodada1/alternativas.json"
 
-      getAlternativas :: IO B.ByteString
-      getAlternativas = B.readFile alternativasFile
+                  getAlternativas :: IO B.ByteString
+                  getAlternativas = B.readFile alternativasFile
 
-      -- Arquivo de perguntas
-      perguntasFile :: FilePath
-      perguntasFile = "files/rodada1/perguntas.json"
+                  -- Arquivo de perguntas
+                  perguntasFile :: FilePath
+                  perguntasFile = "files/rodada1/perguntas.json"
 
-      getPerguntas :: IO B.ByteString
-      getPerguntas = B.readFile perguntasFile
+                  getPerguntas :: IO B.ByteString
+                  getPerguntas = B.readFile perguntasFile
 
-      -- Arquivo de respostas
-      respostasFile :: FilePath
-      respostasFile = "files/rodada1/respostas.json"
+                  -- Arquivo de respostas
+                  respostasFile :: FilePath
+                  respostasFile = "files/rodada1/respostas.json"
 
-      getRespostas :: IO B.ByteString
-      getRespostas = B.readFile respostasFile
+                  getRespostas :: IO B.ByteString
+                  getRespostas = B.readFile respostasFile
 
-      -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
-      retornaEitherAlternativas :: IO (Either String [Alternativa])
-      retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
+                  -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
+                  retornaEitherAlternativas :: IO (Either String [Alternativa])
+                  retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
 
-      retornaEitherPerguntas :: IO (Either String [Pergunta])
-      retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
+                  retornaEitherPerguntas :: IO (Either String [Pergunta])
+                  retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
 
-      retornaEitherRespostas :: IO (Either String [Resposta])
-      retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+                  retornaEitherRespostas :: IO (Either String [Resposta])
+                  retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
 
-      -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
-      -- retorna Left = erro.
-      lerJSON :: Either String [t] -> [t]
-      lerJSON entrada =
-         case entrada of
-            Right ps -> ps
-            Left err -> []
+                  -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
+                  -- retorna Left = erro.
+                  lerJSON :: Either String [t] -> [t]
+                  lerJSON entrada =
+                  case entrada of
+                        Right ps -> ps
+                        Left err -> []
 
-      d <- retornaEitherAlternativas
-      e <- retornaEitherPerguntas
-      f <- retornaEitherRespostas
+                  d <- retornaEitherAlternativas
+                  e <- retornaEitherPerguntas
+                  f <- retornaEitherRespostas
 
-      alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSONAlternativas d) id))   
+                  alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSONAlternativas d) id))   
 
-      | otherwise = return()
+            | otherwise = return()
 
       carregarResposta:: Int -> Int -> String
       carregarResposta rodada id = ""
