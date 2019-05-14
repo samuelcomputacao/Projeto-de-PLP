@@ -119,42 +119,42 @@ module FileService(
             | rodada == 1 = do
                   -- Arquivo de alternativas
                   alternativasFile :: FilePath
-                  alternativasFile = "files/rodada1/alternativas.json"
+                  let alternativasFile = "files/rodada1/alternativas.json"
 
                   getAlternativas :: IO B.ByteString
-                  getAlternativas = B.readFile alternativasFile
+                  let getAlternativas = B.readFile alternativasFile
 
                   -- Arquivo de perguntas
                   perguntasFile :: FilePath
-                  perguntasFile = "files/rodada1/perguntas.json"
+                  let perguntasFile = "files/rodada1/perguntas.json"
 
                   getPerguntas :: IO B.ByteString
-                  getPerguntas = B.readFile perguntasFile
+                  let getPerguntas = B.readFile perguntasFile
 
                   -- Arquivo de respostas
                   respostasFile :: FilePath
-                  respostasFile = "files/rodada1/respostas.json"
+                  let respostasFile = "files/rodada1/respostas.json"
 
                   getRespostas :: IO B.ByteString
-                  getRespostas = B.readFile respostasFile
+                  let getRespostas = B.readFile respostasFile
 
                   -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
                   retornaEitherAlternativas :: IO (Either String [Alternativa])
-                  retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
+                  let retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
 
                   retornaEitherPerguntas :: IO (Either String [Pergunta])
-                  retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
+                  let retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
 
                   retornaEitherRespostas :: IO (Either String [Resposta])
-                  retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+                  let retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
 
                   -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
                   -- retorna Left = erro.
                   lerJSON :: Either String [t] -> [t]
-                  lerJSON entrada =
-                  case entrada of
-                        Right ps -> ps
-                        Left err -> []
+                  let lerJSON entrada =
+                        case entrada of
+                              Right ps -> ps
+                              Left err -> []
 
                   d <- retornaEitherAlternativas
                   e <- retornaEitherPerguntas
