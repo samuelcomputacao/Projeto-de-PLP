@@ -75,7 +75,7 @@ module Main where
         if (quant == 0) then rodada2 salario 3
         else do
             id <- gerarRandon 12
-            geraPergunta (id)
+            carregarPergunta 1 id
             rodada1 salario (quant-1)
 
     rodada2::Int -> Int -> IO()
