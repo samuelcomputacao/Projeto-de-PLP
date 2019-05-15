@@ -50,19 +50,14 @@ module Main where
     validaResposta:: Int -> String -> Bool
     validaResposta rodada resposta = True
 
-    geraPergunta:: Int -> Int -> Either String [Pergunta] -> IO()
-    geraPergunta id rodada e = do
-        if (rodada == 1) then do
-            putStrLn (carregarPergunta 1 id e)
-        else do
-            if (rodada == 2) then do
-                putStrLn (carregarPergunta 2 id e)
-            else do
-                putStrLn (carregarPergunta 3 id e)
+    geraPerguntaRodada1 :: Int -> Either String [Pergunta] -> IO()
+    geraPerguntaRodada1 id e = putStrLn (carregarPerguntaRodada1 id e)
 
     geraPerguntaRodada2 :: Int -> Either String [PerguntaRodada2] -> IO()
-    geraPerguntaRodada2 id e = do
-        putStrLn (carregarPerguntaRodada2 id e)
+    geraPerguntaRodada2 id e = putStrLn (carregarPerguntaRodada2 id e)
+
+    geraPerguntaRodada3 :: Int -> Either String [PerguntaRodada3] -> IO()
+    geraPerguntaRodada3 id e = putStrLn (carregarPerguntaRodada3 id e)
 
     rodada1::Int -> Int -> IO()
     rodada1 salario quant = do
@@ -74,13 +69,13 @@ module Main where
         if (quant == 0) then rodada2 salario 3
         else do
             id <- gerarRandon 12
-            e <- retornaEitherPerguntas
-            d <- retornaEitherAlternativas
-            f <- retornaEitherRespostas
-            geraPergunta id 1 e
-            putStrLn (carregarAlternativas id d)
+            e <- retornaEitherPerguntasRodada1
+            d <- retornaEitherAlternativasRodada1
+            f <- retornaEitherRespostasRodada1
+            geraPerguntaRodada1 id e
+            putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getLine
-            if (verificarResposta id resposta f) then print "Acertou"
+            if (verificarRespostaRodada1 id resposta f) then print "Acertou"
             else print "Errou"
             rodada1 salario (quant - 1)
 
@@ -113,14 +108,14 @@ module Main where
         
         if (quant == 0) then fimJogo salario
         else do
-            id <- gerarRandon 12
-            e <- retornaEitherPerguntas
-            d <- retornaEitherAlternativas
-            f <- retornaEitherRespostas
-            geraPergunta id 3 e
-            putStrLn (carregarAlternativas id d)
+            id <- gerarRandon 20
+            e <- retornaEitherPerguntasRodada3
+            d <- retornaEitherAlternativasRodada3
+            f <- retornaEitherRespostasRodada3
+            geraPerguntaRodada3 id e
+            putStrLn (carregarAlternativasRodada3 id d)
             resposta <- getLine
-            if (verificarResposta id resposta f) then print "Acertou"
+            if (verificarRespostaRodada3 id resposta f) then print "Acertou"
             else print "Errou"
             rodada3 salario (quant - 1)
     

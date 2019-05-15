@@ -1,24 +1,33 @@
 {-# LANGUAGE OverloadedStrings, DeriveGeneric, DeriveAnyClass #-}
 module FileService(
-   carregarPergunta,
+   carregarPerguntaRodada1,
    carregarPerguntaRodada2,
-   carregarAlternativas,
+   carregarPerguntaRodada3,
+   carregarAlternativasRodada1,
    carregarAlternativasRodada2,
-   verificarResposta,
+   carregarAlternativasRodada3,
+   verificarRespostaRodada1,
    verificarRespostaRodada2,
+   verificarRespostaRodada3,
    buscaValorPremio,
-   retornaEitherAlternativas,
-   retornaEitherPerguntas,
-   retornaEitherRespostas,
+   retornaEitherAlternativasRodada1,
+   retornaEitherPerguntasRodada1,
+   retornaEitherRespostasRodada1,
    retornaEitherAlternativasRodada2,
    retornaEitherPerguntasRodada2,
    retornaEitherRespostasRodada2,
+   retornaEitherAlternativasRodada3,
+   retornaEitherPerguntasRodada3,
+   retornaEitherRespostasRodada3,
    Pergunta,
    Alternativa,
    Resposta,
    PerguntaRodada2,
    AlternativaRodada2,
-   RespostaRodada2
+   RespostaRodada2,
+   PerguntaRodada3,
+   AlternativaRodada3,
+   RespostaRodada3
    )where
       
       import Data.Aeson
@@ -29,6 +38,7 @@ module FileService(
       
 
       -- DEFINIÇÃO DOS TIPOS DE DADOS PARA A RODADA 1
+
       data Alternativa = Alternativa {
          id :: !Int,
          alternativas :: ![String]
@@ -50,6 +60,7 @@ module FileService(
       } deriving (Generic, Show, Read)
       
       -- DEFINIÇÃO DOS TIPOS DE DADOS PARA A RODADA 2
+
       data AlternativaRodada2 = AlternativaRodada2 {
          id_r2 :: !Int,
          alternativas_r2 :: ![String]
@@ -70,6 +81,28 @@ module FileService(
          multiplicador_r2 :: !Int
       } deriving (Generic, Show, Read)
 
+      -- DEFINIÇÃO DOS TIPOS DE DADOS PARA A RODADA 3
+
+      data AlternativaRodada3 = AlternativaRodada3 {
+         id_r3 :: !Int,
+         alternativas_r3 :: ![String]
+      } deriving (Generic, Show, Read)
+
+      data PerguntaRodada3 = PerguntaRodada3 {
+         id1_r3 :: !Int,
+         pergunta_r3 :: !String
+      } deriving (Generic, Show, Read)
+
+      data RespostaRodada3 = RespostaRodada3 {
+         id2_r3 :: !Int,
+         resposta_r3 :: !String
+      } deriving (Generic, Show, Read)
+
+      data PontosRodada3 = PontosRodada3 {
+         id3_r3 :: !Int,
+         multiplicador_r3 :: !Int
+      } deriving (Generic, Show, Read)
+
 
       -- INSTÂNCIAS DE JSON PARA CADA TIPO DE DADO
       instance FromJSON Alternativa
@@ -80,6 +113,10 @@ module FileService(
       instance FromJSON PerguntaRodada2
       instance FromJSON RespostaRodada2
       instance FromJSON PontosRodada2
+      instance FromJSON AlternativaRodada3
+      instance FromJSON PerguntaRodada3
+      instance FromJSON RespostaRodada3
+      instance FromJSON PontosRodada3
       
       -- ARQUIVOS PARA A RODADA 1
 
@@ -123,23 +160,48 @@ module FileService(
       
       -- Arquivo de respostas
       respostasFile2 :: FilePath
-      respostasFile2 = "files/rodada1/respostas.json"
+      respostasFile2 = "files/rodada2/respostas.json"
       
       getRespostas2 :: IO B.ByteString
       getRespostas2 = B.readFile respostasFile2
+
+
+      -- ARQUIVOS PARA A RODADA 3
+
+      -- Arquivos de alternativas
+      alternativasFile3 :: FilePath
+      alternativasFile3 = "files/rodada3/alternativas.json"
+
+      getAlternativas3 :: IO B.ByteString
+      getAlternativas3 = B.readFile alternativasFile3
+
+      -- Arquivo de perguntas
+      perguntasFile3 :: FilePath
+      perguntasFile3 = "files/rodada3/perguntas.json"
+      
+      getPerguntas3 :: IO B.ByteString
+      getPerguntas3 = B.readFile perguntasFile3
+      
+      -- Arquivo de respostas
+      respostasFile3 :: FilePath
+      respostasFile3 = "files/rodada3/respostas.json"
+      
+      getRespostas3 :: IO B.ByteString
+      getRespostas3 = B.readFile respostasFile3
 
       
       -- PROMISES PARA OS ARQUIVOS DA RODADA 1
 
       -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
-      retornaEitherAlternativas :: IO (Either String [Alternativa])
-      retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
+      retornaEitherAlternativasRodada1 :: IO (Either String [Alternativa])
+      retornaEitherAlternativasRodada1 = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
       
-      retornaEitherPerguntas :: IO (Either String [Pergunta])
-      retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
+      retornaEitherPerguntasRodada1 :: IO (Either String [Pergunta])
+      retornaEitherPerguntasRodada1 = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
       
-      retornaEitherRespostas :: IO (Either String [Resposta])
-      retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+      retornaEitherRespostasRodada1 :: IO (Either String [Resposta])
+      retornaEitherRespostasRodada1 = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+
 
       -- PROMISES PARA OS ARQUIVOS DA RODADA 2
 
@@ -151,6 +213,18 @@ module FileService(
 
       retornaEitherRespostasRodada2 :: IO (Either String [RespostaRodada2])
       retornaEitherRespostasRodada2 = (eitherDecode <$> getRespostas2) :: IO (Either String [RespostaRodada2])
+
+
+      -- PROMISES PARA OS ARQUIVOS DA RODADA 3
+
+      retornaEitherAlternativasRodada3 :: IO (Either String [AlternativaRodada3])
+      retornaEitherAlternativasRodada3 = (eitherDecode <$> getAlternativas3) :: IO (Either String [AlternativaRodada3])
+
+      retornaEitherPerguntasRodada3 :: IO (Either String [PerguntaRodada3])
+      retornaEitherPerguntasRodada3 = (eitherDecode <$> getPerguntas3) :: IO (Either String [PerguntaRodada3])
+
+      retornaEitherRespostasRodada3 :: IO (Either String [RespostaRodada3])
+      retornaEitherRespostasRodada3 = (eitherDecode <$> getRespostas3) :: IO (Either String [RespostaRodada3])
 
 
       -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
@@ -221,11 +295,14 @@ module FileService(
          | id == 19 = t
          | id == 20 = u
       
-      getAlternatives :: Alternativa -> [String]
-      getAlternatives alt = alternativas alt
+      getAlternativesRodada1 :: Alternativa -> [String]
+      getAlternativesRodada1 alt = alternativas alt
 
       getAlternativesRodada2 :: AlternativaRodada2 -> [String]
       getAlternativesRodada2 alt = alternativas_r2 alt
+
+      getAlternativesRodada3 :: AlternativaRodada3 -> [String]
+      getAlternativesRodada3 alt = alternativas_r3 alt
       
       alternativesFormattedRodada1 :: [String] -> String
       alternativesFormattedRodada1 alt = "a) " ++ alt !! 0 ++ "\nb) " ++ alt !! 1 ++ "\n\n"
@@ -233,40 +310,57 @@ module FileService(
       alternativesFormattedRodada2e3 :: [String] -> String
       alternativesFormattedRodada2e3 alt = "a) " ++ alt !! 0 ++ "\nb) " ++ alt !! 1 ++ "\nc) " ++ alt !! 2 ++ "\nd) " ++ alt !! 3 ++ "\n\n"
       
-      questionFormatted :: Pergunta -> String
-      questionFormatted perg = pergunta perg
+      questionFormattedRodada1 :: Pergunta -> String
+      questionFormattedRodada1 perg = pergunta perg
 
       questionFormattedRodada2 :: PerguntaRodada2 -> String
       questionFormattedRodada2 perg = pergunta_r2 perg
+
+      questionFormattedRodada3 :: PerguntaRodada3 -> String
+      questionFormattedRodada3 perg = pergunta_r3 perg
       
-      answerFormatted :: Resposta -> String
-      answerFormatted ans = resposta ans
+      answerFormattedRodada1 :: Resposta -> String
+      answerFormattedRodada1 ans = resposta ans
 
       answerFormattedRodada2 :: RespostaRodada2 -> String
       answerFormattedRodada2 ans = resposta_r2 ans
 
-      carregarPergunta :: Int -> Int -> Either String [Pergunta] -> String
-      carregarPergunta rodada id e
-         | rodada == 1 = questionFormatted (getQuestionRodada1 (lerJSON e) id)
+      answerFormattedRodada3 :: RespostaRodada3 -> String
+      answerFormattedRodada3 ans = resposta_r3 ans
+
+      carregarPerguntaRodada1 :: Int -> Either String [Pergunta] -> String
+      carregarPerguntaRodada1 id e = questionFormattedRodada1 (getQuestionRodada1 (lerJSON e) id)
 
       carregarPerguntaRodada2 :: Int -> Either String [PerguntaRodada2] -> String
       carregarPerguntaRodada2 id e = questionFormattedRodada2 (getQuestionRodada2 (lerJSON e) id)
 
-      carregarAlternativas :: Int -> Either String [Alternativa] -> String
-      carregarAlternativas id d = alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSON d) id))
+      carregarPerguntaRodada3 :: Int -> Either String [PerguntaRodada3] -> String
+      carregarPerguntaRodada3 id e = questionFormattedRodada3 (getQuestionRodada3 (lerJSON e) id)
+
+      carregarAlternativasRodada1 :: Int -> Either String [Alternativa] -> String
+      carregarAlternativasRodada1 id d = alternativesFormattedRodada1  (getAlternativesRodada1 (getQuestionRodada1 (lerJSON d) id))
 
       carregarAlternativasRodada2 :: Int -> Either String [AlternativaRodada2] -> String
       carregarAlternativasRodada2 id d = alternativesFormattedRodada2e3  (getAlternativesRodada2 (getQuestionRodada2 (lerJSON d) id))
+
+      carregarAlternativasRodada3 :: Int -> Either String [AlternativaRodada3] -> String
+      carregarAlternativasRodada3 id d = alternativesFormattedRodada2e3 (getAlternativesRodada3 (getQuestionRodada3 (lerJSON d) id))
          
-      verificarResposta :: Int -> String -> Either String [Resposta] -> Bool
-      verificarResposta id respostaJogador f = do
-         let resposta = answerFormatted (getQuestionRodada1 (lerJSON f) id)
+      verificarRespostaRodada1 :: Int -> String -> Either String [Resposta] -> Bool
+      verificarRespostaRodada1 id respostaJogador f = do
+         let resposta = answerFormattedRodada1 (getQuestionRodada1 (lerJSON f) id)
          if (resposta == respostaJogador) then True
          else False
 
       verificarRespostaRodada2 :: Int -> String -> Either String [RespostaRodada2] -> Bool
       verificarRespostaRodada2 id respostaJogador f = do
          let resposta = answerFormattedRodada2 (getQuestionRodada2 (lerJSON f) id)
+         if (resposta == respostaJogador) then True
+         else False
+
+      verificarRespostaRodada3 :: Int -> String -> Either String [RespostaRodada3] -> Bool
+      verificarRespostaRodada3 id respostaJogador f = do
+         let resposta = answerFormattedRodada3 (getQuestionRodada3 (lerJSON f) id)
          if (resposta == respostaJogador) then True
          else False
 
