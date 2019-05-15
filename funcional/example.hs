@@ -147,6 +147,13 @@ questionFormatted perg = pergunta perg
 answerFormatted :: Resposta -> String
 answerFormatted ans = resposta ans
 
+carregaPergunta :: Int -> IO()
+carregaPergunta id = do
+   e <- retornaEitherPerguntas
+   num <- getLine
+   putStrLn (questionFormatted (getQuestionRodada1 (lerJSON e) num))
+
+
 main :: IO ()
 main = do
    -- Promises de processamento nos arquivos
@@ -166,5 +173,4 @@ main = do
    respostaUsuario <- getLine
    if (respostaSistema == respostaUsuario) then putStrLn "Resposta Correta!" else putStrLn "Resposta Incorreta!"
    return()
-
 

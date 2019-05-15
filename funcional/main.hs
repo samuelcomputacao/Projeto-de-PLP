@@ -50,17 +50,14 @@ module Main where
     validaResposta:: Int -> String -> Bool
     validaResposta rodada resposta = True
 
-    geraPergunta:: Int -> IO()
-    geraPergunta id = do
+    geraPergunta:: Int -> Either String [Pergunta] -> IO()
+    geraPergunta id e = do
         print(id)
-        print("Qual seu nome ? ");
-        resposta <- getLine
-        print (verifica_resposta id resposta)
-
-
+        putStrLn (carregarPergunta id e)
+        
     verifica_resposta:: Int -> String -> String
     verifica_resposta id resposta = do
-        if (verificarResposta id resposta) then do
+        if (id == 1) then do
             "Acertou"
         else do 
             "Errou"
@@ -72,12 +69,20 @@ module Main where
             putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
         
-        if (quant == 0) then rodada2 salario 3
+        if (quant == 0) then print "Acabou"
         else do
             id <- gerarRandon 12
-            carregarPergunta 1 id
-            rodada1 salario (quant-1)
-
+            e <- retornaEitherPerguntas
+            d <- retornaEitherAlternativas
+            f <- retornaEitherRespostas
+            geraPergunta id e
+            putStrLn (carregarResposta 1 id d)
+            resposta <- getLine
+            if (verificarResposta id resposta f) then print "Acertou"
+            else print "Errou"
+            rodada1 salario (quant - 1)
+            
+{-
     rodada2::Int -> Int -> IO()
     rodada2 salario quant = do
         if (quant == 3) then do
@@ -88,7 +93,10 @@ module Main where
         if (quant == 0) then rodada3 salario 3
         else do
             id <- gerarRandon 12
-            geraPergunta (id)
+            e <- retornaEitherPerguntas
+            d <- retornaEitherAlternativas
+            f <- retornaEitherRespostas
+            geraPergunta id e
             rodada2 salario (quant - 1)
 
     rodada3::Int -> Int -> IO()
@@ -101,14 +109,17 @@ module Main where
         if (quant == 0) then fimJogo salario
         else do
             id <- gerarRandon 12
-            geraPergunta (id)
+            e <- retornaEitherPerguntas
+            d <- retornaEitherAlternativas
+            f <- retornaEitherRespostas
+            geraPergunta id e
             rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
     fimJogo salario = do
 
         print ("Premio: " ++ (show salario))
-
+-}
     telaInicial::IO()
     telaInicial = do
         putStr("Aguardando carregamento do jogo...\n\n")

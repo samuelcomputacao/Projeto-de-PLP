@@ -1,12 +1,15 @@
+{-# LANGUAGE OverloadedStrings, DeriveGeneric, DeriveAnyClass #-}
 module FileService(
    carregarPergunta,
    carregarResposta,
    verificarResposta,
-   buscaValorPremio
+   buscaValorPremio,
+   retornaEitherAlternativas,
+   retornaEitherPerguntas,
+   retornaEitherRespostas,
+   Pergunta
    )where
-
-      {-# LANGUAGE OverloadedStrings, DeriveGeneric, DeriveAnyClass #-}
-
+      
       import Data.Aeson
       import Data.Text
       import qualified Data.ByteString.Lazy as B
@@ -38,21 +41,61 @@ module FileService(
       instance FromJSON Resposta
       instance FromJSON Pontos
       
-      getQuestionRodada1 :: [t] -> String -> t
+      -- Arquivo de alternativas
+      alternativasFile :: FilePath
+      alternativasFile = "files/rodada1/alternativas.json"
+      
+      getAlternativas :: IO B.ByteString
+      getAlternativas = B.readFile alternativasFile
+      
+      -- Arquivo de perguntas
+      perguntasFile :: FilePath
+      perguntasFile = "files/rodada1/perguntas.json"
+      
+      getPerguntas :: IO B.ByteString
+      getPerguntas = B.readFile perguntasFile
+      
+      -- Arquivo de respostas
+      respostasFile :: FilePath
+      respostasFile = "files/rodada1/respostas.json"
+      
+      getRespostas :: IO B.ByteString
+      getRespostas = B.readFile respostasFile
+      
+      -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
+      retornaEitherAlternativas :: IO (Either String [Alternativa])
+      retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
+      
+      retornaEitherPerguntas :: IO (Either String [Pergunta])
+      retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
+      
+      retornaEitherRespostas :: IO (Either String [Resposta])
+      retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+
+
+      -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
+      -- retorna Left = erro.
+      lerJSON :: Either String [t] -> [t]
+      lerJSON entrada =
+         case entrada of
+            Right ps -> ps
+            Left err -> []
+      
+      getQuestionRodada1 :: [t] -> Int -> t
       getQuestionRodada1 [a,b,c,d,e,f,g,h,i,j,k,l,m] id
-         | id == "0" = a
-         | id == "1" = b
-         | id == "2" = c
-         | id == "3" = d
-         | id == "4" = e
-         | id == "5" = f
-         | id == "6" = g
-         | id == "7" = h
-         | id == "8" = i
-         | id == "9" = j
-         | id == "10" = k
-         | id == "11" = l
-         | id == "12" = m
+         | id == 0 = a
+         | id == 1 = b
+         | id == 2 = c
+         | id == 3 = d
+         | id == 4 = e
+         | id == 5 = f
+         | id == 6 = g
+         | id == 7 = h
+         | id == 8 = i
+         | id == 9 = j
+         | id == 10 = k
+         | id == 11 = l
+         | id == 12 = m
       
       getQuestionRodada2 :: [t] -> String -> t
       getQuestionRodada2 [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q] id
@@ -114,61 +157,19 @@ module FileService(
       answerFormatted :: Resposta -> String
       answerFormatted ans = resposta ans
 
-      carregarPergunta:: Int -> Int -> String
-      carregarPergunta rodada id
-            | rodada == 1 = do
-                  -- Arquivo de alternativas
-                  alternativasFile :: FilePath
-                  let alternativasFile = "files/rodada1/alternativas.json"
+      carregarPergunta :: Int -> Either String [Pergunta] -> String
+      carregarPergunta id e = do
+         questionFormatted (getQuestionRodada1 (lerJSON e) id)
 
-                  getAlternativas :: IO B.ByteString
-                  let getAlternativas = B.readFile alternativasFile
+      carregarResposta:: Int -> Int -> Either String [Alternativa] -> String
+      carregarResposta rodada id d = do
+         alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSON d) id))
 
-                  -- Arquivo de perguntas
-                  perguntasFile :: FilePath
-                  let perguntasFile = "files/rodada1/perguntas.json"
-
-                  getPerguntas :: IO B.ByteString
-                  let getPerguntas = B.readFile perguntasFile
-
-                  -- Arquivo de respostas
-                  respostasFile :: FilePath
-                  let respostasFile = "files/rodada1/respostas.json"
-
-                  getRespostas :: IO B.ByteString
-                  let getRespostas = B.readFile respostasFile
-
-                  -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
-                  retornaEitherAlternativas :: IO (Either String [Alternativa])
-                  let retornaEitherAlternativas = (eitherDecode <$> getAlternativas) :: IO (Either String [Alternativa])
-
-                  retornaEitherPerguntas :: IO (Either String [Pergunta])
-                  let retornaEitherPerguntas = (eitherDecode <$> getPerguntas) :: IO (Either String [Pergunta])
-
-                  retornaEitherRespostas :: IO (Either String [Resposta])
-                  let retornaEitherRespostas = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
-
-                  -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
-                  -- retorna Left = erro.
-                  lerJSON :: Either String [t] -> [t]
-                  let lerJSON entrada =
-                        case entrada of
-                              Right ps -> ps
-                              Left err -> []
-
-                  d <- retornaEitherAlternativas
-                  e <- retornaEitherPerguntas
-                  f <- retornaEitherRespostas
-
-                  alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSONAlternativas d) id))   
-
-            | otherwise = return()
-
-      carregarResposta:: Int -> Int -> String
-      carregarResposta rodada id = ""
-
-      verificarResposta:: Int -> String -> Bool
-      verificarResposta id respostaJogador = True
+      verificarResposta:: Int -> String -> Either String [Resposta] -> Bool
+      verificarResposta id respostaJogador f = do
+         let resposta = answerFormatted (getQuestionRodada1 (lerJSON f) id)
+         if (resposta == respostaJogador) then True
+         else False
 
       buscaValorPremio:: Int -> Int -> Int
       buscaValorPremio rodada id = 0
