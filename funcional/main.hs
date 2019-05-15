@@ -56,9 +56,13 @@ module Main where
             putStrLn (carregarPergunta 1 id e)
         else do
             if (rodada == 2) then do
-                putStrLn (carregarPergunta 1 id e)
+                putStrLn (carregarPergunta 2 id e)
             else do
-                putStrLn (carregarPergunta 1 id e)
+                putStrLn (carregarPergunta 3 id e)
+
+    geraPerguntaRodada2 :: Int -> Either String [PerguntaRodada2] -> IO()
+    geraPerguntaRodada2 id e = do
+        putStrLn (carregarPerguntaRodada2 id e)
 
     rodada1::Int -> Int -> IO()
     rodada1 salario quant = do
@@ -74,7 +78,7 @@ module Main where
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
             geraPergunta id 1 e
-            putStrLn (carregarResposta 1 id d)
+            putStrLn (carregarAlternativas id d)
             resposta <- getLine
             if (verificarResposta id resposta f) then print "Acertou"
             else print "Errou"
@@ -89,14 +93,14 @@ module Main where
 
         if (quant == 0) then rodada3 salario 3
         else do
-            id <- gerarRandon 12
-            e <- retornaEitherPerguntas
-            d <- retornaEitherAlternativas
-            f <- retornaEitherRespostas
-            geraPergunta id 2 e
-            putStrLn (carregarResposta 2 id d)
+            id <- gerarRandon 16
+            e <- retornaEitherPerguntasRodada2
+            d <- retornaEitherAlternativasRodada2
+            f <- retornaEitherRespostasRodada2
+            geraPerguntaRodada2 id e
+            putStrLn (carregarAlternativasRodada2 id d)
             resposta <- getLine
-            if (verificarResposta id "a" f) then print "Acertou"
+            if (verificarRespostaRodada2 id resposta f) then print "Acertou"
             else print "Errou"
             rodada2 salario (quant - 1)
 
@@ -114,7 +118,7 @@ module Main where
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
             geraPergunta id 3 e
-            putStrLn (carregarResposta 3 id d)
+            putStrLn (carregarAlternativas id d)
             resposta <- getLine
             if (verificarResposta id resposta f) then print "Acertou"
             else print "Errou"
