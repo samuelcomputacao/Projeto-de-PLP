@@ -7,7 +7,9 @@ module FileService(
    retornaEitherAlternativas,
    retornaEitherPerguntas,
    retornaEitherRespostas,
-   Pergunta
+   Pergunta,
+   Alternativa,
+   Resposta
    )where
       
       import Data.Aeson
@@ -97,49 +99,49 @@ module FileService(
          | id == 11 = l
          | id == 12 = m
       
-      getQuestionRodada2 :: [t] -> String -> t
+      getQuestionRodada2 :: [t] -> Int -> t
       getQuestionRodada2 [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q] id
-         | id == "0" = a
-         | id == "1" = b
-         | id == "2" = c
-         | id == "3" = d
-         | id == "4" = e
-         | id == "5" = f
-         | id == "6" = g
-         | id == "7" = h
-         | id == "8" = i
-         | id == "9" = j
-         | id == "10" = k
-         | id == "11" = l
-         | id == "12" = m
-         | id == "13" = n
-         | id == "14" = o
-         | id == "15" = p
-         | id == "16" = q
+         | id == 0 = a
+         | id == 1 = b
+         | id == 2 = c
+         | id == 3 = d
+         | id == 4 = e
+         | id == 5 = f
+         | id == 6 = g
+         | id == 7 = h
+         | id == 8 = i
+         | id == 9 = j
+         | id == 10 = k
+         | id == 11 = l
+         | id == 12 = m
+         | id == 13 = n
+         | id == 14 = o
+         | id == 15 = p
+         | id == 16 = q
       
-      getQuestionRodada3 :: [t] -> String -> t
+      getQuestionRodada3 :: [t] -> Int -> t
       getQuestionRodada3 [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u] id
-         | id == "0" = a
-         | id == "1" = b
-         | id == "2" = c
-         | id == "3" = d
-         | id == "4" = e
-         | id == "5" = f
-         | id == "6" = g
-         | id == "7" = h
-         | id == "8" = i
-         | id == "9" = j
-         | id == "10" = k
-         | id == "11" = l
-         | id == "12" = m
-         | id == "13" = n
-         | id == "14" = o
-         | id == "15" = p
-         | id == "16" = q
-         | id == "17" = r
-         | id == "18" = s
-         | id == "19" = t
-         | id == "20" = u
+         | id == 0 = a
+         | id == 1 = b
+         | id == 2 = c
+         | id == 3 = d
+         | id == 4 = e
+         | id == 5 = f
+         | id == 6 = g
+         | id == 7 = h
+         | id == 8 = i
+         | id == 9 = j
+         | id == 10 = k
+         | id == 11 = l
+         | id == 12 = m
+         | id == 13 = n
+         | id == 14 = o
+         | id == 15 = p
+         | id == 16 = q
+         | id == 17 = r
+         | id == 18 = s
+         | id == 19 = t
+         | id == 20 = u
       
       
       getAlternatives :: Alternativa -> [String]
@@ -157,13 +159,15 @@ module FileService(
       answerFormatted :: Resposta -> String
       answerFormatted ans = resposta ans
 
-      carregarPergunta :: Int -> Either String [Pergunta] -> String
-      carregarPergunta id e = do
+      carregarPergunta :: Int -> Int -> Either String [Pergunta] -> String
+      carregarPergunta rodada id e = do
          questionFormatted (getQuestionRodada1 (lerJSON e) id)
 
       carregarResposta:: Int -> Int -> Either String [Alternativa] -> String
-      carregarResposta rodada id d = do
-         alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSON d) id))
+      carregarResposta rodada id d
+         | rodada == 1 = alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSON d) id))
+         | rodada == 2 = alternativesFormattedRodada2e3  (getAlternatives (getQuestionRodada2 (lerJSON d) id))
+         | rodada == 3 = alternativesFormattedRodada2e3  (getAlternatives (getQuestionRodada3 (lerJSON d) id))
 
       verificarResposta:: Int -> String -> Either String [Resposta] -> Bool
       verificarResposta id respostaJogador f = do

@@ -50,17 +50,15 @@ module Main where
     validaResposta:: Int -> String -> Bool
     validaResposta rodada resposta = True
 
-    geraPergunta:: Int -> Either String [Pergunta] -> IO()
-    geraPergunta id e = do
-        print(id)
-        putStrLn (carregarPergunta id e)
-        
-    verifica_resposta:: Int -> String -> String
-    verifica_resposta id resposta = do
-        if (id == 1) then do
-            "Acertou"
-        else do 
-            "Errou"
+    geraPergunta:: Int -> Int -> Either String [Pergunta] -> IO()
+    geraPergunta id rodada e = do
+        if (rodada == 1) then do
+            putStrLn (carregarPergunta 1 id e)
+        else do
+            if (rodada == 2) then do
+                putStrLn (carregarPergunta 1 id e)
+            else do
+                putStrLn (carregarPergunta 1 id e)
 
     rodada1::Int -> Int -> IO()
     rodada1 salario quant = do
@@ -75,14 +73,20 @@ module Main where
             e <- retornaEitherPerguntas
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
-            geraPergunta id e
+            geraPergunta id 1 e
             putStrLn (carregarResposta 1 id d)
             resposta <- getLine
-            if (verificarResposta id resposta f) then print "Acertou"
+            if (verificarResposta id "a" f) then print "Acertou"
             else print "Errou"
             rodada1 salario (quant - 1)
-            
+
+
 {-
+    geraPerguntaRodada2 :: Int -> Either String [Alternativa] -> IO()
+    geraPerguntaRodada2 id e = do
+        print(id)
+        putStrLn (carregarPergunta id e)
+
     rodada2::Int -> Int -> IO()
     rodada2 salario quant = do
         if (quant == 3) then do
@@ -96,7 +100,11 @@ module Main where
             e <- retornaEitherPerguntas
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
-            geraPergunta id e
+            geraPerguntaRodada2 id e
+            putStrLn (carregarResposta 2 id d)
+            resposta <- getLine
+            if (verificarResposta id resposta f) then print "Acertou"
+            else print "Errou"
             rodada2 salario (quant - 1)
 
     rodada3::Int -> Int -> IO()
