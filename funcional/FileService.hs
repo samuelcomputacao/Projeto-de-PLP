@@ -100,7 +100,7 @@ module FileService(
          | id == 12 = m
       
       getQuestionRodada2 :: [t] -> Int -> t
-      getQuestionRodada2 [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q] id
+      getQuestionRodada2 [a,b,c,d,e,f,g,h,i,j,k,l,m] id
          | id == 0 = a
          | id == 1 = b
          | id == 2 = c
@@ -114,13 +114,9 @@ module FileService(
          | id == 10 = k
          | id == 11 = l
          | id == 12 = m
-         | id == 13 = n
-         | id == 14 = o
-         | id == 15 = p
-         | id == 16 = q
-      
+
       getQuestionRodada3 :: [t] -> Int -> t
-      getQuestionRodada3 [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u] id
+      getQuestionRodada3 [a,b,c,d,e,f,g,h,i,j,k,l,m] id
          | id == 0 = a
          | id == 1 = b
          | id == 2 = c
@@ -134,14 +130,6 @@ module FileService(
          | id == 10 = k
          | id == 11 = l
          | id == 12 = m
-         | id == 13 = n
-         | id == 14 = o
-         | id == 15 = p
-         | id == 16 = q
-         | id == 17 = r
-         | id == 18 = s
-         | id == 19 = t
-         | id == 20 = u
       
       
       getAlternatives :: Alternativa -> [String]
@@ -166,8 +154,8 @@ module FileService(
       carregarResposta:: Int -> Int -> Either String [Alternativa] -> String
       carregarResposta rodada id d
          | rodada == 1 = alternativesFormattedRodada1  (getAlternatives (getQuestionRodada1 (lerJSON d) id))
-         | rodada == 2 = alternativesFormattedRodada2e3  (getAlternatives (getQuestionRodada2 (lerJSON d) id))
-         | rodada == 3 = alternativesFormattedRodada2e3  (getAlternatives (getQuestionRodada3 (lerJSON d) id))
+         | rodada == 2 = alternativesFormattedRodada1  (getAlternatives (getQuestionRodada2 (lerJSON d) id))
+         | rodada == 3 = alternativesFormattedRodada1  (getAlternatives (getQuestionRodada3 (lerJSON d) id))
 
       verificarResposta:: Int -> String -> Either String [Resposta] -> Bool
       verificarResposta id respostaJogador f = do

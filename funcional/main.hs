@@ -67,7 +67,7 @@ module Main where
             putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
         
-        if (quant == 0) then print "Acabou"
+        if (quant == 0) then rodada2 salario 3
         else do
             id <- gerarRandon 12
             e <- retornaEitherPerguntas
@@ -76,16 +76,9 @@ module Main where
             geraPergunta id 1 e
             putStrLn (carregarResposta 1 id d)
             resposta <- getLine
-            if (verificarResposta id "a" f) then print "Acertou"
+            if (verificarResposta id resposta f) then print "Acertou"
             else print "Errou"
             rodada1 salario (quant - 1)
-
-
-{-
-    geraPerguntaRodada2 :: Int -> Either String [Alternativa] -> IO()
-    geraPerguntaRodada2 id e = do
-        print(id)
-        putStrLn (carregarPergunta id e)
 
     rodada2::Int -> Int -> IO()
     rodada2 salario quant = do
@@ -100,10 +93,10 @@ module Main where
             e <- retornaEitherPerguntas
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
-            geraPerguntaRodada2 id e
+            geraPergunta id 2 e
             putStrLn (carregarResposta 2 id d)
             resposta <- getLine
-            if (verificarResposta id resposta f) then print "Acertou"
+            if (verificarResposta id "a" f) then print "Acertou"
             else print "Errou"
             rodada2 salario (quant - 1)
 
@@ -120,20 +113,23 @@ module Main where
             e <- retornaEitherPerguntas
             d <- retornaEitherAlternativas
             f <- retornaEitherRespostas
-            geraPergunta id e
+            geraPergunta id 3 e
+            putStrLn (carregarResposta 3 id d)
+            resposta <- getLine
+            if (verificarResposta id resposta f) then print "Acertou"
+            else print "Errou"
             rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
     fimJogo salario = do
-
         print ("Premio: " ++ (show salario))
--}
+
     telaInicial::IO()
     telaInicial = do
         putStr("Aguardando carregamento do jogo...\n\n")
-        threadDelay 2000000                             -- delay de 2 milhoes de microsegundos, ou 2 segundos
+       -- threadDelay 2000000                             -- delay de 2 milhoes de microsegundos, ou 2 segundos
         putStr("Espere um momento por favor... \n\n")
-        threadDelay 4000000
+       -- threadDelay 4000000
         putStr("Tudo pronto! Hora de jogar!\n\n")
         putStrLn logoJogo
         putStrLn gerarMenuInicial
