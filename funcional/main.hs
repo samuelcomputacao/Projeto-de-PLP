@@ -79,8 +79,8 @@ module Main where
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getLine
-            if (verificarRespostaRodada1 id resposta f) then print "Acertou"
-            else print "Errou"
+            if (verificarRespostaRodada1 id resposta f) then print "To do: Acertou"
+            else print "To do: Errou"
             rodada1 salario (quant - 1)
 
     rodada2::Int -> Int -> IO()
@@ -96,9 +96,10 @@ module Main where
             e <- retornaEitherPerguntasRodada2
             d <- retornaEitherAlternativasRodada2
             f <- retornaEitherRespostasRodada2
-            
+
             putStrLn (carregarAlternativasRodada2 id d)
-            -- Chamar o multiplicador.
+
+            -- Lógica de escolher o multiplicador.
             geraPerguntaRodada2 id e
             resposta <- getLine
             if (verificarRespostaRodada2 id resposta f) then print "To do: Acertou"
@@ -118,11 +119,14 @@ module Main where
             e <- retornaEitherPerguntasRodada3
             d <- retornaEitherAlternativasRodada3
             f <- retornaEitherRespostasRodada3
-            geraPerguntaRodada3 id e
+
             putStrLn (carregarAlternativasRodada3 id d)
+
+            -- Lógica de escolher o multiplicador.
+            geraPerguntaRodada3 id e
             resposta <- getLine
-            if (verificarRespostaRodada3 id resposta f) then print "Acertou"
-            else print "Errou"
+            if (verificarRespostaRodada3 id resposta f) then print "To do: Acertou"
+            else print "To do: Errou"
             rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
