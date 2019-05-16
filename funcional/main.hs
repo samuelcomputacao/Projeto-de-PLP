@@ -46,8 +46,12 @@ module Main where
     iniciaJogo salario = do
         rodada1 salario 3        
     
-
-    validaResposta:: Int -> String -> Bool
+    -- TO DO
+    escolheMultiplicador :: Int -> IO Int
+    escolheMultiplicador rodada = readLn :: IO Int
+    
+    -- TO DO
+    validaResposta :: Int -> String -> Bool
     validaResposta rodada resposta = True
 
     geraPerguntaRodada1 :: Int -> Either String [Pergunta] -> IO()
@@ -92,11 +96,13 @@ module Main where
             e <- retornaEitherPerguntasRodada2
             d <- retornaEitherAlternativasRodada2
             f <- retornaEitherRespostasRodada2
-            geraPerguntaRodada2 id e
+            
             putStrLn (carregarAlternativasRodada2 id d)
+            -- Chamar o multiplicador.
+            geraPerguntaRodada2 id e
             resposta <- getLine
-            if (verificarRespostaRodada2 id resposta f) then print "Acertou"
-            else print "Errou"
+            if (verificarRespostaRodada2 id resposta f) then print "To do: Acertou"
+            else print "To do: Errou"
             rodada2 salario (quant - 1)
 
     rodada3::Int -> Int -> IO()
@@ -122,6 +128,11 @@ module Main where
     fimJogo:: Int -> IO()
     fimJogo salario = do
         print ("Premio: " ++ (show salario))
+    
+    -- TO DO
+    sairOuJogarNovamente :: IO()
+    sairOuJogarNovamente = do
+        putStrLn "TO DO"
 
     telaInicial::IO()
     telaInicial = do
