@@ -7,7 +7,12 @@ module Main where
     
     main::IO()
     main = do
-        telaInicial     -- funcao para mostrar a tela inicial do jogo com o logo e o menu  inicial + loading
+        telaInicial     --  Loading + Logo
+        putStrLn gerarMenuInicial -- Menu de Opções 
+        verificaOpcao 
+
+    verificaOpcao :: IO()
+    verificaOpcao  = do
         op <- getOpcao
         let num = read op :: Int
         if num == 1 then do
@@ -17,10 +22,13 @@ module Main where
         else if num == 2 then do
             putStrLn tutorial
             op <- comoJogar
-            if op == "c" then iniciaJogo 0 else main  -- tem que ajeitar isso. criar uma funcao para que chame ela mesmo, em vez do main.
+            if op == "c" then 
+                iniciaJogo 0 
+            else do
+                putStrLn gerarMenuInicial
+                verificaOpcao 
         else
             putStrLn "Sair"
-        
 
     getOpcao::IO String
     getOpcao = do
@@ -141,9 +149,9 @@ module Main where
     telaInicial::IO()
     telaInicial = do
         putStr("Aguardando carregamento do jogo...\n\n")
-       -- threadDelay 2000000                             -- delay de 2 milhoes de microsegundos, ou 2 segundos
+        threadDelay 2000000                             -- delay de 2 milhoes de microsegundos, ou 2 segundos
         putStr("Espere um momento por favor... \n\n")
-       -- threadDelay 4000000
+        threadDelay 4000000
         putStr("Tudo pronto! Hora de jogar!\n\n")
         putStrLn logoJogo
-        putStrLn gerarMenuInicial
+        

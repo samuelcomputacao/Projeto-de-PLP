@@ -9,7 +9,7 @@ module StringService(
 
     gerarMenuInicial:: String
     gerarMenuInicial = do
-        "Escolha uma opção: \n"
+        "\n\nEscolha uma opção: \n"
       ++"1) Iniciar novo jogo\n"
       ++"2) Tutorial\n"
       ++"3) Sair\n"
@@ -20,7 +20,7 @@ module StringService(
       ++" /_  __/ / / / ____/  / ___/\\ \\/ / ___/_  __/ ____/  |/  /\n"
       ++"  / / / /_/ / __/     \\__ \\  \\  /\\__ \\ / / / __/ / /|_/ /\n"
       ++" / / / __  / /___    ___/ /  / /___/ // / / /___/ /  / /\n"
-      ++"/_/ /_/ /_/_____/   /____/  /_//____//_/ /_____/_/  /_/\n\n\n"
+      ++"/_/ /_/ /_/_____/   /____/  /_//____//_/ /_____/_/  /_/\n"
 
     tutorial:: String
     tutorial = do
