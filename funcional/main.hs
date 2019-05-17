@@ -134,17 +134,35 @@ module Main where
             geraPerguntaRodada3 id e
             resposta <- getLine
             if (verificarRespostaRodada3 id resposta f) then print "To do: Acertou"
-            else print "To do: Errou"
+            else print "To do: Errou\n\n"
             rodada3 salario (quant - 1)
     
     fimJogo:: Int -> IO()
     fimJogo salario = do
-        print ("Premio: " ++ (show salario))
+        putStrLn ("Fim de Jogo!\nSeu Saldo final é de: " ++ (show salario) ++"\n\n")
+        sairOuJogarNovamente
     
-    -- TO DO
+
     sairOuJogarNovamente :: IO()
     sairOuJogarNovamente = do
-        putStrLn "TO DO"
+        op <- verificaSaida
+        if(op == "c") then 
+            iniciaJogo 0
+        else do
+            putStrLn "\nAté a próxima!\n"
+            putStrLn "The System finalized...\n"
+
+    
+    verificaSaida :: IO String 
+    verificaSaida = do
+        putStrLn "Tecle (c) jogar novamente ou (s) para sair: "
+        op <- getLine
+        if(op == "c" || op == "s") then 
+            return op
+        else do
+            putStrLn "\nIncorreto!"
+            op <- verificaSaida
+            return op
 
     telaInicial::IO()
     telaInicial = do
@@ -155,3 +173,4 @@ module Main where
         putStr("Tudo pronto! Hora de jogar!\n\n")
         putStrLn logoJogo
         
+
