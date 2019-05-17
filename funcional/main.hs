@@ -28,7 +28,7 @@ module Main where
         if op == "1" || op == "2" || op == "3" then
             return op
             else do
-                putStrLn "Opcao incorreta!\n Por favor tecle 1,2 ou 3: "
+                putStrLn "Opcao incorreta!\nPor favor tecle 1,2 ou 3: "
                 op <- getOpcao    
                 return op
 
@@ -78,10 +78,25 @@ module Main where
             f <- retornaEitherRespostasRodada1
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
-            resposta <- getLine
+            resposta <- getResposta 1
             if (verificarRespostaRodada1 id resposta f) then print "To do: Acertou"
             else print "To do: Errou"
             rodada1 salario (quant - 1)
+
+    getResposta::Int -> IO String
+    getResposta rodada = do
+        op <- getLine
+        if contem op (if rodada == 1 then "ab" else "abcd") then return op
+        else do
+            putStrLn ("Alternativa incorreta!\nPor favor tecle: " ++ (if rodada == 1 then "a ou b." else "a, b, c ou d."))
+            op <- getResposta rodada
+            return op
+                
+    contem:: [Char] -> [Char] -> Bool
+    contem elemento []  = False
+    contem (x:xs) (h:t) = do
+        if x == h then True
+        else contem (x:xs) t
 
     rodada2::Int -> Int -> IO()
     rodada2 salario quant = do
@@ -101,7 +116,7 @@ module Main where
 
             -- Lógica de escolher o multiplicador.
             geraPerguntaRodada2 id e
-            resposta <- getLine
+            resposta <- getResposta 2
             if (verificarRespostaRodada2 id resposta f) then print "To do: Acertou"
             else print "To do: Errou"
             rodada2 salario (quant - 1)
@@ -124,7 +139,7 @@ module Main where
 
             -- Lógica de escolher o multiplicador.
             geraPerguntaRodada3 id e
-            resposta <- getLine
+            resposta <- getResposta 3
             if (verificarRespostaRodada3 id resposta f) then print "To do: Acertou"
             else print "To do: Errou"
             rodada3 salario (quant - 1)
