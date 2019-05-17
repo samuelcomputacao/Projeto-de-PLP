@@ -52,7 +52,7 @@ module Main where
 
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
-        rodada1 salario 3        
+        rodada1 salario 3 []     
     
     -- TO DO
     escolheMultiplicador :: Int -> IO Int
@@ -71,16 +71,16 @@ module Main where
     geraPerguntaRodada3 :: Int -> Either String [PerguntaRodada3] -> IO()
     geraPerguntaRodada3 id e = putStrLn (carregarPerguntaRodada3 id e)
 
-    rodada1::Int -> Int -> IO()
-    rodada1 salario quant = do
+    rodada1::Int -> Int -> [Int] -> IO()
+    rodada1 salario quant perguntas = do
         if (quant == 3) then do
             putStrLn "\n========================================================"
             putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
         
-        if (quant == 0) then rodada2 salario 3
+        if (quant == 0) then rodada2 salario 3 []
         else do
-            id <- gerarRandon 12
+            id <- gerarId perguntas 12
             e <- retornaEitherPerguntasRodada1
             d <- retornaEitherAlternativasRodada1
             f <- retornaEitherRespostasRodada1
@@ -89,7 +89,17 @@ module Main where
             resposta <- getResposta 1
             if (verificarRespostaRodada1 id resposta f) then print "To do: Acertou"
             else print "To do: Errou"
-            rodada1 salario (quant - 1)
+            rodada1 salario (quant - 1) (perguntas ++ [id])
+
+    gerarId:: [Int] -> Int -> IO Int
+    gerarId perguntas maximo = do
+        id <- gerarRandon maximo
+        if elem id perguntas then do
+            id <- gerarId perguntas maximo
+            return id
+        else return id
+
+
 
     getResposta::Int -> IO String
     getResposta rodada = do
@@ -106,16 +116,16 @@ module Main where
         if x == h then True
         else contem (x:xs) t
 
-    rodada2::Int -> Int -> IO()
-    rodada2 salario quant = do
+    rodada2::Int -> Int -> [Int] -> IO()
+    rodada2 salario quant perguntas = do
         if (quant == 3) then do
             putStrLn "\n========================================================"
             putStrLn "\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
 
-        if (quant == 0) then rodada3 salario 3
+        if (quant == 0) then rodada3 salario 3 []
         else do
-            id <- gerarRandon 16
+            id <- gerarId perguntas 16
             e <- retornaEitherPerguntasRodada2
             d <- retornaEitherAlternativasRodada2
             f <- retornaEitherRespostasRodada2
@@ -127,10 +137,10 @@ module Main where
             resposta <- getResposta 2
             if (verificarRespostaRodada2 id resposta f) then print "To do: Acertou"
             else print "To do: Errou"
-            rodada2 salario (quant - 1)
+            rodada2 salario (quant - 1) (perguntas ++ [id])
 
-    rodada3::Int -> Int -> IO()
-    rodada3 salario quant = do
+    rodada3::Int -> Int -> [Int] -> IO()
+    rodada3 salario quant perguntas = do
         if (quant == 3) then do
             putStrLn "\n========================================================"
             putStrLn "\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
@@ -138,7 +148,7 @@ module Main where
         
         if (quant == 0) then fimJogo salario
         else do
-            id <- gerarRandon 20
+            id <- gerarId perguntas 20
             e <- retornaEitherPerguntasRodada3
             d <- retornaEitherAlternativasRodada3
             f <- retornaEitherRespostasRodada3
@@ -150,7 +160,7 @@ module Main where
             resposta <- getResposta 3
             if (verificarRespostaRodada3 id resposta f) then print "To do: Acertou"
             else print "To do: Errou\n\n"
-            rodada3 salario (quant - 1)
+            rodada3 salario (quant - 1) (perguntas ++ [id])
     
     fimJogo:: Int -> IO()
     fimJogo salario = do
