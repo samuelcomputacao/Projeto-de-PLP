@@ -1,5 +1,6 @@
 module Main where
 
+    import Data.Char 
     import FileService
     import StringService
     import NumberService
@@ -53,14 +54,6 @@ module Main where
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
         rodada1 salario 3 []     
-    
-    -- TO DO
-    escolheMultiplicador :: Int -> IO Int
-    escolheMultiplicador rodada = readLn :: IO Int
-    
-    -- TO DO
-    validaResposta :: Int -> String -> Bool
-    validaResposta rodada resposta = True
 
     geraPerguntaRodada1 :: Int -> Either String [Pergunta] -> IO()
     geraPerguntaRodada1 id e = putStrLn (carregarPerguntaRodada1 id e)
@@ -87,9 +80,13 @@ module Main where
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getResposta 1
-            if (verificarRespostaRodada1 id resposta f) then print "To do: Acertou"
-            else print "To do: Errou"
-            rodada1 salario (quant - 1) (perguntas ++ [id])
+            if (verificarRespostaRodada1 id resposta f) then do
+                putStrLn (acertouToString 100 100 (atualizaSalario salario 100 True) 1)
+                rodada1 (atualizaSalario salario 100 True) (quant - 1) (perguntas ++ [id])
+            else do
+                putStrLn (errouToString 100 100 (atualizaSalario salario 100 False) 1)
+                rodada1 (atualizaSalario salario 100 False) (quant - 1) (perguntas ++ [id])
+           
 
     gerarId:: [Int] -> Int -> IO Int
     gerarId perguntas maximo = do
@@ -133,11 +130,20 @@ module Main where
             putStrLn (carregarAlternativasRodada2 id d)
 
             -- Lógica de escolher o multiplicador.
+ 
+            putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x ou 2x): "
+            multiplicador <- getMultiplicador 2
+
             geraPerguntaRodada2 id e
             resposta <- getResposta 2
-            if (verificarRespostaRodada2 id resposta f) then print "To do: Acertou"
-            else print "To do: Errou"
-            rodada2 salario (quant - 1) (perguntas ++ [id])
+            let premioPergunta =  gerarValorPremio (parseMultiplicador multiplicador) 100
+            if (verificarRespostaRodada2 id resposta f) then do
+
+                 putStrLn (acertouToString 100 premioPergunta (atualizaSalario salario premioPergunta True) 2)
+                 rodada2 (atualizaSalario salario premioPergunta True) (quant - 1) (perguntas ++ [id])
+            else do
+                 putStrLn (errouToString 100 premioPergunta (atualizaSalario salario premioPergunta False) 2)
+                 rodada2 (atualizaSalario salario premioPergunta False) (quant - 1) (perguntas ++ [id])
 
     rodada3::Int -> Int -> [Int] -> IO()
     rodada3 salario quant perguntas = do
@@ -156,11 +162,21 @@ module Main where
             putStrLn (carregarAlternativasRodada3 id d)
 
             -- Lógica de escolher o multiplicador.
+            putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): "
+            multiplicador <- getMultiplicador 3
+
             geraPerguntaRodada3 id e
             resposta <- getResposta 3
-            if (verificarRespostaRodada3 id resposta f) then print "To do: Acertou"
-            else print "To do: Errou\n\n"
-            rodada3 salario (quant - 1) (perguntas ++ [id])
+            let premioPergunta =  gerarValorPremio (parseMultiplicador multiplicador) 100
+            
+            if (verificarRespostaRodada3 id resposta f) then do
+                 
+                 putStrLn (acertouToString 100 premioPergunta (atualizaSalario salario premioPergunta True)3)
+                 rodada3 (atualizaSalario salario premioPergunta True) (quant - 1) (perguntas ++ [id])
+            else do
+                 putStrLn (errouToString 100 premioPergunta (atualizaSalario salario premioPergunta False) 3)
+                 rodada3 (atualizaSalario salario premioPergunta False) (quant - 1) (perguntas ++ [id])
+
     
     fimJogo:: Int -> IO()
     fimJogo salario = do
@@ -171,7 +187,8 @@ module Main where
     sairOuJogarNovamente :: IO()
     sairOuJogarNovamente = do
         op <- verificaSaida
-        if(op == "c") then 
+        if(op == "c") then do
+            putStrLn(logoJogo)
             iniciaJogo 0
         else do
             putStrLn "\nAté a próxima!\n"
@@ -199,3 +216,19 @@ module Main where
         putStrLn logoJogo
         
 
+    getMultiplicador::Int -> IO String
+    getMultiplicador rodada = do
+        mult <- getLine
+        if ((rodada == 2 && (mult == "1x" || mult == "2x")) || (rodada == 3 && (mult == "1x" || mult == "2x" || mult == "3x"))) then return mult
+        else do
+            putStrLn ((if rodada == 2 then "Digite um valor de acordo com as opções dadas(1x e 2x): " else "Digite um valor de acordo com as opções dadas(1x, 2x ou 3x): "))
+            mult <- getMultiplicador rodada
+            return mult 
+
+    parseMultiplicador :: String -> Int
+    parseMultiplicador multi = digitToInt (head multi) :: Int 
+
+    atualizaSalario :: Int -> Int -> Bool -> Int
+    atualizaSalario salario gap status
+        | status == True = salario + gap
+        | otherwise = (if(salario - gap) < 0 then 0 else salario - gap)
