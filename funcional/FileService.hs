@@ -13,21 +13,27 @@ module FileService(
    retornaEitherAlternativasRodada1,
    retornaEitherPerguntasRodada1,
    retornaEitherRespostasRodada1,
+   retornaEitherPontosRodada1,
    retornaEitherAlternativasRodada2,
    retornaEitherPerguntasRodada2,
    retornaEitherRespostasRodada2,
+   retornaEitherPontosRodada2,
    retornaEitherAlternativasRodada3,
    retornaEitherPerguntasRodada3,
    retornaEitherRespostasRodada3,
+   retornaEitherPontosRodada3,
    Pergunta,
    Alternativa,
    Resposta,
+   Pontos,
    PerguntaRodada2,
    AlternativaRodada2,
    RespostaRodada2,
+   PontosRodada2,
    PerguntaRodada3,
    AlternativaRodada3,
-   RespostaRodada3
+   RespostaRodada3,
+   PontosRodada3
    )where
       
       import Data.Aeson
@@ -141,6 +147,13 @@ module FileService(
       getRespostas :: IO B.ByteString
       getRespostas = B.readFile respostasFile
 
+      -- Arquivo de pontos
+      pontosFile :: FilePath
+      pontosFile = "files/rodada1/valores.json"
+
+      getPontos :: IO B.ByteString
+      getPontos = B.readFile pontosFile
+
 
       -- ARQUIVOS PARA A RODADA 2
 
@@ -164,6 +177,13 @@ module FileService(
       
       getRespostas2 :: IO B.ByteString
       getRespostas2 = B.readFile respostasFile2
+
+      -- Arquivo de pontos
+      pontosFile2 :: FilePath
+      pontosFile2 = "files/rodada2/valores.json"
+
+      getPontos2 :: IO B.ByteString
+      getPontos2 = B.readFile pontosFile2
 
 
       -- ARQUIVOS PARA A RODADA 3
@@ -189,7 +209,14 @@ module FileService(
       getRespostas3 :: IO B.ByteString
       getRespostas3 = B.readFile respostasFile3
 
+      -- Arquivo de pontos
+      pontosFile3 :: FilePath
+      pontosFile3 = "files/rodada3/valores.json"
+
+      getPontos3 :: IO B.ByteString
+      getPontos3 = B.readFile pontosFile3
       
+
       -- PROMISES PARA OS ARQUIVOS DA RODADA 1
 
       -- Retorna um Either (Semelhante a promise de JavaScript) à partir da leitura do JSON
@@ -201,6 +228,9 @@ module FileService(
       
       retornaEitherRespostasRodada1 :: IO (Either String [Resposta])
       retornaEitherRespostasRodada1 = (eitherDecode <$> getRespostas) :: IO (Either String [Resposta])
+
+      retornaEitherPontosRodada1 :: IO (Either String [Pontos])
+      retornaEitherPontosRodada1 = (eitherDecode <$> getPontos) :: IO (Either String [Pontos])
 
 
       -- PROMISES PARA OS ARQUIVOS DA RODADA 2
@@ -214,6 +244,9 @@ module FileService(
       retornaEitherRespostasRodada2 :: IO (Either String [RespostaRodada2])
       retornaEitherRespostasRodada2 = (eitherDecode <$> getRespostas2) :: IO (Either String [RespostaRodada2])
 
+      retornaEitherPontosRodada2 :: IO (Either String [PontosRodada2])
+      retornaEitherPontosRodada2 = (eitherDecode <$> getPontos2) :: IO (Either String [PontosRodada2])
+
 
       -- PROMISES PARA OS ARQUIVOS DA RODADA 3
 
@@ -225,6 +258,9 @@ module FileService(
 
       retornaEitherRespostasRodada3 :: IO (Either String [RespostaRodada3])
       retornaEitherRespostasRodada3 = (eitherDecode <$> getRespostas3) :: IO (Either String [RespostaRodada3])
+
+      retornaEitherPontosRodada3 :: IO (Either String [PontosRodada3])
+      retornaEitherPontosRodada3 = (eitherDecode <$> getPontos3) :: IO (Either String [PontosRodada3])
 
 
       -- Retorna um array de Objetos, recebe como parâmetro a promise e verifica se ela foi executada com êxito, se sim retorna Right, caso contrário
