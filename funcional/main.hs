@@ -34,7 +34,7 @@ module Main where
     getOpcao::IO String
     getOpcao = do
         op <- getLine
-        if op == "1" || op == "2" || op == "3" then
+        if (elem op ["1","2","3"]) then
             return op
             else do
                 putStrLn "Opcao incorreta!\nPor favor tecle 1,2 ou 3: "
@@ -44,7 +44,7 @@ module Main where
     comoJogar::IO String
     comoJogar = do
         op <- getLine
-        if (op == "c" || op == "v") then
+        if (elem op ["c","v"]) then
             return op
         else do
             putStrLn "Opcao incorreta!\nPor favor tecle (c) para começar o jogo ou (v) para voltar: "
@@ -103,7 +103,7 @@ module Main where
         op <- getLine
         if contem op (if rodada == 1 then "ab" else "abcd") then return op
         else do
-            putStrLn ("Alternativa incorreta!\nPor favor tecle: " ++ (if rodada == 1 then "a ou b." else "a, b, c ou d."))
+            putStrLn ("Alternativa incorreta!\nPor favor tecle: " ++ (if rodada == 1 then "(a ou b)." else "(a, b, c ou d)."))
             op <- getResposta rodada
             return op
                 
@@ -199,7 +199,7 @@ module Main where
     verificaSaida = do
         putStrLn "Tecle (c) jogar novamente ou (s) para sair: "
         op <- getLine
-        if(op == "c" || op == "s") then 
+        if(elem op ["c","s"]) then 
             return op
         else do
             putStrLn "\nIncorreto!"
@@ -219,7 +219,7 @@ module Main where
     getMultiplicador::Int -> IO String
     getMultiplicador rodada = do
         mult <- getLine
-        if ((rodada == 2 && (mult == "1x" || mult == "2x")) || (rodada == 3 && (mult == "1x" || mult == "2x" || mult == "3x"))) then return mult
+        if ((rodada == 2 && (elem mult ["1x","2x"])) || (rodada == 3 && (elem mult ["1x","2x","3x"]))) then return mult
         else do
             putStrLn ((if rodada == 2 then "Digite um valor de acordo com as opções dadas(1x e 2x): " else "Digite um valor de acordo com as opções dadas(1x, 2x ou 3x): "))
             mult <- getMultiplicador rodada
