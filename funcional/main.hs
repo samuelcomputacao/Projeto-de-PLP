@@ -81,8 +81,8 @@ module Main where
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getResposta 1
-            --valor <- gerarValorRodada1 g
-            --print valor
+            -- valor <- gerarValorRodada1 g
+            -- print valor
             if (verificarRespostaRodada1 id resposta f) then do
                 putStrLn (acertouToString 100 100 (atualizaSalario salario 100 True) 1)
                 rodada1 (atualizaSalario salario 100 True) (quant - 1) (perguntas ++ [id])
@@ -104,6 +104,11 @@ module Main where
     gerarValorRodada1 g = do
         id <- gerarRandon 4
         return (carregarValorMultiplicadorRodada1 id g)
+
+    gerarValorRodada2 :: Either String [PontosRodada2] -> IO Int
+    gerarValorRodada2 g = do
+        id <- gerarRandon 4
+        return (carregarValorMultiplicadorRodada2 id g)
 
     getResposta::Int -> IO String
     getResposta rodada = do
@@ -133,14 +138,16 @@ module Main where
             e <- retornaEitherPerguntasRodada2
             d <- retornaEitherAlternativasRodada2
             f <- retornaEitherRespostasRodada2
+            g <- retornaEitherPontosRodada2
 
             putStrLn (carregarAlternativasRodada2 id d)
 
             -- Lógica de escolher o multiplicador.
- 
+            
             putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x ou 2x): "
             multiplicador <- getMultiplicador 2
-
+            -- valor <- gerarValorRodada2 g
+            -- print valor
             geraPerguntaRodada2 id e
             resposta <- getResposta 2
             let premioPergunta =  gerarValorPremio (parseMultiplicador multiplicador) 100

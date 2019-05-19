@@ -10,6 +10,7 @@ module FileService(
    verificarRespostaRodada2,
    verificarRespostaRodada3,
    carregarValorMultiplicadorRodada1,
+   carregarValorMultiplicadorRodada2,
    buscaValorPremio,
    retornaEitherAlternativasRodada1,
    retornaEitherPerguntasRodada1,
@@ -420,6 +421,9 @@ module FileService(
 
       carregarValorMultiplicadorRodada1 :: Int -> Either String [Pontos] -> Int
       carregarValorMultiplicadorRodada1 id g = getMultiplicadorRodada1 (getPontuacaoPorId (lerJSON g) id)
+
+      carregarValorMultiplicadorRodada2 :: Int -> Either String [PontosRodada2] -> Int
+      carregarValorMultiplicadorRodada2 id g = getMultiplicadorRodada2 (getPontuacaoPorId (lerJSON g) id)
 
       buscaValorPremio:: Int -> Int -> Int
       buscaValorPremio rodada id = 0
