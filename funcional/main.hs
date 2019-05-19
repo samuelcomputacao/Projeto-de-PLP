@@ -77,9 +77,12 @@ module Main where
             e <- retornaEitherPerguntasRodada1
             d <- retornaEitherAlternativasRodada1
             f <- retornaEitherRespostasRodada1
+            g <- retornaEitherPontosRodada1
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getResposta 1
+            --valor <- gerarValorRodada1 g
+            --print valor
             if (verificarRespostaRodada1 id resposta f) then do
                 putStrLn (acertouToString 100 100 (atualizaSalario salario 100 True) 1)
                 rodada1 (atualizaSalario salario 100 True) (quant - 1) (perguntas ++ [id])
@@ -95,8 +98,12 @@ module Main where
             id <- gerarId perguntas maximo
             return id
         else return id
-
-
+    
+    -- Carrega um valor do arquivo para ser usado com o multiplicador
+    gerarValorRodada1 :: Either String [Pontos] -> IO Int
+    gerarValorRodada1 g = do
+        id <- gerarRandon 4
+        return (carregarValorMultiplicadorRodada1 id g)
 
     getResposta::Int -> IO String
     getResposta rodada = do

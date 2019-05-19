@@ -9,6 +9,7 @@ module FileService(
    verificarRespostaRodada1,
    verificarRespostaRodada2,
    verificarRespostaRodada3,
+   carregarValorMultiplicadorRodada1,
    buscaValorPremio,
    retornaEitherAlternativasRodada1,
    retornaEitherPerguntasRodada1,
@@ -399,6 +400,26 @@ module FileService(
          let resposta = answerFormattedRodada3 (getQuestionRodada3 (lerJSON f) id)
          if (resposta == respostaJogador) then True
          else False
+
+      getPontuacaoPorId :: [t] -> Int -> t
+      getPontuacaoPorId [a,b,c,d,e] id
+         | id == 0 = a
+         | id == 1 = b
+         | id == 2 = c
+         | id == 3 = d
+         | id == 4 = e 
+         
+      getMultiplicadorRodada1 :: Pontos -> Int
+      getMultiplicadorRodada1 alt = multiplicador alt
+
+      getMultiplicadorRodada2 :: PontosRodada2 -> Int
+      getMultiplicadorRodada2 alt = multiplicador_r2 alt
+
+      getMultiplicadorRodada3 :: PontosRodada3 -> Int
+      getMultiplicadorRodada3 alt = multiplicador_r3 alt
+
+      carregarValorMultiplicadorRodada1 :: Int -> Either String [Pontos] -> Int
+      carregarValorMultiplicadorRodada1 id g = getMultiplicadorRodada1 (getPontuacaoPorId (lerJSON g) id)
 
       buscaValorPremio:: Int -> Int -> Int
       buscaValorPremio rodada id = 0
