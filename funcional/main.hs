@@ -74,7 +74,6 @@ module Main where
             resposta <- getResposta 1
 
             valor <- gerarValorRodada1 g
-            print valor
 
             if (verificarRespostaRodada1 id resposta f) then do
                 putStrLn (acertouToString valor 1 (atualizaSalario salario valor True) 1)
@@ -106,7 +105,6 @@ module Main where
             multiplicador <- getMultiplicador 2
 
             valor <- gerarValorRodada2 g
-            print valor
 
             geraPerguntaRodada2 id e
             resposta <- getResposta 2
@@ -141,7 +139,6 @@ module Main where
             multiplicador <- getMultiplicador 3
 
             valor <- gerarValorRodada3 g
-            print valor
 
             geraPerguntaRodada3 id e
             resposta <- getResposta 3
