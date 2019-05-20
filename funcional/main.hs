@@ -116,7 +116,7 @@ module Main where
                  putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True) 2)
                  rodada2 (atualizaSalario salario premioPergunta True) (quant - 1) (perguntas ++ [id])
             else do
-                 putStrLn (errouToString 100 premioPergunta (atualizaSalario salario premioPergunta False) 2)
+                 putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 2)
                  rodada2 (atualizaSalario salario premioPergunta False) (quant - 1) (perguntas ++ [id])
 
     rodada3::Int -> Int -> [Int] -> IO()
