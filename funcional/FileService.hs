@@ -9,10 +9,9 @@ module FileService(
    verificarRespostaRodada1,
    verificarRespostaRodada2,
    verificarRespostaRodada3,
-   carregarValorMultiplicadorRodada1,
-   carregarValorMultiplicadorRodada2,
-   carregarValorMultiplicadorRodada3,
-   buscaValorPremio,
+   buscaValorPremioRodada1,
+   buscaValorPremioRodada2,
+   buscaValorPremioRodada3,
    retornaEitherAlternativasRodada1,
    retornaEitherPerguntasRodada1,
    retornaEitherRespostasRodada1,
@@ -420,18 +419,14 @@ module FileService(
       getMultiplicadorRodada3 :: PontosRodada3 -> Int
       getMultiplicadorRodada3 alt = multiplicador_r3 alt
 
-      carregarValorMultiplicadorRodada1 :: Int -> Either String [Pontos] -> Int
-      carregarValorMultiplicadorRodada1 id g = getMultiplicadorRodada1 (getPontuacaoPorId (lerJSON g) id)
+      buscaValorPremioRodada1 :: Int -> Either String [Pontos] -> Int
+      buscaValorPremioRodada1 id g = getMultiplicadorRodada1 (getPontuacaoPorId (lerJSON g) id)
 
-      carregarValorMultiplicadorRodada2 :: Int -> Either String [PontosRodada2] -> Int
-      carregarValorMultiplicadorRodada2 id g = getMultiplicadorRodada2 (getPontuacaoPorId (lerJSON g) id)
+      buscaValorPremioRodada2 :: Int -> Either String [PontosRodada2] -> Int
+      buscaValorPremioRodada2 id g = getMultiplicadorRodada2 (getPontuacaoPorId (lerJSON g) id)
 
-      carregarValorMultiplicadorRodada3 :: Int -> Either String [PontosRodada3] -> Int
-      carregarValorMultiplicadorRodada3 id g = getMultiplicadorRodada3 (getPontuacaoPorId (lerJSON g) id)
-
-      buscaValorPremio:: Int -> Int -> Int
-      buscaValorPremio rodada id = 0
-
+      buscaValorPremioRodada3 :: Int -> Either String [PontosRodada3] -> Int
+      buscaValorPremioRodada3 id g = getMultiplicadorRodada3 (getPontuacaoPorId (lerJSON g) id)
 
 
     
