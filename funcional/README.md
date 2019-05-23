@@ -12,6 +12,18 @@ $ cabal update
 $ cabal install random
 ~~~
 
+## Instalar a biblioteca Aeson:
+~~~
+$ cabal update
+$ cabal install aeson
+~~~
+
+## Instalar a biblioteca Ansi:
+~~~
+$ cabal update
+$ cabal install ansi-terminal
+~~~
+
 ## E agora é só executar:
 
 ~~~

@@ -5,6 +5,7 @@ module Main where
     import StringService
     import NumberService
     import Control.Concurrent    -- Concorrencia, uso de threads
+    import System.Console.ANSI -- Limpar o console
     
     main::IO()
     main = do
@@ -54,6 +55,7 @@ module Main where
 
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
+        clearScreen
         rodada1 salario 0 []
 
     rodada1::Int -> Int -> [Int] -> IO()
@@ -77,13 +79,16 @@ module Main where
             resposta <- getResposta 1
 
             valor <- gerarValorRodada1 g
+            clearScreen
 
             if (verificarRespostaRodada1 id resposta f) then do
                 putStrLn (acertouToString valor 1 (atualizaSalario salario valor True) 1)
                 rodada1 (atualizaSalario salario valor True) (quant + 1) (perguntas ++ [id]) 
+    
             else do
                 putStrLn (errouToString valor 1 (atualizaSalario salario valor False) 1)
                 rodada1 (atualizaSalario salario valor False) (quant + 1) (perguntas ++ [id])
+                
 
     rodada2::Int -> Int -> [Int] -> IO()
     rodada2 salario quant perguntas = do
@@ -106,19 +111,24 @@ module Main where
            
             putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x ou 2x): "
             multiplicador <- getMultiplicador 2
+            putStrLn " "
 
             valor <- gerarValorRodada2 g
 
             geraPerguntaRodada2 id e
             resposta <- getResposta 2
+            clearScreen
+
             let premioPergunta =  gerarValorPremio (parseMultiplicador multiplicador) valor
             
             if (verificarRespostaRodada2 id resposta f) then do
-                 putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True) 2)
-                 rodada2 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
+                putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True) 2)
+                rodada2 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
+                 
             else do
-                 putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 2)
-                 rodada2 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
+                putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 2)
+                rodada2 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
+                 
 
     rodada3::Int -> Int -> [Int] -> IO()
     rodada3 salario quant perguntas = do
@@ -142,20 +152,23 @@ module Main where
            
             putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): "
             multiplicador <- getMultiplicador 3
+            putStrLn " "
 
             valor <- gerarValorRodada3 g
 
             geraPerguntaRodada3 id e
             resposta <- getResposta 3
+            clearScreen
+
             let premioPergunta =  gerarValorPremio (parseMultiplicador multiplicador) valor
             
-            if (verificarRespostaRodada3 id resposta f) then do
-                 
-                 putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True)3)
-                 rodada3 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
+            if (verificarRespostaRodada3 id resposta f) then do 
+                putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True)3)
+                rodada3 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
             else do
-                 putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 3)
-                 rodada3 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
+                putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 3)
+                rodada3 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
+                 
 
     
     geraPerguntaRodada1 :: Int -> Either String [Pergunta] -> IO()
