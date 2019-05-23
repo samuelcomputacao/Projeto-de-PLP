@@ -13,7 +13,7 @@
     { "id_r2": 11, "alternativas_r2": ["Júlio César", "Calígula", "Nero", "Marco Antônio"] },
     { "id_r2": 12, "alternativas_r2": ["Slade Wilson", "Bruce Wayne", "Wade Wilson", "Matthew Murdock"] },
     { "id_r2": 13, "alternativas_r2": ["Baseball", "Basquete", "Futebol Americano", "Golf"] },
-    { "id_r2": 14, "alternativas_r2": ["Ato Internacional", "Ato Institucional", "Ato Inspirador", "Ato id_r2ealizador"] },
+    { "id_r2": 14, "alternativas_r2": ["Ato Internacional", "Ato Institucional", "Ato Inspirador", "Ato Realizador"] },
     { "id_r2": 15, "alternativas_r2": ["Tóquio", "Nagasaki", "Osaka", "Hiroshima"] },
     { "id_r2": 16, "alternativas_r2": ["D. Pedro II", "D. Pedro I", "D. João VI", "Deodoro da Fonseca"] }
 ]

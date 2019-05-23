@@ -26,6 +26,7 @@ module Main where
             if op == "c" then 
                 iniciaJogo 0 
             else do
+                putStrLn logoJogo
                 putStrLn gerarMenuInicial
                 verificaOpcao 
         else
@@ -53,22 +54,24 @@ module Main where
 
     iniciaJogo::Int -> IO()
     iniciaJogo salario = do
-        rodada1 salario 3 []
+        rodada1 salario 0 []
 
     rodada1::Int -> Int -> [Int] -> IO()
     rodada1 salario quant perguntas = do
-        if (quant == 3) then do
+        if (quant == 0) then do
             putStrLn "\n========================================================"
             putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
         
-        if (quant == 0) then rodada2 salario 3 []
+        if (quant == 3) then rodada2 salario 0 []
         else do
             id <- gerarId perguntas 12
             e <- retornaEitherPerguntasRodada1
             d <- retornaEitherAlternativasRodada1
             f <- retornaEitherRespostasRodada1
             g <- retornaEitherPontosRodada1
+
+            putStrLn(contaPerguntaToString quant)
             geraPerguntaRodada1 id e
             putStrLn (carregarAlternativasRodada1 id d)
             resposta <- getResposta 1
@@ -77,19 +80,19 @@ module Main where
 
             if (verificarRespostaRodada1 id resposta f) then do
                 putStrLn (acertouToString valor 1 (atualizaSalario salario valor True) 1)
-                rodada1 (atualizaSalario salario valor True) (quant - 1) (perguntas ++ [id])
+                rodada1 (atualizaSalario salario valor True) (quant + 1) (perguntas ++ [id]) 
             else do
                 putStrLn (errouToString valor 1 (atualizaSalario salario valor False) 1)
-                rodada1 (atualizaSalario salario valor False) (quant - 1) (perguntas ++ [id])
+                rodada1 (atualizaSalario salario valor False) (quant + 1) (perguntas ++ [id])
 
     rodada2::Int -> Int -> [Int] -> IO()
     rodada2 salario quant perguntas = do
-        if (quant == 3) then do
+        if (quant == 0) then do
             putStrLn "\n========================================================"
             putStrLn "\nA segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
 
-        if (quant == 0) then rodada3 salario 3 []
+        if (quant == 3) then rodada3 salario 0 []
         else do
             id <- gerarId perguntas 16
             e <- retornaEitherPerguntasRodada2
@@ -97,10 +100,10 @@ module Main where
             f <- retornaEitherRespostasRodada2
             g <- retornaEitherPontosRodada2
 
+            putStrLn(contaPerguntaToString quant)
             putStrLn (carregarAlternativasRodada2 id d)
 
-            -- Lógica de escolher o multiplicador.
-            
+           
             putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x ou 2x): "
             multiplicador <- getMultiplicador 2
 
@@ -112,19 +115,19 @@ module Main where
             
             if (verificarRespostaRodada2 id resposta f) then do
                  putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True) 2)
-                 rodada2 (atualizaSalario salario premioPergunta True) (quant - 1) (perguntas ++ [id])
+                 rodada2 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
             else do
                  putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 2)
-                 rodada2 (atualizaSalario salario premioPergunta False) (quant - 1) (perguntas ++ [id])
+                 rodada2 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
 
     rodada3::Int -> Int -> [Int] -> IO()
     rodada3 salario quant perguntas = do
-        if (quant == 3) then do
+        if (quant == 0) then do
             putStrLn "\n========================================================"
             putStrLn "\nA terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
         
-        if (quant == 0) then fimJogo salario
+        if (quant == 3) then fimJogo salario
         else do
             id <- gerarId perguntas 20
             e <- retornaEitherPerguntasRodada3
@@ -132,9 +135,11 @@ module Main where
             f <- retornaEitherRespostasRodada3
             g <- retornaEitherPontosRodada3
 
+            putStrLn(contaPerguntaToString quant)
+
             putStrLn (carregarAlternativasRodada3 id d)
 
-            -- Lógica de escolher o multiplicador.
+           
             putStrLn "\nEscolha um multiplicador para a sua premiação (entre 1x, 2x ou 3x): "
             multiplicador <- getMultiplicador 3
 
@@ -147,10 +152,10 @@ module Main where
             if (verificarRespostaRodada3 id resposta f) then do
                  
                  putStrLn (acertouToString valor premioPergunta (atualizaSalario salario premioPergunta True)3)
-                 rodada3 (atualizaSalario salario premioPergunta True) (quant - 1) (perguntas ++ [id])
+                 rodada3 (atualizaSalario salario premioPergunta True) (quant + 1) (perguntas ++ [id])
             else do
                  putStrLn (errouToString valor premioPergunta (atualizaSalario salario premioPergunta False) 3)
-                 rodada3 (atualizaSalario salario premioPergunta False) (quant - 1) (perguntas ++ [id])
+                 rodada3 (atualizaSalario salario premioPergunta False) (quant + 1) (perguntas ++ [id])
 
     
     geraPerguntaRodada1 :: Int -> Either String [Pergunta] -> IO()

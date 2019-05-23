@@ -65,4 +65,4 @@ module StringService(
 
 
     contaPerguntaToString:: Int -> String
-    contaPerguntaToString numero = ""
+    contaPerguntaToString numero = "Pergunta " ++ show (numero + 1) ++ "\n"
