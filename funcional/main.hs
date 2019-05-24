@@ -18,7 +18,7 @@ module Main where
         op <- getOpcao
         let num = read op :: Int
         if num == 1 then do
-            putStrLn "\nO jogo vai iniciar, serão um total de 3 rodadas, boa sorte!\n"
+            
             iniciaJogo 0
             
         else if num == 2 then do
@@ -61,6 +61,7 @@ module Main where
     rodada1::Int -> Int -> [Int] -> IO()
     rodada1 salario quant perguntas = do
         if (quant == 0) then do
+            putStrLn "\nO jogo vai iniciar, serão um total de 3 rodadas, boa sorte!\n"
             putStrLn "\n========================================================"
             putStrLn "\nA primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!\n"
         else do putStr ""
@@ -251,7 +252,6 @@ module Main where
     sairOuJogarNovamente = do
         op <- verificaSaida
         if(op == "c") then do
-            putStrLn(logoJogo)
             iniciaJogo 0
         else do
             putStrLn "\nAté a próxima!\n"
