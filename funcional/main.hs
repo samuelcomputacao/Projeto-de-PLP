@@ -17,10 +17,8 @@ module Main where
     verificaOpcao  = do
         op <- getOpcao
         let num = read op :: Int
-        if num == 1 then do
-            
+        if num == 1 then 
             iniciaJogo 0
-            
         else if num == 2 then do
             putStrLn tutorial
             op <- comoJogar
