@@ -207,11 +207,17 @@ module Main where
     getResposta::Int -> IO String
     getResposta rodada = do
         op <- getLine
-        if contem op (if rodada == 1 then "ab" else "abcd") then return op
-        else do
+        if op == "" then do
             putStrLn ("Alternativa incorreta!\nPor favor tecle: " ++ (if rodada == 1 then "(a ou b)." else "(a, b, c ou d)."))
             op <- getResposta rodada
             return op
+
+        else do
+            if contem op (if rodada == 1 then "ab" else "abcd") then return op
+            else do
+                putStrLn ("Alternativa incorreta!\nPor favor tecle: " ++ (if rodada == 1 then "(a ou b)." else "(a, b, c ou d)."))
+                op <- getResposta rodada
+                return op
 
     getMultiplicador::Int -> IO String
     getMultiplicador rodada = do
