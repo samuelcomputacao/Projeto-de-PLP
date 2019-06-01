@@ -49,3 +49,5 @@ opcaoTutorial(v) :- init().
 opcaoTutorial(c) :- rodada(1,0).
 
 rodada(X,Saldo) :- X =:= 1,write("Inicioou rodada 1 "),write("Saldo: "),write(Saldo),nl,halt(0).
+
+gerarId(X,R) :- random(0, X, R).
