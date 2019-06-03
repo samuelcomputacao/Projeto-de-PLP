@@ -4,6 +4,8 @@ main:- init().
 
 init() :-
     menu(Opcao),
+    getMultiplicador(2,Y),
+    write("Multiplicador "),write(Y),nl,
     opcaoMenu(Opcao),
     halt(0).
 
@@ -50,4 +52,26 @@ opcaoTutorial(c) :- rodada(1,0).
 
 rodada(X,Saldo) :- X =:= 1,write("Inicioou rodada 1 "),write("Saldo: "),write(Saldo),nl,halt(0).
 
-gerarId(X,R) :- random(0, X, R).
+gerarId(Maximo,Retorno) :- random(0, Maximo, Retorno).
+
+getMultiplicador(Rodada,Retorno) :-
+Rodada =:= 3, lerMultiplicador("Escolha um multiplicador 1, 2 ou 3: ",Retorno,Rodada);
+Rodada =:= 2, lerMultiplicador("Escolha um multiplicador 1 ou 2: ",Retorno,Rodada).
+
+lerMultiplicador(Mensagem,Retorno,Rodada) :- 
+repeat,
+write(Mensagem),nl,
+read_line_to_codes(user_input, X3),
+string_to_atom(X3,X2),
+atom_number(X2,X4),
+avaliaMultiplicador(Rodada,X4, Retorno).
+
+
+avaliaMultiplicador(Rodada,Valor,Retorno) :- 
+Valor =:= 1, Rodada =:= 2,Retorno is Valor;
+Valor =:= 2, Rodada =:= 2,Retorno is Valor;
+Valor =:= 1, Rodada =:= 3,Retorno is Valor;
+Valor =:= 2, Rodada =:= 3,Retorno is Valor;
+Valor =:= 3, Rodada =:= 3,Retorno is Valor.
+
+
