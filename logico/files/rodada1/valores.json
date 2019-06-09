@@ -1,7 +1,7 @@
 [
-    { "id3": 0, "multiplicador": 1 },
-    { "id3": 1, "multiplicador": 10 },
-    { "id3": 2, "multiplicador": 1000 },
-    { "id3": 3, "multiplicador": 3000 },
-    { "id3": 4, "multiplicador": 5000 }
+    { "id": 0, "valor": 1 },
+    { "id": 1, "valor": 10 },
+    { "id": 2, "valor": 1000 },
+    { "id": 3, "valor": 3000 },
+    { "id": 4, "valor": 5000 }
 ]
