@@ -1,6 +1,8 @@
-:- use_module(library(http/json)), initialization(main).
+:- [filesServices].
+:- initialization principal.
 
-main:-
-    open("./files/rodada1/alternativas.json", read, Teste),
-    json_read_dict(Teste, JsonLido),
-    percorrer(JsonLido).
+
+principal:- 
+    lerAlternativas(T, 1), percorrer(T).
+
+percorrer([X|L]) :- write(X.alternativas).
