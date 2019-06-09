@@ -1,0 +1,15 @@
+[
+    { "id1": 0, "pergunta": "Qual dessas linguagens de programação é interpretada? "},
+    { "id1": 1, "pergunta": "Qual dessas linguagens de programação é compilada? " },
+    { "id1": 2, "pergunta": "Qual dessas linguagens de programação tem paradigma funcional? " },
+    { "id1": 3, "pergunta": "Qual dessas linguagens de programação tem paradigma lógico? " },
+    { "id1": 4, "pergunta": "Qual dessas linguagens de programação não da suporte para orientação a objetos? " },
+    { "id1": 5, "pergunta": "É uma linguagem de programação contruída para eficiência em calculos matemáticos: " },
+    { "id1": 6, "pergunta": "Quais das características apresentadas são indispensaveis em uma linguagem de programação? " },
+    { "id1": 7, "pergunta": "Qual das linguagens não é de programação? " },
+    { "id1": 8, "pergunta": "Qual das linguagens abaixo é fortemente tipada? " },
+    { "id1": 9, "pergunta": "Ano da independência do Brasil? " },
+    { "id1": 10, "pergunta": "Quantos estados o Brasil possui? " },
+    { "id1": 11, "pergunta": "Qual das opções abaixo não é uma linguagem de programação? " },
+    { "id1": 12, "pergunta": "Qual das linguagens não pode ser utilizada POO? " }
+]
