@@ -1,9 +1,0 @@
-{ "name":"Demo term",
-    "created": {
-      "day":null,
-      "month":"December",
-      "year":2007
-    },
-    "confirmed":true,
-    "members":[1,2,3]
-  }
