@@ -60,13 +60,28 @@ rodada(1, Saldo, Quantidade) :-
         Quantidade =:= 3 -> rodada(2, Saldo, 0);
         nl
     ),
+    lervalor(V, 1),
+    procurarValor(V, 2, Valor),
 
     gerarId(12, ID),
     lerPerguntas(P, 1),
     procurarPergunta(P, ID, ""),
+    nl,
+
+    lerAlternativas(A, 1),
+    imprimeAlternativas(A, ID),
+
+    read_line_to_string(user_input, OpUsuario),
+    S is Saldo,
+    lerResposta(R, 1),
+    (verificarResposta(R, ID, "", OpUsuario) -> (
+        write("Você acertou!"),
+        S is Saldo * Valor
+    );
+    write("Você errou!")),
 
     Q is Quantidade + 1,
-    rodada(1, Saldo, Q).
+    rodada(1, S, Q).
 
 rodada(2, Saldo, Quantidade) :- 
     (
@@ -74,14 +89,29 @@ rodada(2, Saldo, Quantidade) :-
             nl,
             writeln("O jogo vai iniciar, serão um total de 3 rodadas, boa sorte!"),nl,
             writeln("========================================================"),nl,
-            writeln("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
+            writeln("A segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
         Quantidade =:= 3 -> rodada(3, Saldo, 0);
         nl
     ),
+    lervalor(V, 1),
+    procurarValor(V, 2, Valor),
 
     gerarId(16, ID),
     lerPerguntas(P, 2),
     procurarPergunta(P, ID, ""),
+    nl,
+
+    lerAlternativas(A, 2),
+    imprimeAlternativas(A, ID),
+
+    read_line_to_string(user_input, OpUsuario),
+    S is Saldo,
+    lerResposta(R, 2),
+    (verificarResposta(R, ID, "", OpUsuario) -> (
+        write("Você acertou!"),
+        S is Saldo * Valor
+    );
+    write("Você errou!")),
 
     Q is Quantidade + 1,
     rodada(2, Saldo, Q).
@@ -92,14 +122,29 @@ rodada(3, Saldo, Quantidade) :-
             nl,
             writeln("O jogo vai iniciar, serão um total de 3 rodadas, boa sorte!"),nl,
             writeln("========================================================"),nl,
-            writeln("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
-        Quantidade =:= 3 -> halt(0);
+            writeln("A terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
+        Quantidade =:= 3 -> write(Saldo), halt(0);
         nl
     ),
+    lervalor(V, 1),
+    procurarValor(V, 2, Valor),
 
     gerarId(20, ID),
     lerPerguntas(P, 3),
     procurarPergunta(P, ID, ""),
+    nl,
+
+    lerAlternativas(A, 3),
+    imprimeAlternativas(A, ID),
+
+    read_line_to_string(user_input, OpUsuario),
+    S is Saldo,
+    lerResposta(R, 3),
+    (verificarResposta(R, ID, "", OpUsuario) -> (
+        write("Você acertou!"),
+        S is Saldo * Valor
+    );
+    write("Você errou!")),
 
     Q is Quantidade + 1,
     rodada(3, Saldo, Q).
