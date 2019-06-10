@@ -1,17 +1,13 @@
 :- [filesServices].
 :- [stringServices].
-:- initialization teste.
 
 principal:- 
-    lervalor(T, 1),
-    percorrer(T),
-    lervalor(A, 2),
-    percorrer(A),
-    lervalor(B, 3),
-    percorrer(B).
+    lerAlternativas(A, 1),
+    imprimeAlternativas(A, 8).
 
 teste :- 
-    lerPerguntas(T, 1),
-    procurarPergunta(T, 0, "").
+    lerResposta(R, 1),
+    verificarResposta(R, 1, Res, "a"),
+    write("Acertou").
 
-percorrer([X|L]) :- writeln(X.valor).
+percorrer([X|L]) :- write(X).
