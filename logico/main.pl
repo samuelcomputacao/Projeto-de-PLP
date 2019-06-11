@@ -40,7 +40,8 @@ rodada(1, Saldo, Quantidade) :-
         nl
     ),
     lervalor(V, 1),
-    procurarValor(V, 2, Valor),
+    gerarId(5, IDVALOR),
+    procurarValor(V, IDVALOR, Valor),
 
     gerarId(12, ID),
     lerPerguntas(P, 1),
@@ -48,7 +49,7 @@ rodada(1, Saldo, Quantidade) :-
     nl,
 
     lerAlternativas(A, 1),
-    imprimeAlternativas(A, ID),
+    imprimeAlternativas(A, ID, ["A", "B"]),
 
     read_line_to_string(user_input, OpUsuario),
     lerResposta(R, 1),
@@ -72,12 +73,13 @@ rodada(2, Saldo, Quantidade) :-
         Quantidade =:= 3 -> rodada(3, Saldo, 0);
         nl
     ),
-    lervalor(V, 1),
-    procurarValor(V, 2, Valor),
+    lervalor(V, 2),
+    gerarId(5, IDVALOR),
+    procurarValor(V, IDVALOR, Valor),
 
     gerarId(16, ID), 
     lerAlternativas(A, 2),
-    imprimeAlternativas(A, ID),
+    imprimeAlternativas(A, ID, ["A", "B", "C", "D"]),
     lerPerguntas(P, 2),
 
     nl,
@@ -104,12 +106,13 @@ rodada(3, Saldo, Quantidade) :-
         Quantidade =:= 3 -> nl,write("Fim de Jogo!"),nl,write("Seu Saldo final é de: "),write(Saldo),nl, halt(0);
         nl
     ),
-    lervalor(V, 1),
-    procurarValor(V, 2, Valor),
+    lervalor(V, 3),
+    gerarId(5, IDVALOR),
+    procurarValor(V, IDVALOR, Valor),
 
     gerarId(20, ID),
     lerAlternativas(A, 3),
-    imprimeAlternativas(A, ID),
+    imprimeAlternativas(A, ID, ["A", "B", "C", "D"]),
     lerPerguntas(P, 3),
    
     nl,
@@ -129,7 +132,6 @@ rodada(3, Saldo, Quantidade) :-
     rodada(3, S, Q).
 
 gerarId(Maximo, Retorno) :- random(0, Maximo, Retorno).
-
 
 getMultiplicador(Rodada,Out) :-
     Rodada =:= 3, lerMultiplicador("Escolha um multiplicador 1x, 2x ou 3x: ",Rodada,Out);

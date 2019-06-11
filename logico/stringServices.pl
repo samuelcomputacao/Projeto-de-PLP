@@ -7,14 +7,14 @@ procurarPergunta([X|L], ID, Retorno) :-
     procurarPergunta(L, Id, Retorno).
 
 
-imprimeAlternativas([A|B], ID) :-
-    ID =:= 0 -> imprime(A.alternativas);
+imprimeAlternativas([A|B], ID, ALT) :-
+    ID =:= 0 -> imprime(A.alternativas, ALT);
     Id is ID - 1,
-    imprimeAlternativas(B, Id).
+    imprimeAlternativas(B, Id, ALT).
 
-imprime([A|B]):-
-    length(B, 0) -> writeln(A);
-    writeln(A), imprime(B).
+imprime([A|B], [Y|C]):-
+    length(B, 0) -> write(Y), write(" - "), writeln(A);
+    write(Y), write(" - "), writeln(A), imprime(B, C).
 
 
 verificarResposta(-1, Resposta, ResUsuario) :- 
