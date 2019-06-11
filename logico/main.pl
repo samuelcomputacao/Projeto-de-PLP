@@ -49,7 +49,7 @@ rodada(1, Saldo, Quantidade) :-
     nl,
 
     lerAlternativas(A, 1),
-    imprimeAlternativas(A, ID, ["A", "B"]),
+    imprimeAlternativas(A, ID, ["a)", "b)"]),
 
     read_line_to_string(user_input, OpUsuario),
     lerResposta(R, 1),
@@ -79,7 +79,7 @@ rodada(2, Saldo, Quantidade) :-
 
     gerarId(16, ID), 
     lerAlternativas(A, 2),
-    imprimeAlternativas(A, ID, ["A", "B", "C", "D"]),
+    imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 2),
 
     nl,
@@ -112,7 +112,7 @@ rodada(3, Saldo, Quantidade) :-
 
     gerarId(20, ID),
     lerAlternativas(A, 3),
-    imprimeAlternativas(A, ID, ["A", "B", "C", "D"]),
+    imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 3),
    
     nl,

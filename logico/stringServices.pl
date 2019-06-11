@@ -13,8 +13,8 @@ imprimeAlternativas([A|B], ID, ALT) :-
     imprimeAlternativas(B, Id, ALT).
 
 imprime([A|B], [Y|C]):-
-    length(B, 0) -> write(Y), write(" - "), writeln(A);
-    write(Y), write(" - "), writeln(A), imprime(B, C).
+    length(B, 0) -> write(Y), write(" "), writeln(A);
+    write(Y), write(" "), writeln(A), imprime(B, C).
 
 
 verificarResposta(-1, Resposta, ResUsuario) :- 
