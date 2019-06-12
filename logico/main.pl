@@ -1,5 +1,7 @@
 :- [filesServices].
 :- [stringServices].
+:- style_check(-singleton).
+:- discontiguous rodada/3.
 
 :- initialization main.
 
@@ -43,12 +45,12 @@ rodada(1, Saldo, Quantidade) :-
     gerarId(5, IDVALOR),
     procurarValor(V, IDVALOR, Valor),
 
-    gerarId(12, ID),
+    gerarId(12, ID),contaPerguntaToString(Quantidade),nl,
     lerPerguntas(P, 1),
     procurarPergunta(P, ID, ""),
     nl,
 
-    lerAlternativas(A, 1),
+    lerAlternativas(A, 1),nl,
     imprimeAlternativas(A, ID, ["a)", "b)"]),
 
     read_line_to_string(user_input, OpUsuario),
@@ -78,7 +80,7 @@ rodada(2, Saldo, Quantidade) :-
     procurarValor(V, IDVALOR, Valor),
 
     gerarId(16, ID), 
-    lerAlternativas(A, 2),
+    lerAlternativas(A, 2),contaPerguntaToString(Quantidade),nl,
     imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 2),
 
@@ -93,7 +95,7 @@ rodada(2, Saldo, Quantidade) :-
     ValorRodada is Valor * Multiplicador,
     (verificarResposta(R, ID, "", OpUsuario) -> (
     S is Saldo + ValorRodada,acertouToString(Valor,ValorRodada,S,2));
-    verificaSaldo(Saldo,Valor,S),errouToString(Valor,ValorRodada,S,2)),
+    verificaSaldo(Saldo,ValorRodada,S),errouToString(Valor,ValorRodada,S,2)),
 
     Q is Quantidade + 1,
     rodada(2, S, Q).
@@ -111,7 +113,7 @@ rodada(3, Saldo, Quantidade) :-
     procurarValor(V, IDVALOR, Valor),
 
     gerarId(20, ID),
-    lerAlternativas(A, 3),
+    lerAlternativas(A, 3),contaPerguntaToString(Quantidade),nl,
     imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 3),
    

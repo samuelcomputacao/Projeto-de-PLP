@@ -1,4 +1,5 @@
-
+:- dynamic opcaoTutorial/1, getOpcaoMenu/1.
+:- style_check(-singleton).
 
 procurarPergunta(-1, Retorno) :- write(Retorno).
 procurarPergunta([X|L], ID, Retorno) :- 
@@ -64,3 +65,5 @@ write("O sistema sorteou para essa pergunta, a premiação de: "),write(ValorPer
 nl,write("Seu saldo é de: "),write(Saldo),nl.
 
 multiplicadorToString(PremioRodada,Rodada,Status):- Rodada =\= 1,nl,write("Por causa do seu multiplicador, você "),write(Status),write(": "),write(PremioRodada),nl; write("").
+
+contaPerguntaToString(Numero) :- write("Pergunta "),N1 is Numero + 1,write(N1),nl.
