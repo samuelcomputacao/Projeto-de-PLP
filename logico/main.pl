@@ -108,7 +108,12 @@ rodada(3, Saldo, Quantidade) :-
         Quantidade =:= 0 -> (
             nl,writeln("========================================================"),
             nl,  writeln("A terceira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
-        Quantidade =:= 3 -> nl,write("Fim de Jogo!"),nl,write("Seu Saldo final é de: "),write(Saldo),nl, halt(0);
+        Quantidade =:= 3 -> nl,write("Fim de Jogo!"),nl,write("Seu Saldo final é de: "),write(Saldo),nl,
+        write("Tecle (c) para jogar novamente ou (s) para sair: "),nl,
+        read_line_to_string(user_input, OpUsuario),
+        verificaJogarNovamente(OpUsuario),
+        
+        halt(0);
         nl
     ),
     lervalor(V, 3),
@@ -171,3 +176,13 @@ avaliaAlternativa(Rodada, Alternativa):-
     (Rodada =:= 2 ; Rodada =:= 3),Alternativa == "d";
     Rodada =:= 1, readAlternative("Digite uma alternativa correta por favor (a ou b): ", Rodada);
     (Rodada =:= 2 ; Rodada =:= 3), readAlternative("Digite uma alternativa correta por favor (a, b, c ou d): ", Rodada).
+
+readPlayAgain(Msg):-
+    write(Msg), nl,
+    read_line_to_string(user_input, Opcao),
+    verificaJogarNovamente(Opcao).
+
+verificaJogarNovamente(Opcao):-
+    Opcao == "c", rodada(1,0,0);
+    Opcao == "s";
+    readPlayAgain("Incorreto!\nPor favor tecle (c) jogar novamente ou (s) para sair: ").
