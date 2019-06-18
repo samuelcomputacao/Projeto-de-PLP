@@ -54,6 +54,7 @@ rodada(1, Saldo, Quantidade) :-
     imprimeAlternativas(A, ID, ["a)", "b)"]),
 
     read_line_to_string(user_input, OpUsuario),
+    avaliaAlternativa(1, OpUsuario),
     lerResposta(R, 1),
     (verificarResposta(R, ID, "", OpUsuario) -> (
         
@@ -90,6 +91,8 @@ rodada(2, Saldo, Quantidade) :-
     procurarPergunta(P, ID, ""),nl,
 
     read_line_to_string(user_input, OpUsuario),
+    
+    avaliaAlternativa(2, OpUsuario),
 
     lerResposta(R, 2),
     ValorRodada is Valor * Multiplicador,
@@ -121,6 +124,8 @@ rodada(3, Saldo, Quantidade) :-
     getMultiplicador(3,Multiplicador),
     procurarPergunta(P, ID, ""),nl,
     read_line_to_string(user_input, OpUsuario),
+
+    avaliaAlternativa(3, OpUsuario),
     
     lerResposta(R, 3), 
     ValorRodada is Valor * Multiplicador,
@@ -151,3 +156,18 @@ avaliaMultiplicador(Rodada,Multi,Out):-
     Multi == "3x", Rodada =:= 3,Out is 3;
     Rodada =:= 2 ,lerMultiplicador("Digite um valor de acordo com as opções dadas(1x e 2x): ",Rodada,Out);
     Rodada =:= 3 ,lerMultiplicador("Digite um valor de acordo com as opções dadas(1x, 2x ou 3x): ",Rodada,Out).
+
+readAlternative(Msg, Rodada):-
+    write(Msg),nl,
+    read_line_to_string(user_input, Alternativa),
+    avaliaAlternativa(Rodada, Alternativa).
+
+avaliaAlternativa(Rodada, Alternativa):-
+    Rodada =:= 1, Alternativa == "a";
+    Rodada =:= 1, Alternativa == "b";
+    (Rodada =:= 2 ; Rodada =:= 3),Alternativa == "a";
+    (Rodada =:= 2 ; Rodada =:= 3),Alternativa == "b";
+    (Rodada =:= 2 ; Rodada =:= 3),Alternativa == "c";
+    (Rodada =:= 2 ; Rodada =:= 3),Alternativa == "d";
+    Rodada =:= 1, readAlternative("Digite uma alternativa correta por favor (a ou b): ", Rodada);
+    (Rodada =:= 2 ; Rodada =:= 3), readAlternative("Digite uma alternativa correta por favor (a, b, c ou d): ", Rodada).
