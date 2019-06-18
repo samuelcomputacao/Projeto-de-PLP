@@ -22,10 +22,11 @@ getOpcaoMenu(Opcao) :-
     write("2) Tutorial"),nl,
     write("3) Sair"),nl,
     lerNumero(Op),
+    validaOpcaoMenu(Op, OpCorreta),
     Saldo is 0 -> (
-        Op =:= 1 -> rodada(1, Saldo, 0);
-        Op =:= 2 -> getOpcaoTutorial();
-        Op =:= 3 -> halt()).
+        OpCorreta =:= 1 -> rodada(1, Saldo, 0);
+        OpCorreta =:= 2 -> getOpcaoTutorial();
+        OpCorreta =:= 3 -> halt()).
 
 
 opcaoTutorial(v) :- init().
@@ -112,7 +113,6 @@ rodada(3, Saldo, Quantidade) :-
         write("Tecle (c) para jogar novamente ou (s) para sair: "),nl,
         read_line_to_string(user_input, OpUsuario),
         verificaJogarNovamente(OpUsuario),
-        
         halt(0);
         nl
     ),
@@ -186,3 +186,15 @@ verificaJogarNovamente(Opcao):-
     Opcao == "c", rodada(1,0,0);
     Opcao == "s";
     readPlayAgain("Incorreto!\nPor favor tecle (c) jogar novamente ou (s) para sair: ").
+
+readOpcaoMenu(Msg, OpcaoCorreta):-
+    write(Msg),nl,
+    lerNumero(Opcao),
+    validaOpcaoMenu(Opcao,OpcaoCorreta).
+
+validaOpcaoMenu(Opcao, OpcaoCorreta):-
+    Opcao =:= 1, OpcaoCorreta is Opcao;
+    Opcao =:= 2, OpcaoCorreta is Opcao;
+    Opcao =:= 3, OpcaoCorreta is Opcao;
+    readOpcaoMenu("Opção incorreta, digite 1, 2 ou 3.", OpcaoCorreta). 
+    

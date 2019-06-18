@@ -11,3 +11,4 @@ teste :-
     write("Acertou").
 
 percorrer([X|L]) :- write(X).
+
