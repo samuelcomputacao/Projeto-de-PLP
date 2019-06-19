@@ -1,7 +1,7 @@
 :- [filesServices].
 :- [stringServices].
 :- style_check(-singleton).
-:- discontiguous rodada/3.
+:- discontiguous rodada/4.
 
 :- initialization main.
 
@@ -24,29 +24,29 @@ getOpcaoMenu(Opcao) :-
     lerNumero(Op),
     validaOpcaoMenu(Op, OpCorreta),
     Saldo is 0 -> (
-        OpCorreta =:= 1 -> rodada(1, Saldo, 0);
+        OpCorreta =:= 1 -> rodada(1, Saldo, 0,[]);
         OpCorreta =:= 2 -> getOpcaoTutorial();
         OpCorreta =:= 3 -> halt()).
 
 
 opcaoTutorial(v) :- init().
-opcaoTutorial(c) :- rodada(1, 0, 0).
+opcaoTutorial(c) :- rodada(1, 0, 0,[]).
 
-rodada(1, Saldo, Quantidade) :-
+rodada(1, Saldo, Quantidade, Lista) :-
     (
         Quantidade =:= 0 -> (
             nl,
             writeln("O jogo vai iniciar, serão um total de 3 rodadas, boa sorte!"),nl,
             writeln("========================================================"),nl,
             writeln("A primeira rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
-        Quantidade =:= 3 -> rodada(2, Saldo, 0);
+        Quantidade =:= 3 -> rodada(2, Saldo, 0,[]);
         nl
     ),
     lervalor(V, 1),
-    gerarId(5, IDVALOR),
+    gerarId(5, IDVALOR,[],[]),
     procurarValor(V, IDVALOR, Valor),
 
-    gerarId(12, ID),contaPerguntaToString(Quantidade),nl,
+    gerarId(12, ID,Lista,NovaLista),contaPerguntaToString(Quantidade),nl,
     lerPerguntas(P, 1),
     procurarPergunta(P, ID, ""),
     nl,
@@ -64,24 +64,24 @@ rodada(1, Saldo, Quantidade) :-
     verificaSaldo(Saldo,Valor,S),errouToString(Valor,Valor,S,1)),
 
     Q is Quantidade + 1,
-    rodada(1, S, Q).
+    rodada(1, S, Q,NovaLista).
 
 verificaSaldo(Saldo,Gap,Saida):- (Saldo - Gap) > 0, Saida is (Saldo - Gap); Saida is 0.
     
 
-rodada(2, Saldo, Quantidade) :- 
+rodada(2, Saldo, Quantidade,Lista) :- 
     (
         Quantidade =:= 0 -> (
             nl,writeln("========================================================"),
             nl, writeln("A segunda rodada vai iniciar, serão um total de 3 perguntas, boa sorte!"),nl);
-        Quantidade =:= 3 -> rodada(3, Saldo, 0);
+        Quantidade =:= 3 -> rodada(3, Saldo, 0,[]);
         nl
     ),
     lervalor(V, 2),
-    gerarId(5, IDVALOR),
+    gerarId(5, IDVALOR,[],[]),
     procurarValor(V, IDVALOR, Valor),
 
-    gerarId(16, ID), 
+    gerarId(16, ID,Lista,NovaLista), 
     lerAlternativas(A, 2),contaPerguntaToString(Quantidade),nl,
     imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 2),
@@ -102,9 +102,9 @@ rodada(2, Saldo, Quantidade) :-
     verificaSaldo(Saldo,ValorRodada,S),errouToString(Valor,ValorRodada,S,2)),
 
     Q is Quantidade + 1,
-    rodada(2, S, Q).
+    rodada(2, S, Q,NovaLista).
 
-rodada(3, Saldo, Quantidade) :- 
+rodada(3, Saldo, Quantidade,Lista) :- 
     (
         Quantidade =:= 0 -> (
             nl,writeln("========================================================"),
@@ -117,10 +117,10 @@ rodada(3, Saldo, Quantidade) :-
         nl
     ),
     lervalor(V, 3),
-    gerarId(5, IDVALOR),
+    gerarId(5, IDVALOR,[],[]),
     procurarValor(V, IDVALOR, Valor),
 
-    gerarId(20, ID),
+    gerarId(20, ID,Lista,NovaLista),
     lerAlternativas(A, 3),contaPerguntaToString(Quantidade),nl,
     imprimeAlternativas(A, ID, ["a)", "b)", "c)", "d)"]),
     lerPerguntas(P, 3),
@@ -141,9 +141,11 @@ rodada(3, Saldo, Quantidade) :-
     verificaSaldo(Saldo,ValorRodada,S),errouToString(Valor,ValorRodada,S,3)),
 
     Q is Quantidade + 1,
-    rodada(3, S, Q).
+    rodada(3, S, Q,NovaLista).
 
-gerarId(Maximo, Retorno) :- random(0, Maximo, Retorno).
+gerarId(Maximo, Retorno,[],[]) :- random(0, Maximo, Retorno).
+gerarId(Maximo, Retorno,Lista,NovaLista) :-random(0, Maximo, Retorno),notContains(Retorno,Lista),add(Retorno,Lista,NovaLista);
+gerarId(Maximo, Retorno,Lista,NovaLista).
 
 getMultiplicador(Rodada,Out) :-
     Rodada =:= 3, lerMultiplicador("Escolha um multiplicador 1x, 2x ou 3x: ",Rodada,Out);
@@ -183,7 +185,7 @@ readPlayAgain(Msg):-
     verificaJogarNovamente(Opcao).
 
 verificaJogarNovamente(Opcao):-
-    Opcao == "c", rodada(1,0,0);
+    Opcao == "c", rodada(1,0,0,[]);
     Opcao == "s";
     readPlayAgain("Incorreto!\nPor favor tecle (c) jogar novamente ou (s) para sair: ").
 
@@ -197,4 +199,9 @@ validaOpcaoMenu(Opcao, OpcaoCorreta):-
     Opcao =:= 2, OpcaoCorreta is Opcao;
     Opcao =:= 3, OpcaoCorreta is Opcao;
     readOpcaoMenu("Opção incorreta, digite 1, 2 ou 3.", OpcaoCorreta). 
-    
+
+notContains(_,[]).
+notContains(X,[H|T]) :- X =\= H , notContains(X,T).
+
+add(X,[],[X]).
+add(X,[H1|T1],[H1|T2]):- add(X,T1,T2).
