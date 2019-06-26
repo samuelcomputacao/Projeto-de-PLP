@@ -43,7 +43,7 @@ rodada(1, Saldo, Quantidade, Lista) :-
         nl
     ),
     lervalor(V, 1),
-    gerarId(5, IDVALOR,[],[]),
+    gerarPremioId(5, IDVALOR),
     procurarValor(V, IDVALOR, Valor),
 
     gerarId(12, ID,Lista,NovaLista),contaPerguntaToString(Quantidade),nl,
@@ -79,7 +79,7 @@ rodada(2, Saldo, Quantidade,Lista) :-
         nl
     ),
     lervalor(V, 2),
-    gerarId(5, IDVALOR,[],[]),
+    gerarPremioId(5, IDVALOR),
     procurarValor(V, IDVALOR, Valor),
 
     gerarId(16, ID,Lista,NovaLista), 
@@ -117,7 +117,7 @@ rodada(3, Saldo, Quantidade,Lista) :-
         nl
     ),
     lervalor(V, 3),
-    gerarId(5, IDVALOR,[],[]),
+    gerarPremioId(5, IDVALOR),
     procurarValor(V, IDVALOR, Valor),
 
     gerarId(20, ID,Lista,NovaLista),
@@ -142,9 +142,8 @@ rodada(3, Saldo, Quantidade,Lista) :-
     Q is Quantidade + 1,
     rodada(3, S, Q,NovaLista).
 
-gerarId(Maximo, Retorno,[],[]) :- random(0, Maximo, Retorno).
-gerarId(Maximo, Retorno,Lista,NovaLista) :-random(0, Maximo, Retorno),notContains(Retorno,Lista),append(Retorno,Lista,NovaLista);
-gerarId(Maximo, Retorno,Lista,NovaLista).
+gerarPremioId(Maximo, Retorno) :- random(0, Maximo, Retorno).
+
 
 getMultiplicador(Rodada,Out) :-
     Rodada =:= 3, lerMultiplicador("Escolha um multiplicador 1x, 2x ou 3x: ",Rodada,Out);
@@ -199,6 +198,9 @@ validaOpcaoMenu(Opcao, OpcaoCorreta):-
     Opcao =:= 2, OpcaoCorreta is Opcao;
     Opcao =:= 3, OpcaoCorreta is Opcao;
     readOpcaoMenu("Opção incorreta, digite 1, 2 ou 3.", OpcaoCorreta). 
+
+gerarId(Maximo, Retorno,Lista,NovaLista) :- repeat,random(0, Maximo, Retorno),
+notContains(Retorno,Lista),add(Retorno,Lista,NovaLista).
 
 notContains(_,[]).
 notContains(X,[H|T]) :- X =\= H , notContains(X,T).
