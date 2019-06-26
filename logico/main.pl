@@ -173,7 +173,7 @@ verificaAlternativa(A, Saida):-
 
 verificaAlternativa2(A, Saida):-
     repeat,
-    writeln("Digite uma alternativa correta por favor (a ou b): "),
+    writeln("Digite uma alternativa correta por favor (a ou b ou c ou d): "),
     read_line_to_string(user_input, Saida),
     (Saida == "a" ; Saida == "b" ; Saida == "c" ; Saida == "d" -> !, !
         ; fail
