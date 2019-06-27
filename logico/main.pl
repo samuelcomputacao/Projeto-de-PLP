@@ -8,7 +8,7 @@
 main:- init().
 
 init() :-
-    menu(Opcao),
+    telaInicial(),
     halt(0).
 
 lerNumero(N) :- 
@@ -21,7 +21,7 @@ getOpcaoMenu(Opcao) :-
     write("1) Iniciar novo jogo"),nl,
     write("2) Tutorial"),nl,
     write("3) Sair"),nl,
-    lerNumero(Op),
+    read_line_to_string(user_input, Op),
     validaOpcaoMenu(Op, OpCorreta),
     Saldo is 0 -> (
         OpCorreta =:= 1 -> rodada(1, Saldo, 0,[]);
@@ -190,13 +190,13 @@ verificaJogarNovamente(Opcao):-
 
 readOpcaoMenu(Msg, OpcaoCorreta):-
     write(Msg),nl,
-    lerNumero(Opcao),
+    read_line_to_string(user_input, Opcao),
     validaOpcaoMenu(Opcao,OpcaoCorreta).
 
 validaOpcaoMenu(Opcao, OpcaoCorreta):-
-    Opcao =:= 1, OpcaoCorreta is Opcao;
-    Opcao =:= 2, OpcaoCorreta is Opcao;
-    Opcao =:= 3, OpcaoCorreta is Opcao;
+    Opcao == "1", OpcaoCorreta is 1;
+    Opcao == "2", OpcaoCorreta is 2;
+    Opcao == "3", OpcaoCorreta is 3;
     readOpcaoMenu("Opção incorreta, digite 1, 2 ou 3.", OpcaoCorreta). 
 
 gerarId(Maximo, Retorno,Lista,NovaLista) :- repeat,random(0, Maximo, Retorno),
@@ -207,3 +207,13 @@ notContains(X,[H|T]) :- X =\= H , notContains(X,T).
 
 add(X,[],[X]).
 add(X,[H1|T1],[H1|T2]):- add(X,T1,T2).
+
+telaInicial() :- 
+    write("Aguardando carregamento do jogo...\n\n"),
+    sleep(2),
+    write("Espere um momento por favor...\n\n"),
+    sleep(4),
+    write("Tudo pronto! Hora de jogar!\n\n"),
+    menu(Opcao).
+
+    
